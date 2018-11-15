@@ -126,15 +126,25 @@ namespace BiografCSharpTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("Created");
+
                     b.Property<string>("Email");
 
                     b.Property<bool>("Enabled")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(true);
 
+                    b.Property<DateTime>("LastActive");
+
                     b.Property<string>("Name");
 
-                    b.Property<string>("Password");
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
 
                     b.Property<int>("PhoneNumber");
 

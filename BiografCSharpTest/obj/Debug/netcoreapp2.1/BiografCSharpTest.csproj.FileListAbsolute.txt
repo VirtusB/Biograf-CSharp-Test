@@ -12,3 +12,17 @@ C:\Users\Bruger\OneDrive - Rastec ApS\H3-programmering\C#\Biograf-CSharp-Test\Bi
 C:\Users\Bruger\OneDrive - Rastec ApS\H3-programmering\C#\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorTargetAssemblyInfo.cache
 C:\Users\Bruger\OneDrive - Rastec ApS\H3-programmering\C#\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.dll
 C:\Users\Bruger\OneDrive - Rastec ApS\H3-programmering\C#\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.pdb
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.deps.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.runtimeconfig.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.runtimeconfig.dev.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.pdb
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.csprojAssemblyReference.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.csproj.CoreCompileInputs.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorAssemblyInfo.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorAssemblyInfo.cs
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.AssemblyInfoInputs.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.AssemblyInfo.cs
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorTargetAssemblyInfo.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.pdb

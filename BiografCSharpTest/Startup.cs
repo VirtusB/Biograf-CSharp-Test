@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BiografCSharpTest.Data;
+using BiografCSharpTest.Data.Seeding;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,11 +34,13 @@ namespace BiografCSharpTest
             services.AddCors(); // tilføj CORS, så vi kan tilgå API'en fra andre websider eller andre APIer
             services.AddAutoMapper(); // tilføj AutoMapper, så vi automatisk kan mappe objekter til DTO'er
 
+            services.AddTransient<Seed>();
+
             services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +53,11 @@ namespace BiografCSharpTest
             
             app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); // tillad at en side/service/api tilgår vores API fra port 4200. Angular bruger som default port 4200, så vi kunne f.eks. lave frontend i Angular og bruge API'en på denne måde
            // app.UseHttpsRedirection();
+           seeder.SeedRoles();
+           seeder.SeedUsers();
+           seeder.SeedDiscounts();
+           seeder.SeedMovies();
+
             app.UseMvc();
         }
     }

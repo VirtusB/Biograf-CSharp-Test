@@ -1,0 +1,403 @@
+[
+    {
+      "Name": "Charlie Bartlett",
+      "Genre": "Comedy|Drama",
+      "Minutes": 254,
+      "Year": 2008,
+      "Director": "Delmar Cowden",
+      "Poster": "http://dummyimage.com/102x143.png/dddddd/000000"
+    },
+    {
+      "Name": "Strange Case of the End of Civilization as We Know It, The",
+      "Genre": "Comedy|Crime|Mystery",
+      "Minutes": 258,
+      "Year": 1993,
+      "Director": "Birgitta Deverose",
+      "Poster": "http://dummyimage.com/205x122.png/dddddd/000000"
+    },
+    {
+      "Name": "Castle of the Living Dead (Castello Dei Morti Vivi, Il)",
+      "Genre": "Horror|Sci-Fi|Thriller",
+      "Minutes": 242,
+      "Year": 1968,
+      "Director": "Salomon Bavister",
+      "Poster": "http://dummyimage.com/237x101.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Violent City (Family, The) (Città violenta)",
+      "Genre": "Action|Crime|Drama",
+      "Minutes": 136,
+      "Year": 1986,
+      "Director": "Tani Paireman",
+      "Poster": "http://dummyimage.com/224x200.png/dddddd/000000"
+    },
+    {
+      "Name": "Bab'Aziz -The Prince Who Contemplated His Soul",
+      "Genre": "Drama",
+      "Minutes": 306,
+      "Year": 2008,
+      "Director": "Crawford Mackneis",
+      "Poster": "http://dummyimage.com/244x208.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Ash Wednesday",
+      "Genre": "Crime|Drama",
+      "Minutes": 265,
+      "Year": 2004,
+      "Director": "Tobi Dafforne",
+      "Poster": "http://dummyimage.com/109x120.png/dddddd/000000"
+    },
+    {
+      "Name": "The Fabulous Baron Munchausen",
+      "Genre": "Adventure|Animation|Fantasy",
+      "Minutes": 163,
+      "Year": 2012,
+      "Director": "Rivalee Applin",
+      "Poster": "http://dummyimage.com/104x207.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Boston Strangler, The",
+      "Genre": "Crime|Drama|Mystery|Thriller",
+      "Minutes": 192,
+      "Year": 2005,
+      "Director": "Ebeneser Hallawell",
+      "Poster": "http://dummyimage.com/218x161.png/dddddd/000000"
+    },
+    {
+      "Name": "Harmagedon",
+      "Genre": "Action|Drama",
+      "Minutes": 206,
+      "Year": 2009,
+      "Director": "Dulcia Larn",
+      "Poster": "http://dummyimage.com/140x155.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Night Porter, The (Portiere di notte, Il)",
+      "Genre": "Crime|Drama|Romance",
+      "Minutes": 114,
+      "Year": 1988,
+      "Director": "Hayden Beceril",
+      "Poster": "http://dummyimage.com/205x158.png/dddddd/000000"
+    },
+    {
+      "Name": "Forbidden Zone",
+      "Genre": "Musical|Sci-Fi",
+      "Minutes": 175,
+      "Year": 2010,
+      "Director": "Truda Crosthwaite",
+      "Poster": "http://dummyimage.com/116x148.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Charlie Chan at the Circus",
+      "Genre": "Comedy|Crime|Mystery|Thriller",
+      "Minutes": 145,
+      "Year": 1995,
+      "Director": "Missy Burnet",
+      "Poster": "http://dummyimage.com/169x163.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Broken Sky (El cielo dividido)",
+      "Genre": "Drama",
+      "Minutes": 311,
+      "Year": 2010,
+      "Director": "Emelda Yule",
+      "Poster": "http://dummyimage.com/177x108.png/ff4444/ffffff"
+    },
+    {
+      "Name": "49 Up",
+      "Genre": "Documentary",
+      "Minutes": 274,
+      "Year": 1995,
+      "Director": "Flemming Pristnor",
+      "Poster": "http://dummyimage.com/227x210.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Teenage Mutant Ninja Turtles III",
+      "Genre": "Action|Adventure|Children|Comedy|Fantasy",
+      "Minutes": 98,
+      "Year": 1996,
+      "Director": "Emalee Aspden",
+      "Poster": "http://dummyimage.com/165x239.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Hurricane, The",
+      "Genre": "Action|Drama|Romance",
+      "Minutes": 171,
+      "Year": 1970,
+      "Director": "Guthrey Pinney",
+      "Poster": "http://dummyimage.com/108x235.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Poolhall Junkies",
+      "Genre": "Comedy|Drama|Thriller",
+      "Minutes": 189,
+      "Year": 2012,
+      "Director": "Dominga Eppson",
+      "Poster": "http://dummyimage.com/210x131.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Rabid Grannies (Mémés cannibales, Les)",
+      "Genre": "Comedy|Horror",
+      "Minutes": 90,
+      "Year": 2001,
+      "Director": "Sinclare Chrispin",
+      "Poster": "http://dummyimage.com/180x141.png/cc0000/ffffff"
+    },
+    {
+      "Name": "City of Joy",
+      "Genre": "Drama",
+      "Minutes": 285,
+      "Year": 2002,
+      "Director": "Masha Kiezler",
+      "Poster": "http://dummyimage.com/245x174.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Dolphin Tale",
+      "Genre": "Children|Drama",
+      "Minutes": 236,
+      "Year": 2012,
+      "Director": "Stace Abrahamoff",
+      "Poster": "http://dummyimage.com/221x213.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Familia",
+      "Genre": "Comedy",
+      "Minutes": 213,
+      "Year": 1995,
+      "Director": "Marleah Fairlem",
+      "Poster": "http://dummyimage.com/245x134.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Die Fighting",
+      "Genre": "Action|Thriller",
+      "Minutes": 233,
+      "Year": 1992,
+      "Director": "Nara Andrichak",
+      "Poster": "http://dummyimage.com/150x178.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Ulysses",
+      "Genre": "Drama",
+      "Minutes": 295,
+      "Year": 2000,
+      "Director": "Arin Bradberry",
+      "Poster": "http://dummyimage.com/114x237.png/dddddd/000000"
+    },
+    {
+      "Name": "The Strange Affair",
+      "Genre": "Crime|Drama",
+      "Minutes": 227,
+      "Year": 2006,
+      "Director": "Mic Ingray",
+      "Poster": "http://dummyimage.com/191x233.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Daylight",
+      "Genre": "Action|Adventure|Drama|Thriller",
+      "Minutes": 196,
+      "Year": 1987,
+      "Director": "Clemmy Basini-Gazzi",
+      "Poster": "http://dummyimage.com/180x207.png/dddddd/000000"
+    },
+    {
+      "Name": "She and Her Cat (Kanojo to kanojo no neko)",
+      "Genre": "Animation|Drama",
+      "Minutes": 291,
+      "Year": 1990,
+      "Director": "Mackenzie Furney",
+      "Poster": "http://dummyimage.com/133x104.png/cc0000/ffffff"
+    },
+    {
+      "Name": "The Beaver Trilogy",
+      "Genre": "Comedy|Documentary|Drama",
+      "Minutes": 266,
+      "Year": 2010,
+      "Director": "Lulu Taffrey",
+      "Poster": "http://dummyimage.com/224x228.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Chinese Roulette (Chinesisches Roulette)",
+      "Genre": "Drama",
+      "Minutes": 213,
+      "Year": 2007,
+      "Director": "Dniren Plastow",
+      "Poster": "http://dummyimage.com/130x141.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Dabangg 2",
+      "Genre": "Action|Comedy|Drama|Musical|Romance",
+      "Minutes": 224,
+      "Year": 2000,
+      "Director": "Jillayne Pearman",
+      "Poster": "http://dummyimage.com/221x140.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Bourne Identity, The",
+      "Genre": "Action|Mystery|Thriller",
+      "Minutes": 229,
+      "Year": 1986,
+      "Director": "Marigold Miguet",
+      "Poster": "http://dummyimage.com/161x223.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Shark Tale",
+      "Genre": "Animation|Children|Comedy",
+      "Minutes": 302,
+      "Year": 1999,
+      "Director": "Lorens Jonathon",
+      "Poster": "http://dummyimage.com/195x222.png/dddddd/000000"
+    },
+    {
+      "Name": "Lenny Bruce: Swear to Tell the Truth",
+      "Genre": "Documentary",
+      "Minutes": 151,
+      "Year": 2007,
+      "Director": "Kassandra Maidens",
+      "Poster": "http://dummyimage.com/128x188.png/cc0000/ffffff"
+    },
+    {
+      "Name": "How Hitler Lost the War",
+      "Genre": "Documentary",
+      "Minutes": 290,
+      "Year": 1995,
+      "Director": "Blinnie Kapelhoff",
+      "Poster": "http://dummyimage.com/176x203.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Drums Along the Mohawk",
+      "Genre": "Adventure|War|Western",
+      "Minutes": 173,
+      "Year": 1994,
+      "Director": "Cheston Severn",
+      "Poster": "http://dummyimage.com/186x130.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Competition, The",
+      "Genre": "Drama|Romance",
+      "Minutes": 233,
+      "Year": 2007,
+      "Director": "Ferrel Comino",
+      "Poster": "http://dummyimage.com/189x193.png/ff4444/ffffff"
+    },
+    {
+      "Name": "You, the Living (Du levande)",
+      "Genre": "Comedy|Drama|Musical",
+      "Minutes": 112,
+      "Year": 2013,
+      "Director": "Francesco Bigly",
+      "Poster": "http://dummyimage.com/194x238.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Wild in the Country",
+      "Genre": "Drama",
+      "Minutes": 272,
+      "Year": 1997,
+      "Director": "Harriett Puve",
+      "Poster": "http://dummyimage.com/243x176.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Heatstroke",
+      "Genre": "Thriller",
+      "Minutes": 133,
+      "Year": 2008,
+      "Director": "Rosaline Radenhurst",
+      "Poster": "http://dummyimage.com/166x158.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Confessions of a Superhero",
+      "Genre": "Documentary",
+      "Minutes": 270,
+      "Year": 2003,
+      "Director": "Vasily Sisson",
+      "Poster": "http://dummyimage.com/226x242.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Incubus, The",
+      "Genre": "Horror|Thriller",
+      "Minutes": 197,
+      "Year": 2005,
+      "Director": "Fulvia Hacun",
+      "Poster": "http://dummyimage.com/186x216.png/cc0000/ffffff"
+    },
+    {
+      "Name": "American Kickboxer 2 (American Kickboxer 2: To the Death)",
+      "Genre": "Action",
+      "Minutes": 195,
+      "Year": 2011,
+      "Director": "Rainer Quilligan",
+      "Poster": "http://dummyimage.com/126x186.png/ff4444/ffffff"
+    },
+    {
+      "Name": "Cencoroll",
+      "Genre": "Action|Animation|Sci-Fi",
+      "Minutes": 147,
+      "Year": 1994,
+      "Director": "Atalanta Eilles",
+      "Poster": "http://dummyimage.com/122x200.png/5fa2dd/ffffff"
+    },
+    {
+      "Name": "Dead End",
+      "Genre": "Comedy|Horror|Mystery|Thriller",
+      "Minutes": 160,
+      "Year": 2007,
+      "Director": "Terrye Spaduzza",
+      "Poster": "http://dummyimage.com/117x117.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Trust Me",
+      "Genre": "Comedy|Drama",
+      "Minutes": 95,
+      "Year": 1992,
+      "Director": "Elyn Corwood",
+      "Poster": "http://dummyimage.com/170x210.png/ff4444/ffffff"
+    },
+    {
+      "Name": "It's Alive",
+      "Genre": "Horror",
+      "Minutes": 290,
+      "Year": 1997,
+      "Director": "Elliot Bomfield",
+      "Poster": "http://dummyimage.com/135x108.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Angel of Death",
+      "Genre": "Action|Crime|Thriller",
+      "Minutes": 210,
+      "Year": 2001,
+      "Director": "Travis Flello",
+      "Poster": "http://dummyimage.com/132x118.png/dddddd/000000"
+    },
+    {
+      "Name": "Opportunity Knocks",
+      "Genre": "Comedy",
+      "Minutes": 163,
+      "Year": 1994,
+      "Director": "Gearard Culross",
+      "Poster": "http://dummyimage.com/158x227.png/dddddd/000000"
+    },
+    {
+      "Name": "Yellow Cab Man, The",
+      "Genre": "Comedy|Drama|Romance",
+      "Minutes": 230,
+      "Year": 2010,
+      "Director": "Artair Nulty",
+      "Poster": "http://dummyimage.com/220x194.png/dddddd/000000"
+    },
+    {
+      "Name": "Ocean's Twelve",
+      "Genre": "Action|Comedy|Crime|Thriller",
+      "Minutes": 245,
+      "Year": 1980,
+      "Director": "Dulcine Sleith",
+      "Poster": "http://dummyimage.com/204x222.png/cc0000/ffffff"
+    },
+    {
+      "Name": "Born to Be Wild",
+      "Genre": "Adventure|Children|Comedy|Drama",
+      "Minutes": 183,
+      "Year": 2005,
+      "Director": "Starlin Castelletti",
+      "Poster": "http://dummyimage.com/164x232.png/cc0000/ffffff"
+    }
+  ]
+  

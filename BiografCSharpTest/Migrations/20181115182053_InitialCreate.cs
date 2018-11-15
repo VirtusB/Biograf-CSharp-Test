@@ -83,7 +83,12 @@ namespace BiografCSharpTest.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    LastActive = table.Column<DateTime>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false),
+                    City = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Enabled = table.Column<bool>(nullable: false, defaultValue: true),
                     PhoneNumber = table.Column<int>(nullable: false),
