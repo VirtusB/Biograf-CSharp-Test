@@ -116,7 +116,7 @@ namespace BiografCSharpTest.Migrations
                     Created = table.Column<DateTime>(nullable: false),
                     Row = table.Column<int>(nullable: false),
                     Seat = table.Column<int>(nullable: false),
-                    BookingState = table.Column<int>(nullable: false),
+                    BookingState = table.Column<int>(nullable: false, defaultValue: 0),
                     ShowId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },

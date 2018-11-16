@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiografCSharpTest.Migrations
 {
     [DbContext(typeof(BioContext))]
-    [Migration("20181116011318_InitialCreate")]
+    [Migration("20181116163042_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,9 @@ namespace BiografCSharpTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookingState");
+                    b.Property<int>("BookingState")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
 
                     b.Property<DateTime>("Created");
 

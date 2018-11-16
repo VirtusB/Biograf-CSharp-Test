@@ -29,6 +29,10 @@ namespace BiografCSharpTest.Data
             builder.Entity<User>()
                 .Property(e => e.Enabled)
                 .HasDefaultValue(true);
+
+            builder.Entity<Reservation>()
+                .Property(s => s.BookingState)
+                .HasDefaultValue(0);
         }
     }
 }

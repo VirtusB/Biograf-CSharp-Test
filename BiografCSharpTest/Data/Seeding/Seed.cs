@@ -4,6 +4,7 @@ using BiografCSharpTest.Models;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace BiografCSharpTest.Data.Seeding
 {
@@ -56,6 +57,89 @@ namespace BiografCSharpTest.Data.Seeding
             }
         }
 
+        public void CleanDatabase() {
+            var discounts = _context.Discounts.ToList();
+            var reservations = _context.Reservations.ToList();
+            var shows = _context.Shows.ToList();
+            var movies = _context.Movies.ToList();
+            var users = _context.Users.ToList();
+            var roles = _context.Roles.ToList();
+
+            discounts.ForEach(discount => {
+                _context.Discounts.Remove(discount);
+            });
+            reservations.ForEach(reservation => {
+                _context.Reservations.Remove(reservation);
+            });
+            shows.ForEach(show => {
+                _context.Shows.Remove(show);
+            });
+            movies.ForEach(movie => {
+                _context.Movies.Remove(movie);
+            });
+            users.ForEach(user => {
+                _context.Users.Remove(user);
+            });
+            roles.ForEach(role => {
+                _context.Roles.Remove(role);
+            });
+            _context.SaveChanges();
+        }
+
+        public int RandomNumber(int min, int max)  
+        {  
+            Random random = new Random();  
+            return random.Next(min, max);  
+        }  
+
+        public void SeedReservations() {
+            if (!_context.Reservations.Any()) {
+                var users = _context.Users.ToList();
+                var shows = _context.Shows.ToArray();
+
+                var standard = users.Where(u => u.Username != "Admin" && u.Username != "Personale").ToList();
+                var personale = users.Where(u => u.Username == "Personale").FirstOrDefault();
+                var admin = users.Where(u => u.Username == "Admin").FirstOrDefault();
+
+                users.ForEach(user => {
+                    for (int i = 0; i < 5; i++) {
+                        int showIndex = RandomNumber(0, 10);
+                        var reservation = new Reservation {
+                            Created = DateTime.Now,
+                            Row = RandomNumber(1, 6),
+                            Seat = RandomNumber(1, 21),
+                            BookingState = RandomNumber(0, 3),
+                            User = user,
+                            Show = shows[showIndex]
+                        };
+                        _context.Reservations.Add(reservation);
+                    }
+                });
+                _context.SaveChanges();
+            }
+        }
+
+        public void SeedShows() {
+            if (!_context.Shows.Any()) {
+                for (int i = 0; i < 10; i++) {
+                    var movies = _context.Movies.Take(10).ToArray();
+
+                    DateTime startDate = DateTime.Now.AddDays(i);
+
+                    var show = new Show {
+                        StartDate = startDate,
+                        EndDate = startDate.AddHours(i),
+                        TicketPrice = RandomNumber(80, 210),
+                        HallNumber = RandomNumber(1, 5),
+                        Movie = movies[i]
+                    };
+
+                    _context.Shows.Add(show);
+                }
+                _context.SaveChanges();
+            }
+        }
+
         public void SeedMovies() {
             if (!_context.Movies.Any()) {
                 var movieData = System.IO.File.ReadAllText("Data/Seeding/MovieSeedData.json");
@@ -77,9 +161,9 @@ namespace BiografCSharpTest.Data.Seeding
                 var userData = System.IO.File.ReadAllText("Data/Seeding/UserSeedData.json");
                 var users = JsonConvert.DeserializeObject<List<User>>(userData);
 
-                Role standardRole = _context.Roles.FirstOrDefault(r => r.Id == 1);
-                Role personaleRole = _context.Roles.FirstOrDefault(r => r.Id == 2);
-                Role adminRole = _context.Roles.FirstOrDefault(r => r.Id == 3);
+                Role standardRole = _context.Roles.FirstOrDefault(r => r.Name == "Standard");
+                Role personaleRole = _context.Roles.FirstOrDefault(r => r.Name == "Personale");
+                Role adminRole = _context.Roles.FirstOrDefault(r => r.Name == "Admin");
 
                 foreach (var user in users)
                 {

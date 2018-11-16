@@ -84,5 +84,21 @@ namespace BiografCSharpTest.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<List<Reservation>> GetReservations(int id)
+        {
+            // 0 == unpaid
+            // 1 == reserved
+            // 2 == paid
+
+            var reservations = await _context.Reservations
+                .Where(r => r.User.Id == id)
+                .Include(s => s.Show)
+                .ThenInclude(m => m.Movie)
+                .ToListAsync();
+
+
+            return reservations;
+        }
     }
 }

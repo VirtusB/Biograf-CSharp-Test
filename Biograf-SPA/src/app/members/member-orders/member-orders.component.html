@@ -1,0 +1,24 @@
+<h4>Du har {{countOfRervations}} ordre</h4>
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Dato</th>
+        <th scope="col">Film</th>
+        <th scope="col">Sæde</th>
+        <th scope="col">Række</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <th scope="row">{{reservation.id}}</th>
+        <td>{{reservation.created | date}}</td>
+        <td>{{reservation.show.movie.name}}</td>
+        <td>{{reservation.seat}}</td>
+        <td>{{reservation.row}}</td>
+        <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : 'Ikke betalt'}}</td>
+      </tr>
+    </tbody>
+  </table>

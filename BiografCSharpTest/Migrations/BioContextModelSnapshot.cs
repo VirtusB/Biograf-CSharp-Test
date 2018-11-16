@@ -65,7 +65,9 @@ namespace BiografCSharpTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookingState");
+                    b.Property<int>("BookingState")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0);
 
                     b.Property<DateTime>("Created");
 

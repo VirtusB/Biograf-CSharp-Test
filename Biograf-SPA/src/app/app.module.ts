@@ -22,6 +22,15 @@ import { MovieListResolver } from './_resolvers/movie-list.resolver';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { MovieService } from './_services/movie.service';
 import { MinuteSecondsPipe } from './MinuteSecondsPipe';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+
+import { LOCALE_ID } from '@angular/core';
+import localeDa from '@angular/common/locales/da';
+import { registerLocaleData } from '@angular/common';
+import { MemberOrdersComponent } from './members/member-orders/member-orders.component';
+import { ReservationService } from './_services/reservation.service';
+registerLocaleData(localeDa);
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -36,7 +45,9 @@ export function tokenGetter() {
       TimeAgoPipe,
       MovieListComponent,
       MovieCardComponent,
-      MinuteSecondsPipe
+      MinuteSecondsPipe,
+      MemberEditComponent,
+      MemberOrdersComponent
    ],
    imports: [
       BrowserModule,
@@ -65,7 +76,10 @@ export function tokenGetter() {
     AuthGuard,
     UserService,
     MovieListResolver,
-    MovieService
+    MovieService,
+    ReservationService,
+    MemberEditResolver,
+    { provide: LOCALE_ID, useValue: 'da' }
    ],
    bootstrap: [
       AppComponent

@@ -13,6 +13,7 @@ namespace BiografCSharpTest.Data
         Task<User> GetUser(int id);
         Task<Role> GetRole(int id);
         Task<List<string>> GetGenres();
+        Task<List<Reservation>> GetReservations(int id);
         Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<Movie> GetMovie(int id);
         Task<PagedList<Movie>> GetMovies(MovieParams movieParams);
