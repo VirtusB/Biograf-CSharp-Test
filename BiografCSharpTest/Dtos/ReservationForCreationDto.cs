@@ -2,10 +2,10 @@ using System;
 
 namespace BiografCSharpTest.Dtos
 {
-    public class ReservationForCreation
+    public class ReservationForCreationDto
     {
         public DateTime Created { get; set; }
-        public ReservationForCreation()
+        public ReservationForCreationDto()
         {
             Created = DateTime.Now;
         }

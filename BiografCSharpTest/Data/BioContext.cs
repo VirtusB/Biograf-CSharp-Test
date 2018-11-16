@@ -6,7 +6,8 @@ namespace BiografCSharpTest.Data
 {
     public class BioContext : DbContext
     {
-        public BioContext(DbContextOptions<BioContext> options) : base(options) { }
+        //public BioContext(DbContextOptions<BioContext> options) : base (options) { }
+        public BioContext() : base () { }
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }

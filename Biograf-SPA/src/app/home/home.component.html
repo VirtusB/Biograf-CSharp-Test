@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <h1>Velkommen til Bio B biograf</h1>
+    <p class="lead">Vi har masser af film. Kom og se dem alle.</p>
+    <div class="text-center">
+      <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Opret konto</button>
+      <button class="btn btn-info btn-lg">Læs mere</button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <carousel>
+          <slide>
+            <img src="http://www.mymbuzz.com/wp-content/uploads/sites/2/2017/02/Ghost-in-the-Shell-Horizontal-Stand.jpg" alt="first slide" style="display: block; width: 100%;">
+          </slide>
+          <slide>
+            <img src="http://cdn.collider.com/wp-content/uploads/inception_movie_poster_banner_03.jpg" alt="second slide" style="display: block; width: 100%;">
+          </slide>
+          <slide>
+            <img src="https://shyfyy.files.wordpress.com/2013/05/pacrim15.jpg" alt="third slide" style="display: block; width: 100%;">
+          </slide>
+        </carousel>
+      </div>
+    </div>
+  </div>
+</div>
