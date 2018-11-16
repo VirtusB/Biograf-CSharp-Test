@@ -1,5 +1,23 @@
-<div class="card mb-4">
-  <div class="card-body p-1">
-    <p class="card-text text-muted text-center">{{movie.genre}}</p>
+<div class="card-deck">
+  <div class="col-mt-4 mb-5">
+      <div class="card">
+          <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{movie.name}}</h5>
+            <p class="card-text">{{movie.description}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Genre: {{movie.genre}}</li>
+            <li class="list-group-item">Instruktør: {{movie.director}}</li>
+            <li class="list-group-item">År: {{movie.year}}</li>
+            <li class="list-group-item">Længde: {{movie.minutes | minuteSeconds}}</li>
+            
+          </ul>
+          <div class="card-body">
+            <a href="" class="card-link">Vis program</a>
+            <a href="" class="card-link">Se trailer</a>
+          </div>
+        </div>
   </div>
+  
 </div>

@@ -8,6 +8,7 @@ export interface Movie {
     year: number;
     director: string;
     poster: string;
+    description: string;
 }
 
 

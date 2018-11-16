@@ -9,5 +9,6 @@ namespace BiografCSharpTest.Dtos
         public int Year { get; set; }
         public string Director { get; set; }
         public string Poster { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -21,6 +21,7 @@ import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { MovieListResolver } from './_resolvers/movie-list.resolver';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { MovieService } from './_services/movie.service';
+import { MinuteSecondsPipe } from './MinuteSecondsPipe';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -34,7 +35,8 @@ export function tokenGetter() {
       NavComponent,
       TimeAgoPipe,
       MovieListComponent,
-      MovieCardComponent
+      MovieCardComponent,
+      MinuteSecondsPipe
    ],
    imports: [
       BrowserModule,

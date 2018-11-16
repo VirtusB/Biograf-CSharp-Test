@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from '../../_models/Pagination';
 import { User } from '../../_models/user';
 
+
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -15,6 +16,7 @@ export class MovieListComponent implements OnInit {
   movies: Movie[];
   movieParams: any = {};
   pagination: Pagination;
+  genres: any;
 
   constructor(private movieService: MovieService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -27,7 +29,9 @@ export class MovieListComponent implements OnInit {
 
     this.movieParams.minYear = 1920;
     this.movieParams.maxYear = 2018;
-    this.movieParams.genre = 'Comedy';
+    this.movieParams.genre = '';
+
+    this.loadGenres();
   }
 
   pageChanged(event: any): void {
@@ -38,8 +42,16 @@ export class MovieListComponent implements OnInit {
   resetFilters() {
     this.movieParams.minYear = 1920;
     this.movieParams.maxYear = 2018;
-    this.movieParams.genre = 'Comedy';
+    this.movieParams.genre = '';
     this.loadMovies();
+  }
+
+  loadGenres() {
+    this.movieService.getGenres().subscribe((res: any) => {
+      this.genres = res.body;
+    }, error => {
+      this.alertify.error(error);
+    });
   }
 
   loadMovies() {
@@ -54,3 +66,6 @@ export class MovieListComponent implements OnInit {
   }
 
 }
+
+
+

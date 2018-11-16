@@ -14,7 +14,13 @@
           <label for="maxAge">År til</label>
           <input [(ngModel)]="movieParams.maxYear" type="number" class="form-control ml-1" style="width: 100px" id="maxYear" name="maxYear">
         </div>
-      
+        
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <select class="form-control" id="genre" name="genre" [(ngModel)]="movieParams.genre">
+              <option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</option>
+            </select>
+          </div>
         
         <button type="submit" class="btn btn-primary" style="margin-left:10px">Anvend filtre</button>
         <button (click)="resetFilters()" type="button" class="btn btn-info" style="margin-left:10px">Nulstil filtre</button>
@@ -23,7 +29,7 @@
       <br>
 
   <div class="row">
-    <div *ngFor="let movie of movies" class="col-lg-2 col-md-3 col-sm-6">
+    <div *ngFor="let movie of movies" >
       <app-movie-card [movie]="movie"></app-movie-card>
     </div>
   </div>

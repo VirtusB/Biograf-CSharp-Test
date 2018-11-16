@@ -16,11 +16,14 @@ export class MovieCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private movieService: MovieService,
-    private alertify: AlertifyService) {
+    private alertify: AlertifyService
+  ) {
 
-     }
-
-  ngOnInit() {
   }
 
+  ngOnInit() {
+
+  }
 }
+
+

@@ -1,0 +1,12 @@
+.card-img-top {
+    max-height: 529px;
+}
+
+.card {
+    max-width: 360px;
+}
+
+.card-deck {
+    max-width: 100%;
+    justify-content: center;
+}

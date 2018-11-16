@@ -40,6 +40,8 @@ namespace BiografCSharpTest.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Director");
 
                     b.Property<string>("Genre");

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BiografCSharpTest.Helpers;
 using BiografCSharpTest.Models;
@@ -11,6 +12,7 @@ namespace BiografCSharpTest.Data
         Task<bool> SaveAll();
         Task<User> GetUser(int id);
         Task<Role> GetRole(int id);
+        Task<List<string>> GetGenres();
         Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<Movie> GetMovie(int id);
         Task<PagedList<Movie>> GetMovies(MovieParams movieParams);

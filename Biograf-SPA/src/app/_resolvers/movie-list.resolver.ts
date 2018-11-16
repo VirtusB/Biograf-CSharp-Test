@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class MovieListResolver implements Resolve<Movie[]> {
     pageNumber = 1;
-    pageSize = 5;
+    pageSize = 6;
 
     constructor(private movieService: MovieService, private router: Router, private alertify: AlertifyService) {}
 

@@ -63,6 +63,8 @@ namespace BiografCSharpTest.Data.Seeding
 
                 foreach (var movie in movies)
                 {
+                    string cutToOnlyOneGenre = movie.Genre.Split("|")[0];
+                    movie.Genre = cutToOnlyOneGenre;
                     _context.Movies.Add(movie);
                 }
 

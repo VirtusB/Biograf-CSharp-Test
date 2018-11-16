@@ -13,6 +13,18 @@ export class MovieService {
 
     constructor(private http: HttpClient) { }
 
+    getGenres(): any {
+      return this.http.get<string[]>(this.baseUrl + 'movies/genres', { observe: 'response'});
+      // .subscribe(data => {
+      //   return data.body;
+      // });
+      // .pipe(
+      //   map(response => {
+      //     return response.body;
+      //   })
+      // );
+    }
+
 
     getMovies(page?, itemsPerPage?, movieParams?): Observable<PaginatedResult<Movie[]>> {
         const paginatedResult: PaginatedResult<Movie[]> = new PaginatedResult<Movie[]>();

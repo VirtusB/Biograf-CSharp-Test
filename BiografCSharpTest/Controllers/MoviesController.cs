@@ -24,6 +24,13 @@ namespace BiografCSharpTest.Controllers
             this._repo = repo;
         }
 
+        [HttpGet("genres")]
+        public async Task<IActionResult> GetGenres() {
+            var genres = await _repo.GetGenres();
+
+            return Ok(genres);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetMovies ([FromQuery]MovieParams movieParams) {
             
