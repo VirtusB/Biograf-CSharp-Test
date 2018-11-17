@@ -11,7 +11,7 @@
             <li class="list-group-item">Instruktør: {{movie.director}}</li>
             <li class="list-group-item">År: {{movie.year}}</li>
             <li class="list-group-item">Længde: {{movie.minutes | minuteSeconds}}</li>
-            
+            <li [innerHTML]="movie.stars | formatStars" class="list-group-item"></li>
           </ul>
           <div class="card-body">
             <a href="" class="card-link">Vis program</a>

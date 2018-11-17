@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiografCSharpTest.Migrations
 {
     [DbContext(typeof(BioContext))]
-    [Migration("20181116163042_InitialCreate")]
+    [Migration("20181117164401_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,6 +53,8 @@ namespace BiografCSharpTest.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Poster");
+
+                    b.Property<int>("Stars");
 
                     b.Property<int>("Year");
 

@@ -9,6 +9,7 @@ export interface Movie {
     director: string;
     poster: string;
     description: string;
+    stars: number;
 }
 
 

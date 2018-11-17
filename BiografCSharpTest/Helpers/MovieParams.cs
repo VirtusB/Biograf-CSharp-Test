@@ -13,6 +13,7 @@ namespace BiografCSharpTest.Helpers
 
         public int MovieId { get; set; }
         public string Genre { get; set; }
+        public int Stars { get; set; } = 0;
         public int MinYear { get; set; } = 1920; // default year of 1920
         public int MaxYear { get; set; } = 2018;
 

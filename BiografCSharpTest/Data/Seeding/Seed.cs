@@ -147,8 +147,12 @@ namespace BiografCSharpTest.Data.Seeding
 
                 foreach (var movie in movies)
                 {
+                    int stars = RandomNumber(1, 6);
                     string cutToOnlyOneGenre = movie.Genre.Split("|")[0];
+
                     movie.Genre = cutToOnlyOneGenre;
+                    movie.Stars = stars;
+
                     _context.Movies.Add(movie);
                 }
 

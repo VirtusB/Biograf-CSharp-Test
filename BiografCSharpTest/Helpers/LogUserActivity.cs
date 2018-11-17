@@ -11,6 +11,7 @@ namespace BiografCSharpTest.Helpers
     {
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
+            // denne klasse sørger for at opdatere LastActive tiden
             var resultContext = await next();
 
             var claimUser = resultContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);

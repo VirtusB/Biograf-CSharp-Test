@@ -52,6 +52,8 @@ namespace BiografCSharpTest.Migrations
 
                     b.Property<string>("Poster");
 
+                    b.Property<int>("Stars");
+
                     b.Property<int>("Year");
 
                     b.HasKey("Id");

@@ -36,7 +36,7 @@ export class MovieService {
           params = params.append('minYear', movieParams.minYear);
           params = params.append('maxYear', movieParams.maxYear);
           params = params.append('genre', movieParams.genre);
-
+          params = params.append('stars', movieParams.stars);
         }
 
 

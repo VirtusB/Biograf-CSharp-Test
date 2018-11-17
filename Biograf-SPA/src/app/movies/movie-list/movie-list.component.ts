@@ -17,6 +17,7 @@ export class MovieListComponent implements OnInit {
   movieParams: any = {};
   pagination: Pagination;
   genres: any;
+  stars = [1, 2, 3, 4, 5];
 
   constructor(private movieService: MovieService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -30,6 +31,7 @@ export class MovieListComponent implements OnInit {
     this.movieParams.minYear = 1920;
     this.movieParams.maxYear = 2018;
     this.movieParams.genre = '';
+    this.movieParams.stars = 0;
 
     this.loadGenres();
   }
@@ -43,6 +45,7 @@ export class MovieListComponent implements OnInit {
     this.movieParams.minYear = 1920;
     this.movieParams.maxYear = 2018;
     this.movieParams.genre = '';
+    this.movieParams.stars = 0;
     this.loadMovies();
   }
 

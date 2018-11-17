@@ -34,7 +34,8 @@ namespace BiografCSharpTest.Migrations
                     Year = table.Column<int>(nullable: false),
                     Director = table.Column<string>(nullable: true),
                     Poster = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    Stars = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

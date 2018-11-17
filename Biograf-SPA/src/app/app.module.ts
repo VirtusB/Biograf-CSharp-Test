@@ -21,7 +21,7 @@ import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { MovieListResolver } from './_resolvers/movie-list.resolver';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { MovieService } from './_services/movie.service';
-import { MinuteSecondsPipe } from './MinuteSecondsPipe';
+import { MinuteSecondsPipe } from './pipes/MinuteSecondsPipe';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
@@ -32,6 +32,7 @@ import { MemberOrdersComponent } from './members/member-orders/member-orders.com
 import { ReservationService } from './_services/reservation.service';
 import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { FormatStarsPipe } from './pipes/FormatStarsPipe';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -48,6 +49,7 @@ export function tokenGetter() {
       MovieListComponent,
       MovieCardComponent,
       MinuteSecondsPipe,
+      FormatStarsPipe,
       MemberEditComponent,
       MemberOrdersComponent,
       MovieDetailComponent

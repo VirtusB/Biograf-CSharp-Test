@@ -59,6 +59,10 @@ namespace BiografCSharpTest.Data
                 movies = movies.Where(g => g.Genre == movieParams.Genre);
             }
 
+            if (movieParams.Stars != 0) {
+                movies = movies.Where(s => s.Stars >= movieParams.Stars);
+            }
+
             
             return await PagedList<Movie>.CreateAsync(movies, movieParams.PageNumber, movieParams.PageSize);
         }
