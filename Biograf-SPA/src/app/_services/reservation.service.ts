@@ -27,4 +27,16 @@ export class ReservationService {
       );
   }
 
+  getPaidReservationsCount(id: number) {
+    let count: number;
+
+    return this.http.get<number>(this.baseUrl + 'reservations/paidcount/' + id, { observe: 'response'})
+      .pipe(
+        map(response => {
+          count = response.body;
+          return count;
+        })
+      );
+  }
+
 }

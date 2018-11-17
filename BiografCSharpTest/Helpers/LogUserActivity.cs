@@ -13,7 +13,13 @@ namespace BiografCSharpTest.Helpers
         {
             var resultContext = await next();
 
-            var userId = int.Parse(resultContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var claimUser = resultContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (claimUser == null) {
+                return;
+            }
+
+            var userId = int.Parse(claimUser.Value);
 
             var repo = resultContext.HttpContext.RequestServices.GetService<IBiografRepository>();
 

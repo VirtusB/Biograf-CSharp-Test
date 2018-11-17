@@ -15,14 +15,10 @@ export class MovieService {
 
     getGenres(): any {
       return this.http.get<string[]>(this.baseUrl + 'movies/genres', { observe: 'response'});
-      // .subscribe(data => {
-      //   return data.body;
-      // });
-      // .pipe(
-      //   map(response => {
-      //     return response.body;
-      //   })
-      // );
+    }
+
+    getMovie(id: number) {
+      return this.http.get<Movie>(this.baseUrl + 'movies/' + id, { observe: 'response'});
     }
 
 

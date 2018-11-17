@@ -25,5 +25,13 @@ namespace BiografCSharpTest.Controllers
 
             return Ok(reservations);
         }
+
+        [HttpGet("paidCount/{id}")]
+        public async Task<IActionResult> GetPaidReservationsCount(int id) {
+            var reservations = await _repo.GetPaidReservationsCount(id);
+
+            return Ok(reservations);
+        }
+
     }
 }

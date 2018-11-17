@@ -25,13 +25,27 @@ namespace BiografCSharpTest.Controllers
         }
 
         [HttpGet("genres")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetGenres() {
             var genres = await _repo.GetGenres();
 
             return Ok(genres);
         }
 
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetMovie(int id) {
+            var movie = await _repo.GetMovie(id);
+
+            if (movie != null) {
+                return Ok(movie);
+            }
+
+            return NoContent();
+        } 
+
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetMovies ([FromQuery]MovieParams movieParams) {
             
             var movies = await _repo.GetMovies(movieParams);

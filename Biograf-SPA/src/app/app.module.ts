@@ -30,6 +30,8 @@ import localeDa from '@angular/common/locales/da';
 import { registerLocaleData } from '@angular/common';
 import { MemberOrdersComponent } from './members/member-orders/member-orders.component';
 import { ReservationService } from './_services/reservation.service';
+import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
+import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -47,7 +49,8 @@ export function tokenGetter() {
       MovieCardComponent,
       MinuteSecondsPipe,
       MemberEditComponent,
-      MemberOrdersComponent
+      MemberOrdersComponent,
+      MovieDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -78,6 +81,7 @@ export function tokenGetter() {
     MovieListResolver,
     MovieService,
     ReservationService,
+    MovieDetailResolver,
     MemberEditResolver,
     { provide: LOCALE_ID, useValue: 'da' }
    ],

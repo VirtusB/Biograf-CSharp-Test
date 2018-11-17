@@ -15,7 +15,7 @@
       <tr *ngFor="let reservation of reservations">
         <th scope="row">{{reservation.id}}</th>
         <td>{{reservation.created | date}}</td>
-        <td>{{reservation.show.movie.name}}</td>
+        <td><a style="text-decoration: none" [routerLink]="['/movies/', reservation.show.movie.id]">{{reservation.show.movie.name}}</a></td>
         <td>{{reservation.seat}}</td>
         <td>{{reservation.row}}</td>
         <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : 'Ikke betalt'}}</td>

@@ -18,8 +18,8 @@ export class MemberEditResolver implements Resolve<User> {
     resolve(route: ActivatedRouteSnapshot): Observable<User> {
         return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
             catchError(error => {
-                this.alertify.error('Problem loading your data');
-                this.router.navigate(['/movies']);
+                this.alertify.error('Problem ved load af data');
+                this.router.navigate(['/home']);
                 return of(null);
             })
         );

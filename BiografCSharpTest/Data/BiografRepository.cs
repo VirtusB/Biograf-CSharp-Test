@@ -87,9 +87,7 @@ namespace BiografCSharpTest.Data
 
         public async Task<List<Reservation>> GetReservations(int id)
         {
-            // 0 == unpaid
-            // 1 == reserved
-            // 2 == paid
+            
 
             var reservations = await _context.Reservations
                 .Where(r => r.User.Id == id)
@@ -99,6 +97,17 @@ namespace BiografCSharpTest.Data
 
 
             return reservations;
+        }
+
+        public async Task<int> GetPaidReservationsCount(int id)
+        {
+            // 0 == unpaid
+            // 1 == reserved
+            // 2 == paid
+            int StatePaid = 2;
+            var count = await _context.Reservations.CountAsync(r => r.User.Id == id && r.BookingState == StatePaid);
+
+            return count;
         }
     }
 }

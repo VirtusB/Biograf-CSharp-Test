@@ -35,9 +35,13 @@
     <div class="col-sm-9">
       <div class="tab-panel">
         <tabset class="member-tabset">
+            <tab heading="Mine ordre">
+                <app-member-orders></app-member-orders>
+              </tab>
           <tab heading="Rediger profil">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
                 <h4>Detaljer - {{user.name}}'s profil</h4>
+                <br>
                 <div class="container">
                     
                         <div class="form-group row">
@@ -60,9 +64,7 @@
             </form>
             
           </tab>
-          <tab heading="Mine ordre">
-              <app-member-orders></app-member-orders>
-            </tab>
+          
         </tabset>
       </div>
     </div>
