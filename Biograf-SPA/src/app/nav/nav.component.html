@@ -10,6 +10,8 @@
           <a class="nav-link" [routerLink]="['/movies']">Film</a>
         </li>
       </ul>
+
+      
     
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <span class="mr-1">
@@ -21,6 +23,12 @@
       
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Vis profil</a>
+
+          <div *ngIf="authService.currentUser.role.name === 'Personale' || authService.currentUser.role.name === 'Admin'">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/reservations/validation']"><i style="margin-left: -5px;" class="fa fa-ticket"></i> Billet validering</a>
+          </div>
+          
           <div class="dropdown-divider"></div>
           <a (click)="logout()" class="dropdown-item"><i class="fa fa-sign-out"></i> Log ud</a>
         </div>

@@ -18,6 +18,18 @@ export class ReservationService {
     return this.http.get<number>(this.baseUrl + 'reservations/discountstep/' + id, { observe: 'response'});
   }
 
+  getReservation(id: number): Observable<Reservation> {
+    let reservation: Reservation;
+
+    return this.http.get<Reservation>(this.baseUrl + 'reservations/' + id, { observe: 'response'})
+      .pipe(
+        map(response => {
+          reservation = response.body;
+          return reservation;
+        })
+      );
+  }
+
   getReservations(id: number): Observable<Reservation[]> {
 
     let reservations: Reservation[] = [];

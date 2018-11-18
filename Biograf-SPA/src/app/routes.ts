@@ -10,9 +10,19 @@ import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
 import { ShowListComponent } from './shows/show-list/show-list.component';
 import { ShowListResolver } from './_resolvers/show-list.resolver';
 import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
+import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
+import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
+    {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [PersonaleAdminGuard],
+        children: [
+            {path: 'reservations/validation', component: ReservationValidationComponent}
+        ]
+    },
     {
         path: '',
         runGuardsAndResolvers: 'always',
