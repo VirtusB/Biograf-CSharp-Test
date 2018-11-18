@@ -41,12 +41,13 @@ export class ReservationCheckoutComponent implements OnInit  {
     this.reservationForm = this.fb.group({
       bookingState: ['2'],
       creditCardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      creditCardExpiry: ['', [Validators.required, Validators.pattern('(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}')]],
+      creditCardExpiry: ['', [Validators.required, Validators.pattern('([0-9]{2}[/]?){2}')]],
       creditCardCvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
 
-
+// ([0-9]{2}[/]?){2}
+// (0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}
   updateFinalOrderPrice() {
     this.finalOrderPrice = this.selectedSeats.length * this.show.ticketPrice;
   }
