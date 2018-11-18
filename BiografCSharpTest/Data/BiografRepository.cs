@@ -95,6 +95,7 @@ namespace BiografCSharpTest.Data
 
             var reservations = await _context.Reservations
                 .Where(r => r.User.Id == id)
+                .OrderByDescending(r => r.Created)
                 .Include(s => s.Show)
                 .ThenInclude(m => m.Movie)
                 .ToListAsync();

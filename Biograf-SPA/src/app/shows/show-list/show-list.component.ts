@@ -19,6 +19,7 @@ export class ShowListComponent implements OnInit {
   prices = [100, 200, 300, 400, 500];
   stars = [1, 2, 3, 4, 5];
 
+
   constructor(private showService: ShowService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
 
@@ -32,6 +33,8 @@ export class ShowListComponent implements OnInit {
     this.showParams.stars = 0;
 
   }
+
+
 
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;

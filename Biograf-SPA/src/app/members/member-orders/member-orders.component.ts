@@ -15,6 +15,7 @@ export class MemberOrdersComponent implements OnInit {
   countOfRervations: number;
   paidReservationsCount: number;
   @Input() movie: Movie;
+  dateHover = false;
 
   constructor(private authService: AuthService, private alertify: AlertifyService, private reservationService: ReservationService) { }
 

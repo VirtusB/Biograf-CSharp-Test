@@ -22,6 +22,7 @@ export class ReservationCheckoutComponent implements OnInit  {
   reservationForm: FormGroup;
   seatRange = range(1, 51);
   selectedSeats = [];
+  phoneNumber: number;
 
 
 
@@ -39,9 +40,9 @@ export class ReservationCheckoutComponent implements OnInit  {
   createReservationForm() {
     this.reservationForm = this.fb.group({
       bookingState: ['2'],
-      creditCardNumber: ['', Validators.required],
-      creditCardExpiry: ['', Validators.required],
-      creditCardCvv: ['', Validators.required]
+      creditCardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      creditCardExpiry: ['', [Validators.required, Validators.pattern('(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}')]],
+      creditCardCvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
 
@@ -67,6 +68,7 @@ export class ReservationCheckoutComponent implements OnInit  {
 
   ngOnInit() {
     this.createReservationForm();
+    this.phoneNumber = this.authService.currentUser.phoneNumber;
 
     this.reservationForm.get('bookingState').valueChanges.subscribe(value => {
       if (value === '1') {
@@ -145,7 +147,7 @@ export class ReservationCheckoutComponent implements OnInit  {
 
         let reservation = {} as Reservation;
         reservation = Object.assign({}, res);
-        
+
 
         this.reservationService.createReservation(this.authService.currentUser.id, reservation).subscribe(() => {
           this.alertify.success('Billetterne er nu bestilt');

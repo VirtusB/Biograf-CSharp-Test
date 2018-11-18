@@ -14,7 +14,7 @@
     <tbody>
       <tr *ngFor="let reservation of reservations">
         <th scope="row">{{reservation.id}}</th>
-        <td>{{reservation.created | date}}</td>
+        <td (mouseleave)="dateHover = false" (mouseenter)="dateHover = true">{{dateHover == false ? (reservation.created | date) : (reservation.created | date:'medium')}}</td>
         <td><a style="text-decoration: none" [routerLink]="['/movies/', reservation.show.movie.id]">{{reservation.show.movie.name}}</a></td>
         <td>{{reservation.seat}}</td>
         <td>{{reservation.row}}</td>

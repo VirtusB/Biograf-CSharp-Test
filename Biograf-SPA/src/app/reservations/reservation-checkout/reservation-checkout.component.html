@@ -25,9 +25,12 @@
                         <strong>Sal:</strong>
                         <p>{{show.hallNumber}}</p>
                       </div>
-                      <div>
-                          <strong>Antal billetter:</strong>
-                          <p>{{selectedSeats.length}}</p>
+                     
+                        <div>
+                          <strong>Dine pladser:</strong>
+                          <br>
+                          <p *ngIf="!selectedSeats.length">Ingen valgt</p>
+                          <span *ngFor="let seat of selectedSeats">Række {{calculateRow(seat)}} Sædde {{calculateSeatNumber(seat)}}<br></span>
                         </div>
                 </div>
                 <div class="card-footer">
@@ -37,7 +40,8 @@
             </div>
             <div class="col-sm-9">
                 <form [formGroup]="reservationForm" (ngSubmit)="makeReservation()">
-
+                  
+                  <h4>{{show.movie.name}}</h4>
                   
                     <div *ngFor="let i of seatRange; let i = index">
                         <input [disabled]="selectedSeats.length === 10 && !seatInSelectedSeats(i)" (click)="toggleSeat(i)" id="seat-{{i}}" class="seat-select" type="checkbox" value="{{i}}" />
@@ -48,20 +52,7 @@
                         </div>
                       </div>
 
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Film</th>
-                            <th scope="col">Antal sæder</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{{show.movie.name}}</td>
-                            <td>{{selectedSeats.length}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    
 
                     <div class="form-group ml-1">
                         <label class="control-label" style="margin-right:10px">Køb eller reserver: </label>
@@ -108,7 +99,13 @@
                       <button style="width: 112px;" [disabled]="!reservationForm.valid || selectedSeats.length === 0" class="btn btn-success mr-2" type="submit">
                         {{reservationForm.get('bookingState').value == 1 ? 'Reserver' : 'Køb'}}
                       </button>
-                      <p *ngIf="reservationForm.get('bookingState').value == 1">Ved reservation skal du møde op i biografen 20 min. før filmen starter</p>
+                      
+                      <div *ngIf="reservationForm.get('bookingState').value == 1">
+                        <br>
+                        <p>Ved reservation skal du møde op i biografen 20 min. før filmen starter</p>
+                        <p>Du bliver påmindet på tlf. nr. {{phoneNumber}}</p>
+                      </div>
+
                     </div>
                     
                   </form>

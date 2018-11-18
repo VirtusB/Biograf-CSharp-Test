@@ -54,6 +54,9 @@ namespace BiografCSharpTest.Controllers
                 return Unauthorized();
             }
 
+        
+
+            // TODO: skal laves helt om...
             var movie = await _repo.GetMovie(reservationForCreationDto.Show.Movie.Id);
             reservationForCreationDto.Show.Movie = movie;
             var show = await _showRepo.GetShow(reservationForCreationDto.Show.Id);
