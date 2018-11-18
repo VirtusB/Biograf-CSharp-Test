@@ -26,3 +26,17 @@ C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorTargetAssemblyInfo.cache
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.dll
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.pdb
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.deps.json
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.runtimeconfig.json
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.runtimeconfig.dev.json
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.dll
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\bin\Debug\netcoreapp2.1\BiografCSharpTest.pdb
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.csprojAssemblyReference.cache
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.csproj.CoreCompileInputs.cache
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorAssemblyInfo.cache
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorAssemblyInfo.cs
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.AssemblyInfoInputs.cache
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.AssemblyInfo.cs
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.RazorTargetAssemblyInfo.cache
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.dll
+F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest\obj\Debug\netcoreapp2.1\BiografCSharpTest.pdb
