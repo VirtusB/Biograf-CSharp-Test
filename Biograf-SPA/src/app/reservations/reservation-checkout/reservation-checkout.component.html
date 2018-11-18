@@ -48,9 +48,12 @@
                         <label for="seat-{{i}}" class="seat"></label>
                         
                         <div *ngIf="i % 10 === 0">
-                          <br><br>
+                          <!-- <br><br><br> teett-->
+                          <p class="line-breaker"></p>
                         </div>
                       </div>
+
+              
 
                     
 
@@ -80,7 +83,7 @@
                                 <div class="col-3">
                                     <div class="form-group ml-1">
                                         <label for="cc-expiry">Udløbsdato</label>
-                                          <input id="cc-expiry" formControlName="creditCardExpiry" class="form-control" autocomplete="cc-exp" placeholder="dd/mm/yy">
+                                          <input id="cc-expiry" formControlName="creditCardExpiry" class="form-control" autocomplete="cc-exp" placeholder="mm/yy">
                                         </div>
                                 </div>
                                 <div class="col-3">

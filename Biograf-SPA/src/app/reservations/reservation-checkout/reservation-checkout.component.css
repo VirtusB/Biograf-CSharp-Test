@@ -14,3 +14,9 @@
 .seat-select:checked+.seat {
     background: #F44336;
 }
+
+p.line-breaker {
+    height: 30px;
+    width: 100%;
+    /* fd */
+}

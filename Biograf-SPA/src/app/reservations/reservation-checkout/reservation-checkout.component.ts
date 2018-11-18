@@ -46,7 +46,7 @@ export class ReservationCheckoutComponent implements OnInit  {
     });
   }
 
-
+//
   updateFinalOrderPrice() {
     this.finalOrderPrice = this.selectedSeats.length * this.show.ticketPrice;
   }
