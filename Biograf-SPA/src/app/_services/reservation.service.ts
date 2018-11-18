@@ -18,13 +18,17 @@ export class ReservationService {
 
     let reservations: Reservation[] = [];
 
-    return this.http.get<Reservation[]>(this.baseUrl + 'reservations/' + id, { observe: 'response'})
+    return this.http.get<Reservation[]>(this.baseUrl + 'reservations/all/' + id, { observe: 'response'})
       .pipe(
         map(response => {
           reservations = response.body;
           return reservations;
         })
       );
+  }
+
+  createReservation(id: number, reservation: Reservation) {
+    return this.http.post(this.baseUrl + 'reservations/' + id, reservation);
   }
 
   getPaidReservationsCount(id: number) {

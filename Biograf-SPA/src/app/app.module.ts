@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule, TooltipModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -33,6 +33,11 @@ import { ReservationService } from './_services/reservation.service';
 import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { FormatStarsPipe } from './pipes/FormatStarsPipe';
+import { ShowService } from './_services/show.service';
+import { ShowListResolver } from './_resolvers/show-list.resolver';
+import { ShowGridComponent } from './shows/show-grid/show-grid.component';
+import { ShowListComponent } from './shows/show-list/show-list.component';
+import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -52,7 +57,10 @@ export function tokenGetter() {
       FormatStarsPipe,
       MemberEditComponent,
       MemberOrdersComponent,
-      MovieDetailComponent
+      MovieDetailComponent,
+      ShowGridComponent,
+      ShowListComponent,
+      ReservationCheckoutComponent
    ],
    imports: [
       BrowserModule,
@@ -64,6 +72,7 @@ export function tokenGetter() {
       PaginationModule.forRoot(),
       ButtonsModule.forRoot(),
       TabsModule.forRoot(),
+      TooltipModule.forRoot(),
       CarouselModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -85,6 +94,8 @@ export function tokenGetter() {
     ReservationService,
     MovieDetailResolver,
     MemberEditResolver,
+    ShowService,
+    ShowListResolver,
     { provide: LOCALE_ID, useValue: 'da' }
    ],
    bootstrap: [

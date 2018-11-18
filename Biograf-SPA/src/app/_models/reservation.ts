@@ -7,6 +7,6 @@ export interface Reservation {
   row: number;
   seat: number;
   bookingState: number;
-  show: Show;
-  user: User;
+  show?: Show;
+  user?: User;
 }

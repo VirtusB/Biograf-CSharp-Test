@@ -103,6 +103,20 @@ namespace BiografCSharpTest.Data
             return reservations;
         }
 
+        public async Task<Reservation> GetReservation(int id)
+        {
+            
+
+            var reservation = await _context.Reservations
+                .Where(r => r.Id == id)
+                .Include(s => s.Show)
+                .ThenInclude(m => m.Movie)
+                .FirstOrDefaultAsync();
+
+
+            return reservation;
+        }
+
         public async Task<int> GetPaidReservationsCount(int id)
         {
             // 0 == unpaid

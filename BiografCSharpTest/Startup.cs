@@ -54,6 +54,7 @@ namespace BiografCSharpTest
 
             services.AddScoped<IBiografRepository, BiografRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IShowRepository, ShowRepository>();
 
             services.AddScoped<LogUserActivity>();
 

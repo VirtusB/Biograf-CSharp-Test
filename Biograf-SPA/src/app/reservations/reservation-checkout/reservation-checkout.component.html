@@ -1,0 +1,119 @@
+<div *ngIf="show" >
+    <div class="text-center mt-3">
+        <h2>Bestil billetter</h2>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-12">
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="card">
+                <img src="{{show.movie.poster}}" class="card-img-top img-thumbnail" alt="" />
+                <div class="card-body">
+                  <div>
+                    <strong>Pris pr. stk:</strong>
+                    <p>{{show.ticketPrice}} kroner</p>
+                  </div>
+                  <div>
+                      <strong>Dato:</strong>
+                      <p>{{show.startDate | date:'EEEE kl. HH:MM'}}</p>
+                    </div>
+                    <div>
+                        <strong>Sal:</strong>
+                        <p>{{show.hallNumber}}</p>
+                      </div>
+                      <div>
+                          <strong>Antal billetter:</strong>
+                          <p>{{selectedSeats.length}}</p>
+                        </div>
+                </div>
+                <div class="card-footer">
+                   Subtotal: {{finalOrderPrice}} kroner
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-9">
+                <form [formGroup]="reservationForm" (ngSubmit)="makeReservation()">
+
+                  
+                    <div *ngFor="let i of seatRange; let i = index">
+                        <input [disabled]="selectedSeats.length === 10 && !seatInSelectedSeats(i)" (click)="toggleSeat(i)" id="seat-{{i}}" class="seat-select" type="checkbox" value="{{i}}" />
+                        <label for="seat-{{i}}" class="seat"></label>
+                        
+                        <div *ngIf="i % 10 === 0">
+                          <br><br>
+                        </div>
+                      </div>
+
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Film</th>
+                            <th scope="col">Antal sæder</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{show.movie.name}}</td>
+                            <td>{{selectedSeats.length}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    <div class="form-group ml-1">
+                        <label class="control-label" style="margin-right:10px">Køb eller reserver: </label>
+                        <br>
+                        <label class="radio-inline">
+                          <input class="mr-3" type="radio" value="2" formControlName="bookingState">Køb
+                        </label>
+                        <label class="radio-inline ml-3">
+                          <input class="mr-3" type="radio" value="1" formControlName="bookingState">Reserver
+                        </label>
+                      </div>
+
+                      <div *ngIf="reservationForm.get('bookingState').value == 2">
+                        <div class="row">
+                          <div class="col-12">
+                              <div class="row">
+                                  <div class="col-6">
+                                      <div class="form-group ml-1">
+                                          <label for="cc-number">Kredit kort nr.</label>
+                                            <input id="cc-number" formControlName="creditCardNumber" class="form-control" autocomplete="cc-number" placeholder="1234 5678 1234 5678">
+                                          </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group ml-1">
+                                        <label for="cc-expiry">Udløbsdato</label>
+                                          <input id="cc-expiry" formControlName="creditCardExpiry" class="form-control" autocomplete="cc-exp" placeholder="dd/mm/yy">
+                                        </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group ml-1">
+                                        <label for="cc-cvv">CVC</label>
+                                        <input id="cc-cvv" formControlName="creditCardCvv" class="form-control" autocomplete="cc-csc" placeholder="xxx">    
+                                            </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                          
+                      </div>
+                  
+                    <div class="form-group ml-1">
+                      <button style="width: 112px;" [disabled]="!reservationForm.valid || selectedSeats.length === 0" class="btn btn-success mr-2" type="submit">
+                        {{reservationForm.get('bookingState').value == 1 ? 'Reserver' : 'Køb'}}
+                      </button>
+                      <p *ngIf="reservationForm.get('bookingState').value == 1">Ved reservation skal du møde op i biografen 20 min. før filmen starter</p>
+                    </div>
+                    
+                  </form>
+            </div>
+          </div>
+    </div>
+  </div>
+

@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-sm-12">
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <img src="{{show.movie.poster}}" class="card-img-top img-thumbnail" alt="" />
+          <div class="card-body">
+            <div>
+              <strong>Pris pr. stk:</strong>
+              <p>{{show.ticketPrice}} kroner</p>
+            </div>
+            <div>
+                <strong>Dato:</strong>
+                <p>{{show.startDate | date:'EEEE kl. HH:MM'}}</p>
+              </div>
+              <div>
+                  <strong>Sal:</strong>
+                  <p>{{show.hallNumber}}</p>
+                </div>
+          </div>
+          <div class="card-footer">
+              <p *ngIf="!loggedIn()">Log ind for at bestille</p>
+            <button [routerLink]="['/reservations/checkout/', show.id]" [disabled]="!loggedIn()" class="btn btn-success btn-block">Bestil</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div>
+          <h4>{{show.movie.name}}</h4>
+        </div>
+        <div>
+          <strong>Genre:</strong>
+          <p>{{show.movie.genre}}</p>
+        </div>
+        <div>
+          <strong>Udgivet:</strong>
+          <p>{{show.movie.year}}</p>
+        </div>
+        <div>
+          <strong>Varighed:</strong>
+          <p>{{ show.movie.minutes | minuteSeconds }}</p>
+        </div>
+        <div>
+          <strong>Stjerner:</strong>
+          <p [innerHTML]="show.movie.stars | formatStars"></p>
+        </div>
+        <div>
+            <strong>Beskrivelse:</strong>
+            <p>{{show.movie.description}}</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  

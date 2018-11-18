@@ -7,6 +7,9 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
+import { ShowListComponent } from './shows/show-list/show-list.component';
+import { ShowListResolver } from './_resolvers/show-list.resolver';
+import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -15,7 +18,8 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         children: [
             {path: 'movies', component: MovieListComponent, resolve: {movies: MovieListResolver}},
-            {path: 'movies/:id', component: MovieDetailComponent, resolve: {movie: MovieDetailResolver}}
+            {path: 'movies/:id', component: MovieDetailComponent, resolve: {movie: MovieDetailResolver}},
+            {path: 'shows', component: ShowListComponent, resolve: {shows: ShowListResolver}}
         ]
     },
     {
@@ -23,7 +27,8 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            {path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}}
+            {path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}},
+            {path: 'reservations/checkout/:id', component: ReservationCheckoutComponent}
         ]
     },
     {path: '**', redirectTo: '', pathMatch: 'full'}

@@ -14,6 +14,7 @@ namespace BiografCSharpTest.Data
         Task<Role> GetRole(int id);
         Task<List<string>> GetGenres();
         Task<List<Reservation>> GetReservations(int id);
+        Task<Reservation> GetReservation(int id);
         Task<int> GetPaidReservationsCount(int id);
         Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<Movie> GetMovie(int id);
