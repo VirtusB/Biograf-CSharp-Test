@@ -11,6 +11,8 @@ namespace BiografCSharpTest.Data
         void Delete<T>(T entity) where T: class;
         Task<bool> SaveAll();
         Task<User> GetUser(int id);
+        Task<Discount> GetCurrentDiscountStep(int id);
+        Task<Discount> GetNextDiscountStep(int id);
         Task<Role> GetRole(int id);
         Task<List<string>> GetGenres();
         Task<List<Reservation>> GetReservations(int id);

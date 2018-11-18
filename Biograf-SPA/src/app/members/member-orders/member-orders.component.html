@@ -1,4 +1,7 @@
 <h4>Du har {{countOfRervations}} ordre</h4>
+<p>{{countOfPaidReservations}} betalte ordrer</p>
+<p>{{countOfReservedReservations}} reserveret ordrer</p>
+<p>{{countOfCanceledReservations}} annulleret ordrer</p>
 <br>
 <table class="table">
     <thead>
@@ -18,7 +21,7 @@
         <td><a style="text-decoration: none" [routerLink]="['/movies/', reservation.show.movie.id]">{{reservation.show.movie.name}}</a></td>
         <td>{{reservation.seat}}</td>
         <td>{{reservation.row}}</td>
-        <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : 'Ikke betalt'}}</td>
+        <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : 'Annulleret'}}</td>
       </tr>
     </tbody>
   </table>

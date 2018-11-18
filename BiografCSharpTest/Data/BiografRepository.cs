@@ -128,5 +128,33 @@ namespace BiografCSharpTest.Data
 
             return count;
         }
+
+        public async Task<Discount> GetCurrentDiscountStep(int id)
+        {
+            var paidReservations = await this.GetPaidReservationsCount(id);
+
+            var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.RequiredBookings >= paidReservations);
+
+            return discount;
+        }
+
+        public async Task<Discount> GetNextDiscountStep(int id)
+        {
+            var paidReservations = await this.GetPaidReservationsCount(id);
+
+            var highestStepRequiredBookings = await _context.Discounts.MaxAsync(d => d.RequiredBookings);
+
+            var discount = await _context.Discounts.Where(d => d.RequiredBookings >= paidReservations).ToArrayAsync();
+
+            if (discount.Length == 0) {
+                discount = await _context.Discounts.Where(d => d.RequiredBookings >= highestStepRequiredBookings).ToArrayAsync();
+            }
+
+            if (discount.Length > 1) {
+                return discount[1];
+            } 
+
+            return discount.FirstOrDefault();
+        }
     }
 }

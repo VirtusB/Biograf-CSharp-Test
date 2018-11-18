@@ -14,6 +14,10 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
+  getDiscountStep(id: number) {
+    return this.http.get<number>(this.baseUrl + 'reservations/discountstep/' + id, { observe: 'response'});
+  }
+
   getReservations(id: number): Observable<Reservation[]> {
 
     let reservations: Reservation[] = [];

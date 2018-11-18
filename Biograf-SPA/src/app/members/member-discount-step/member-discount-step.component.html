@@ -1,0 +1,8 @@
+<div *ngIf="discountInformation">
+  <h4>Dit rabattrin: {{discountInformation.discountStep.id}}</h4>
+  <p>Du sparer {{discountInformation.discountStep.amount}}% på alle dine ordre</p>
+  <br>
+  <p>Næste rabattrin: {{discountInformation.nextStep.amount}}%</p>
+  <p>Du mangler {{discountInformation.nextStep.requiredBookings - discountInformation.paidCount}} ordre for at opnå næste trin</p>
+  <p>Kun ordre med statussen "Betalt" er godkendt</p>
+</div>

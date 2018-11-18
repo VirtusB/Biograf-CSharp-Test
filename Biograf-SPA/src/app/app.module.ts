@@ -38,6 +38,7 @@ import { ShowListResolver } from './_resolvers/show-list.resolver';
 import { ShowGridComponent } from './shows/show-grid/show-grid.component';
 import { ShowListComponent } from './shows/show-list/show-list.component';
 import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
+import { MemberDiscountStepComponent } from './members/member-discount-step/member-discount-step.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -60,7 +61,8 @@ export function tokenGetter() {
       MovieDetailComponent,
       ShowGridComponent,
       ShowListComponent,
-      ReservationCheckoutComponent
+      ReservationCheckoutComponent,
+      MemberDiscountStepComponent
    ],
    imports: [
       BrowserModule,

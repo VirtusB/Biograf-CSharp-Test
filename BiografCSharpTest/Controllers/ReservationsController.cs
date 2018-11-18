@@ -24,12 +24,30 @@ namespace BiografCSharpTest.Controllers
             this._showRepo = showRepo;
         }
 
-        // [HttpGet("paidCount/{id}")]
+        
         [HttpGet("all/{id}")]
         public async Task<IActionResult> GetReservations(int id) {
             var reservations = await _repo.GetReservations(id);
 
             return Ok(reservations);
+        }
+
+        [HttpGet("discountstep/{id}")]
+        public async Task<IActionResult> GetDiscountStep(int id) {
+            var discountStep = await _repo.GetCurrentDiscountStep(id);
+
+            var nextStep = await _repo.GetNextDiscountStep(id);
+
+            var paidCount =  await _repo.GetPaidReservationsCount(id);
+
+            var all = new {
+                discountStep,
+                nextStep,
+                paidCount
+            };
+
+            return Ok(all);
+
         }
 
         [HttpGet("paidCount/{id}")]

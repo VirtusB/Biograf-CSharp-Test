@@ -11593,11 +11593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "h:\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj",
+      "projectUniqueName": "C:\\Users\\Focuz\\OneDrive - Rastec ApS\\H3-programmering\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj",
       "projectName": "BiografCSharpTest",
-      "projectPath": "h:\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj",
+      "projectPath": "C:\\Users\\Focuz\\OneDrive - Rastec ApS\\H3-programmering\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj",
       "packagesPath": "C:\\Users\\Focuz\\.nuget\\packages\\",
-      "outputPath": "h:\\Biograf-CSharp-Test\\BiografCSharpTest\\obj\\",
+      "outputPath": "C:\\Users\\Focuz\\OneDrive - Rastec ApS\\H3-programmering\\Biograf-CSharp-Test\\BiografCSharpTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -12,8 +12,10 @@ import { Movie } from '../../_models/movie';
 })
 export class MemberOrdersComponent implements OnInit {
   reservations: Reservation[];
-  countOfRervations: number;
-  paidReservationsCount: number;
+  countOfRervations = 0;
+  countOfPaidReservations = 0;
+  countOfCanceledReservations = 0;
+  countOfReservedReservations = 0;
   @Input() movie: Movie;
   dateHover = false;
 
@@ -23,14 +25,17 @@ export class MemberOrdersComponent implements OnInit {
     this.getReservations();
   }
 
-  getPaidReservationsCount() {
-    this.reservationService.
-    getPaidReservationsCount(this.authService.decodedToken.nameid)
-    .subscribe((res: number) => {
-      this.paidReservationsCount = res;
-    }, error => {
-      this.alertify.error(error);
-    });
+  countReservations() {
+    this.countOfRervations = this.reservations.length;
+      this.reservations.forEach(reservation => {
+        if (reservation.bookingState === 2) {
+          this.countOfPaidReservations++;
+        } else if (reservation.bookingState === 0) {
+          this.countOfCanceledReservations++;
+        } else if (reservation.bookingState === 1) {
+          this.countOfReservedReservations++;
+        }
+      });
   }
 
   getReservations() {
@@ -38,7 +43,7 @@ export class MemberOrdersComponent implements OnInit {
     getReservations(this.authService.decodedToken.nameid)
     .subscribe((res: Reservation[]) => {
       this.reservations = res;
-      this.countOfRervations = res.length;
+      this.countReservations();
     }, error => {
       this.alertify.error(error);
     });
