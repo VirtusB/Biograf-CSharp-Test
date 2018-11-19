@@ -14,6 +14,7 @@ namespace BiografCSharpTest.Dtos
         public string Name { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
+        public bool Enabled { get; set; }
         public Role Role { get; set; }
     }
 }

@@ -13,7 +13,6 @@ export class ReservationValidationComponent implements OnInit {
   validateReservationForm: FormGroup;
   reservation: Reservation;
   reservationNotFound: boolean;
-  selectedState: number;
 
   states = [
     {value: 2, display: 'er betalt'},
@@ -68,7 +67,7 @@ export class ReservationValidationComponent implements OnInit {
 
         this.reservation = reservation;
         this.reservationNotFound = false;
-        this.selectedState = this.reservation.bookingState;
+        this.validateReservationForm.get('reservationBookingState').setValue(this.reservation.bookingState);
       } else {
         this.reservation = null;
         this.reservationNotFound = true;

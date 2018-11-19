@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule, TooltipModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -41,6 +41,11 @@ import { ReservationCheckoutComponent } from './reservations/reservation-checkou
 import { MemberDiscountStepComponent } from './members/member-discount-step/member-discount-step.component';
 import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
 import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
+import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-control-panel.component';
+import { EditUsersTabComponent } from './admin/edit-users-tab/edit-users-tab.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { EditUserModalComponent } from './admin/edit-user-modal/edit-user-modal.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -65,8 +70,13 @@ export function tokenGetter() {
       ShowListComponent,
       ReservationCheckoutComponent,
       MemberDiscountStepComponent,
-      ReservationValidationComponent
+      ReservationValidationComponent,
+      AdminControlPanelComponent,
+      EditUsersTabComponent,
+      UserListComponent,
+      EditUserModalComponent
    ],
+   entryComponents: [EditUserModalComponent],
    imports: [
       BrowserModule,
       HttpClientModule,
@@ -78,6 +88,7 @@ export function tokenGetter() {
       ButtonsModule.forRoot(),
       TabsModule.forRoot(),
       TooltipModule.forRoot(),
+      ModalModule.forRoot(),
       CarouselModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -102,6 +113,7 @@ export function tokenGetter() {
     MemberEditResolver,
     ShowService,
     ShowListResolver,
+    UserListResolver,
     { provide: LOCALE_ID, useValue: 'da' }
    ],
    bootstrap: [

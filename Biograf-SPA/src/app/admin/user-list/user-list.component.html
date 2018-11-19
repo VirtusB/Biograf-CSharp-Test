@@ -1,0 +1,37 @@
+<div *ngIf="users">
+  <div class="container mt-3">
+      <div class="row">
+          <div class="col-12">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Brugernavn</th>
+                      <th scope="col">Navn</th>
+                      <th scope="col">Land</th>
+                      <th scope="col">By</th>
+                      <th scope="col">Tlf. nr</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Rolle</th>
+                      <th scope="col">Handling</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of users">
+                      <td>{{user.username}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.country}}</td>
+                      <td>{{user.city}}</td>
+                      <td>{{user.phoneNumber}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.role.name}}</td>
+                      <td>
+                        <button (click)="editUserModal(user.id)" class="btn btn-primary btn-sm" type="button"><i class="fa fa-pencil"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+  </div>
+  
+</div>

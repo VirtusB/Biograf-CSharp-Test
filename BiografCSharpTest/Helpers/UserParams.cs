@@ -1,3 +1,5 @@
+using BiografCSharpTest.Models;
+
 namespace BiografCSharpTest.Helpers
 {
     public class UserParams
@@ -12,5 +14,7 @@ namespace BiografCSharpTest.Helpers
         }
 
         public int UserId { get; set; }
+        public Role Role { get; set; }
+        public bool Enabled { get; set; } = true;
     }
 }

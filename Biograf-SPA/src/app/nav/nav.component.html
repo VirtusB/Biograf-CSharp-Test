@@ -26,7 +26,10 @@
 
           <div *ngIf="authService.currentUser.role.name === 'Personale' || authService.currentUser.role.name === 'Admin'">
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" [routerLink]="['/reservations/validation']"><i style="margin-left: -5px;" class="fa fa-ticket"></i> Billet validering</a>
+              <a class="dropdown-item" [routerLink]="['/reservations/validation']"><i style="margin-left: -4px;" class="fa fa-ticket"></i> Billet validering</a>
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/admin']"><i style="margin-left: -2px;" class="fa fa-gear"></i> Personale portal</a>
           </div>
           
           <div class="dropdown-divider"></div>

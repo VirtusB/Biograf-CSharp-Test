@@ -1,0 +1,34 @@
+<h4>Brugere - {{pagination.totalItems}} i alt</h4>
+
+<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+    
+    
+    <div class="form-group">
+        <label for="genre">Status</label>
+        <select class="form-control ml-1" id="status" name="status" [(ngModel)]="userParams.enabled">
+          <option value="true">Aktiv</option>
+          <option value="false">Inaktiv</option>
+        </select>
+      </div>
+
+      
+    
+    <button type="submit" class="btn btn-primary" style="margin-left:10px">Anvend filtre</button>
+    <button (click)="resetFilters()" type="button" class="btn btn-info" style="margin-left:10px">Nulstil filtre</button>
+    
+  </form>
+
+  <div class="row">
+      <app-user-list [users]="users"></app-user-list>
+    </div>
+
+
+<div class="d-flex justify-content-center">
+    <pagination [boundaryLinks]="true" 
+    [totalItems]="pagination.totalItems" 
+    [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  
+    </pagination>

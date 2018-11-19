@@ -72,6 +72,10 @@ namespace BiografCSharpTest.Data
                 .OrderByDescending(u => u.LastActive)
                 .AsQueryable();
 
+            if (userParams.Enabled != true) {
+                users = users.Where(u => u.Enabled == userParams.Enabled);
+            }
+
             users = users.Where(u => u.Id != userParams.UserId);
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
