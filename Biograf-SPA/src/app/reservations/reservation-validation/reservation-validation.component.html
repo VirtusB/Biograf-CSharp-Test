@@ -46,8 +46,8 @@
 
             </div>
             <div class="col-2"> 
-                <select id="statesSelect" class="form-control" formControlName="reservationBookingState" (change)="changeBookingState()">
-                    <option *ngFor="let state of states" [selected]="+reservation.bookingState === +state.value" value="{{state.value}}">{{state.display}}</option>
+                <select id="statesSelect" class="form-control" [(ngModel)]="selectedState" formControlName="reservationBookingState" (change)="changeBookingState()">
+                    <option [selected]="reservation.bookingState === state.value" *ngFor="let state of states" value="{{state.value}}">{{state.display}}</option>
                   </select>
             </div>
             <div class="col-4">
