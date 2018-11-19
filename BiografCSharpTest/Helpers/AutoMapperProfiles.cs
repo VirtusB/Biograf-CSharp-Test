@@ -10,7 +10,9 @@ namespace BiografCSharpTest.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<User, UserForDetailedDto>();
+            CreateMap<Reservation, ReservationForReturnDto>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<ReservationForUpdateDto, Reservation>();
             CreateMap<UserForRegisterDto, User>();
             CreateMap<Movie, MovieForListDto>();
             CreateMap<Show, ShowForListDto>();

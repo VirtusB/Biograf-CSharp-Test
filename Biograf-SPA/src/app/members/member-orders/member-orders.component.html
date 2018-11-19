@@ -17,11 +17,11 @@
     <tbody>
       <tr *ngFor="let reservation of reservations">
         <th scope="row">{{reservation.id}}</th>
-        <td (mouseleave)="dateHover = false" (mouseenter)="dateHover = true">{{dateHover == false ? (reservation.created | date) : (reservation.created | date:'medium')}}</td>
+        <td>{{reservation.created | date}}</td>
         <td><a style="text-decoration: none" [routerLink]="['/movies/', reservation.show.movie.id]">{{reservation.show.movie.name}}</a></td>
         <td>{{reservation.seat}}</td>
         <td>{{reservation.row}}</td>
-        <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : 'Annulleret'}}</td>
+        <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : reservation.bookingState === 0 ? 'Annulleret' : 'Indløst'}}</td>
       </tr>
     </tbody>
   </table>

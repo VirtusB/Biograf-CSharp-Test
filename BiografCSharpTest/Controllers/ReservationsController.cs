@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -39,11 +40,14 @@ namespace BiografCSharpTest.Controllers
             var nextStep = await _repo.GetNextDiscountStep(id);
 
             var paidCount =  await _repo.GetPaidReservationsCount(id);
+            
+            var highestRequiredBookings = await _repo.GetHighestRequiredBookings();
 
             var all = new {
                 discountStep,
                 nextStep,
-                paidCount
+                paidCount,
+                highestRequiredBookings
             };
 
             return Ok(all);
@@ -60,8 +64,43 @@ namespace BiografCSharpTest.Controllers
         [HttpGet("{id}", Name = "GetReservation")]
         public async Task<IActionResult> GetReservation(int id) {
             var reservation = await _repo.GetReservation(id);
+            var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
 
-            return Ok(reservation);
+            return Ok(reservationToReturn);
+        }
+
+        
+        [HttpPost("{userId}/{id}")]
+        public async Task<IActionResult> SetBookingState(int userId, int id, [FromBody] ReservationForUpdateDto reservationForUpdateDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            
+
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
+                return Unauthorized();
+            }
+
+              var reservation = await _repo.GetReservation(id);
+
+             _mapper.Map(reservationForUpdateDto, reservation);
+
+            
+
+
+            if (await _repo.SaveAll()) {
+                var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
+                return Ok(reservationToReturn);
+            }
+
+            return BadRequest("Kunne ikke sætte statussen");
         }
 
         [HttpPost("{id}")]

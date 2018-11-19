@@ -17,7 +17,6 @@ export class MemberOrdersComponent implements OnInit {
   countOfCanceledReservations = 0;
   countOfReservedReservations = 0;
   @Input() movie: Movie;
-  dateHover = false;
 
   constructor(private authService: AuthService, private alertify: AlertifyService, private reservationService: ReservationService) { }
 

@@ -9,5 +9,8 @@ namespace BiografCSharpTest.Dtos
         public int Row { get; set; }
         public int Seat { get; set; }
         public int BookingState { get; set; }
+        public int ShowId { get; set; }
+        public int UserId { get; set; }
+        
     }
 }

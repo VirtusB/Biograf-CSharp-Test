@@ -9,4 +9,5 @@ export interface Reservation {
   bookingState: number;
   show?: Show;
   user?: User;
+  userId?: number;
 }
