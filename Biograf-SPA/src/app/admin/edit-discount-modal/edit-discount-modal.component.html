@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #editForm="ngForm" id="editForm" (ngSubmit)="saveChangesToDiscount()">
+          <div class="container">
+
+              <div class="form-group">
+                  <div class="col-xs-3">
+                    <label class="mr-1" for="requiredBookings">Krævet antal ordre </label>
+                    <input name="requiredBookings" [(ngModel)]="discount.requiredBookings" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-3">
+                      <label class="mr-1" for="amount">% rabat </label>
+                      <input name="amount" [(ngModel)]="discount.amount" type="text" class="form-control">
+                    </div>
+                  </div>
+                     
+          </div>
+
+          
+
+
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" form="editForm">{{closeBtnName}}</button>
+  </div>

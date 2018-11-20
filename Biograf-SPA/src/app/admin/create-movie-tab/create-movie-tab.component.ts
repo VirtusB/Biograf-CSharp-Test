@@ -12,6 +12,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 export class CreateMovieTabComponent implements OnInit {
   movieForm: FormGroup;
   movie: Movie;
+  stars = [1, 2, 3, 4, 5];
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,7 @@ export class CreateMovieTabComponent implements OnInit {
       director: ['', Validators.required],
       poster: ['', Validators.required],
       description: ['', Validators.required],
-      stars: ['', Validators.required]
+      stars: [Validators.required]
     });
   }
 

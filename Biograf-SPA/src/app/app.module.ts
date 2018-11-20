@@ -47,6 +47,9 @@ import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { EditUserModalComponent } from './admin/edit-user-modal/edit-user-modal.component';
 import { CreateMovieTabComponent } from './admin/create-movie-tab/create-movie-tab.component';
+import { ManageDiscountsTabComponent } from './admin/manage-discounts-tab/manage-discounts-tab.component';
+import { DiscountService } from './_services/discount.service';
+import { EditDiscountModalComponent } from './admin/edit-discount-modal/edit-discount-modal.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -76,9 +79,11 @@ export function tokenGetter() {
       EditUsersTabComponent,
       UserListComponent,
       EditUserModalComponent,
-      CreateMovieTabComponent
+      CreateMovieTabComponent,
+      ManageDiscountsTabComponent,
+      EditDiscountModalComponent
    ],
-   entryComponents: [EditUserModalComponent],
+   entryComponents: [EditUserModalComponent, EditDiscountModalComponent],
    imports: [
       BrowserModule,
       HttpClientModule,
@@ -114,6 +119,7 @@ export function tokenGetter() {
     MovieDetailResolver,
     MemberEditResolver,
     ShowService,
+    DiscountService,
     ShowListResolver,
     UserListResolver,
     { provide: LOCALE_ID, useValue: 'da' }

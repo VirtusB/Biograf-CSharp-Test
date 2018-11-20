@@ -39,11 +39,25 @@ namespace BiografCSharpTest.Data
             return role;
         }
 
+        public async Task<Discount> GetDiscount(int id)
+        {
+            var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.Id == id);
+            
+            return discount;
+        }
+
         public async Task<List<Role>> GetRoles()
         {
             var roles = await _context.Roles.ToListAsync();
             
             return roles;
+        }
+
+        public async Task<List<Discount>> GetDiscounts()
+        {
+            var discounts = await _context.Discounts.ToListAsync();
+            
+            return discounts;
         }
 
         public async Task<List<string>> GetGenres() {

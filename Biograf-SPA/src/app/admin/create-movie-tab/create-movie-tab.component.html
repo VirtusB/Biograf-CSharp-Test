@@ -1,46 +1,62 @@
-<form [formGroup]="movieForm" (ngSubmit)="createMovie()">
-    <h2 class="text-center text-primary">Opret film</h2>
-    <hr>
-  
-  
-  
-    <div class="form-group">
-      <input type="text" formControlName="name" class="form-control"  placeholder="Navn">
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      &nbsp;
     </div>
-
-    <div class="form-group">
-        <input type="text" formControlName="genre" class="form-control"  placeholder="Genre">
-      </div>
-
-      <div class="form-group">
-          <input type="number" formControlName="minutes" class="form-control"  placeholder="Spilletid">
-        </div>
-
-        <div class="form-group">
-            <input type="number" formControlName="year" class="form-control"  placeholder="År">
-          </div>
-
-          <div class="form-group">
-              <input type="text" formControlName="director" class="form-control"  placeholder="Instruktør">
-            </div>
-
+    <div class="col-8">
+        <form [formGroup]="movieForm" (ngSubmit)="createMovie()">
+            <h2 class="text-center text-primary">Opret film</h2>
+            <hr>
+          
+          
+          
             <div class="form-group">
-                <input type="text" formControlName="description" class="form-control"  placeholder="Beskrivelse">
+              <input type="text" formControlName="name" class="form-control"  placeholder="Navn">
+            </div>
+        
+            <div class="form-group">
+                <input type="text" formControlName="genre" class="form-control"  placeholder="Genre">
               </div>
-              
+        
               <div class="form-group">
-                  <input type="url" formControlName="poster" class="form-control"  placeholder="Billede URL">
+                  <input type="number" formControlName="minutes" class="form-control"  placeholder="Spilletid">
                 </div>
-
+        
                 <div class="form-group">
-                    <input type="number" formControlName="stars" class="form-control"  placeholder="Stjerner">
+                    <input type="number" formControlName="year" class="form-control"  placeholder="År">
                   </div>
-
-  
-    <div class="form-group text-center">
-      <button [disabled]="!movieForm.valid" class="btn btn-success mr-2" type="submit">Opret</button>
+        
+                  <div class="form-group">
+                      <input type="text" formControlName="director" class="form-control"  placeholder="Instruktør">
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="text" formControlName="description" class="form-control"  placeholder="Beskrivelse">
+                      </div>
+                      
+                      <div class="form-group">
+                          <input type="url" formControlName="poster" class="form-control"  placeholder="Billede URL">
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="" for="stars">Stjerner: </label>
+                            <select id="stars" class="form-control" formControlName="stars">
+                                <option  *ngFor="let star of stars" value="{{star}}">{{star}}</option>
+                            </select>
+                          </div>
+        
+          
+            <div class="form-group text-center">
+              <button [disabled]="!movieForm.valid" class="btn btn-success mr-2" type="submit">Opret</button>
+            </div>
+            
+          </form>
     </div>
-    
-  </form>
+    <div class="col-2">
+      &nbsp;
+    </div>
+  </div>
+  
+</div>
   
   

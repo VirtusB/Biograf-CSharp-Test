@@ -1,6 +1,6 @@
-<h4>Brugere - {{pagination.totalItems}} i alt</h4>
+<h4 style="text-align: center;">Brugere - {{pagination.totalItems}} i alt</h4>
 
-<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" style="margin: 0 auto; text-align: center; max-width: fit-content;" novalidate>
     
     
     <div class="form-group">
@@ -19,7 +19,7 @@
   </form>
 
   <div class="row">
-      <app-user-list [users]="users"></app-user-list>
+      <app-user-list  [users]="users" class="text-center" style="margin: 0 auto;"></app-user-list>
     </div>
 
 

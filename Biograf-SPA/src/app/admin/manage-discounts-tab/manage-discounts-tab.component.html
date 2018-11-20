@@ -1,0 +1,30 @@
+<div *ngIf="discounts">
+    <div class="container mt-3">
+        <div class="row">
+            <div style="text-align: center;" class="col-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Krævet antal ordre</th>
+                        <th scope="col">%</th>
+                        <th scope="col">Handling</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let discount of discounts">
+                        <td>{{discount.id}}</td>
+                        <td>{{discount.requiredBookings}}</td>
+                        <td>{{discount.amount}}</td>
+                        <td>
+                          <button (click)="editDiscountModal(discount.id)" class="btn btn-primary btn-sm" type="button"><i class="fa fa-pencil"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+    </div>
+    
+  </div>
+  

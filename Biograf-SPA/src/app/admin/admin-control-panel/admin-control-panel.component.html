@@ -17,6 +17,7 @@
 
           </tab>
           <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Rabatter">
+            <app-manage-discounts-tab></app-manage-discounts-tab>
              </tab>
         </tabset>
       </div>

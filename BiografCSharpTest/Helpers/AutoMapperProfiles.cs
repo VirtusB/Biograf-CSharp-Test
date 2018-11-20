@@ -14,6 +14,7 @@ namespace BiografCSharpTest.Helpers
             CreateMap<Movie, MovieForReturnDto>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<UserForUpdateByAdminDto, User>();
+            CreateMap<DiscountForUpdateByAdminDto, Discount>();
             CreateMap<ReservationForUpdateDto, Reservation>();
             CreateMap<MovieForCreationDto, Movie>();
             CreateMap<UserForRegisterDto, User>();

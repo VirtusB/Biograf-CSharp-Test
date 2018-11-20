@@ -38,27 +38,43 @@
                         </div>
                       </div>
 
-               
-              
-                  <div class="form-inline">
-                        <label class="mr-1" for="phoneNumber">Tlf. nr: </label>
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                          <label class="mr-1" for="phoneNumber">Tlf. nr: </label>
                         <input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="number" class="form-control">
-                        <br>
-                        <label class="ml-1" for="enabled">Status </label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                          <label class="ml-1" for="enabled">Status </label>
                         <select [(ngModel)]="user.enabled" name="enabled" id="enabled">
                           <option value="true">Aktiv</option>
                           <option value="false">Inaktiv</option>
                         </select>
-                    </div>
-          </div>
-          <br>
-          <div class="form-inline">
-              <label class="mr-1" for="city">By: </label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                          <label class="mr-1" for="city">By: </label>
               <input name="city" [(ngModel)]="user.city" type="text" class="form-control">
-              <br>
-              <label class="ml-1" for="country">Land: </label>
-              <input name="country" [(ngModel)]="user.country" type="text" class="form-control">
-            </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                          <label class="ml-1" for="country">Land: </label>
+                          <input name="country" [(ngModel)]="user.country" type="text" class="form-control">
+                        </div>
+                      </div>
+
+               
+              
+                  
+          </div>
+
+          
 
 
       </form>
