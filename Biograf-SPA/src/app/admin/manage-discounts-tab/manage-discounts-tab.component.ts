@@ -13,7 +13,7 @@ import { EditDiscountModalComponent } from '../edit-discount-modal/edit-discount
 })
 export class ManageDiscountsTabComponent implements OnInit {
   discounts: Discount[];
-  bsModalRef: BsModalRef;
+  editDiscountModalRef: BsModalRef;
 
   constructor(
     private discountService: DiscountService,
@@ -35,6 +35,10 @@ export class ManageDiscountsTabComponent implements OnInit {
     });
   }
 
+  deleteDiscountStep(id: number) {
+    alert('Ikke lavet endnu');
+  }
+
   editDiscountModal(id: number) {
     let discount = this.discounts.find((u) => {
       return u.id === id;
@@ -44,8 +48,12 @@ export class ManageDiscountsTabComponent implements OnInit {
       discount,
       title: 'Rediger rabat'
     };
-    this.bsModalRef = this.modalService.show(EditDiscountModalComponent, {initialState});
-    this.bsModalRef.content.closeBtnName = 'Gem rabat';
+    this.editDiscountModalRef = this.modalService.show(EditDiscountModalComponent, {initialState});
+    this.editDiscountModalRef.content.closeBtnName = 'Gem rabat';
+  }
+
+  addNewDiscountStepModal() {
+    alert('Ikke lavet endnu');
   }
 
 }

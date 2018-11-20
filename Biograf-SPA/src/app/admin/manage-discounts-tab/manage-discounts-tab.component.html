@@ -17,8 +17,15 @@
                         <td>{{discount.requiredBookings}}</td>
                         <td>{{discount.amount}}</td>
                         <td>
-                          <button (click)="editDiscountModal(discount.id)" class="btn btn-primary btn-sm" type="button"><i class="fa fa-pencil"></i></button>
+                          <button (click)="editDiscountModal(discount.id)" class="btn btn-primary btn-sm mr-1" type="button"><i class="fa fa-pencil"></i></button>
+                          <button (click)="deleteDiscountStep(discount.id)" class="btn btn-danger btn-sm" type="button"><i class="fa fa-times"></i></button>
                         </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><button (click)="addNewDiscountStepModal()" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-plus"></i></button></td>
                       </tr>
                     </tbody>
                   </table>
