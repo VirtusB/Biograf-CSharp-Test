@@ -1,5 +1,5 @@
 <div *ngIf="discountInformation">
-  <h4>Dit rabattrin: {{discountInformation.discountStep.id}}</h4>
+  <h4>Dit rabattrin: {{discountInformation.discountStep.amount}}%</h4>
   <p>Du sparer {{discountInformation.discountStep.amount}}% på alle dine ordre</p>
   <br>
   <div *ngIf="discountInformation.paidCount < discountInformation.highestRequiredBookings">
