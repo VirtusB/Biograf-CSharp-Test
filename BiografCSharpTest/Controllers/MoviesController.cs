@@ -75,7 +75,7 @@ namespace BiografCSharpTest.Controllers
                 return CreatedAtRoute("GetMovie", new {id = movie.Id}, movieToReturn);
             }
 
-            throw new Exception("Kunne ikke oprette reservationen");
+            throw new Exception("Kunne ikke oprette filmen");
         } 
 
         [HttpGet]
@@ -87,6 +87,29 @@ namespace BiografCSharpTest.Controllers
 
 
             Response.AddPagination(movies.CurrentPage, movieParams.PageSize, movies.TotalCount, movies.TotalPages);
+
+            return Ok (moviesToReturn);
+        }
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllMovies () {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
+                return Unauthorized();
+            }
+            
+            var movies = await _repo.GetAllMoviesWithoutPagination();
+            var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);
 
             return Ok (moviesToReturn);
         }

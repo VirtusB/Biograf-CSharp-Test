@@ -24,6 +24,7 @@ namespace BiografCSharpTest.Data
         Task<int> GetPaidReservationsCount(int id);
         Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<Movie> GetMovie(int id);
+        Task<List<Movie>> GetAllMoviesWithoutPagination();
         Task<PagedList<Movie>> GetMovies(MovieParams movieParams);
     }
 }

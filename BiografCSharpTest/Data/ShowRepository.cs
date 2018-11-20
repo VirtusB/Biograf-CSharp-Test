@@ -38,9 +38,9 @@ namespace BiografCSharpTest.Data
             return await PagedList<Show>.CreateAsync(shows, showParams.PageNumber, showParams.PageSize);
         }
 
-        public Task<bool> SaveAll()
+        public async Task<bool> SaveAll()
         {
-            throw new System.NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

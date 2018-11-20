@@ -31,8 +31,8 @@
 
                     <div class="form-group">
                         <div class="col-xs-3">
-                            <label class="ml-1" for="role">Rolle </label>
-                            <select [(ngModel)]="selectedRole" name="role" id="role">
+                            <label class="mr-1" for="role">Rolle </label>
+                            <select class="form-control" [(ngModel)]="selectedRole" name="role" id="role">
                               <option  *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
                             </select>
                         </div>
@@ -47,8 +47,8 @@
 
                       <div class="form-group">
                         <div class="col-xs-3">
-                          <label class="ml-1" for="enabled">Status </label>
-                        <select [(ngModel)]="user.enabled" name="enabled" id="enabled">
+                          <label class="mr-1" for="enabled">Status </label>
+                        <select class="form-control" [(ngModel)]="user.enabled" name="enabled" id="enabled">
                           <option value="true">Aktiv</option>
                           <option value="false">Inaktiv</option>
                         </select>

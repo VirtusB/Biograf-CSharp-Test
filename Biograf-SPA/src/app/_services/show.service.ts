@@ -19,6 +19,10 @@ export class ShowService {
       return this.http.get<Show>(this.baseUrl + 'shows/' + id, { observe: 'response'});
     }
 
+    createShow(show: Show) {
+      return this.http.post(this.baseUrl + 'shows/', show);
+      }
+
 
     getShows(page?, itemsPerPage?, showParams?): Observable<PaginatedResult<Show[]>> {
         const paginatedResult: PaginatedResult<Show[]> = new PaginatedResult<Show[]>();

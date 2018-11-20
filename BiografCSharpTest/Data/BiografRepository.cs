@@ -66,6 +66,12 @@ namespace BiografCSharpTest.Data
             return genres;
         }
 
+        public async Task<List<Movie>> GetAllMoviesWithoutPagination() {
+            var movies = await _context.Movies.ToListAsync();
+
+            return movies;
+        }
+
         public async Task<PagedList<Movie>> GetMovies(MovieParams movieParams)
         {
             var movies = _context.Movies

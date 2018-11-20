@@ -23,7 +23,15 @@ export class MovieService {
 
     createMovie(movie: Movie) {
     return this.http.post(this.baseUrl + 'movies/', movie);
+    }
 
+    getAllMoviesWithoutPagination(): Observable<Movie[]> {
+      return this.http.get<Movie[]>(this.baseUrl + 'movies/all', { observe: 'response'})
+        .pipe(
+          map(response => {
+            return response.body;
+          })
+        );
     }
 
 
