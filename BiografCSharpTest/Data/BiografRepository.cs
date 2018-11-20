@@ -39,6 +39,13 @@ namespace BiografCSharpTest.Data
             return role;
         }
 
+        public async Task<List<Role>> GetRoles()
+        {
+            var roles = await _context.Roles.ToListAsync();
+            
+            return roles;
+        }
+
         public async Task<List<string>> GetGenres() {
             var genres = await _context.Movies.Select(m => m.Genre).Distinct().ToListAsync();
 

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
+import { Role } from '../_models/role';
 
 
 @Injectable({
@@ -47,6 +48,14 @@ getUser(id): Observable<User> {
 
 updateUser(id: number, user: User) {
   return this.http.put(this.baseUrl + 'users/' + id, user);
+}
+
+updateUserByAdmin(id: number, user: User) {
+  return this.http.put(this.baseUrl + 'admin/' + id, user);
+}
+
+getRoles(): Observable<Role[]> {
+  return this.http.get<Role[]>(this.baseUrl + 'users/roles');
 }
 
 }

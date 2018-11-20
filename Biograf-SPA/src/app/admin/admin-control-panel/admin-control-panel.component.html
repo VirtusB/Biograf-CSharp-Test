@@ -5,17 +5,18 @@
     <div class="col-12">
       <div class="tab-panel">
         <tabset class="member-tabset">
-          <tab heading="Brugere"> 
+          <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Brugere"> 
               <app-edit-users-tab></app-edit-users-tab>
           </tab>
             
           <tab heading="Film">
+              <app-create-movie-tab></app-create-movie-tab> 
              </tab>
 
           <tab heading="Forestillinger"> 
 
           </tab>
-          <tab heading="Rabatter">
+          <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Rabatter">
              </tab>
         </tabset>
       </div>

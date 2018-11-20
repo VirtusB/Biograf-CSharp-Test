@@ -7,20 +7,56 @@
   <div class="modal-body">
       <form #editForm="ngForm" id="editForm" (ngSubmit)="saveChangesToUser()">
           <div class="container">
-              
-                  <div class="form-group row">
-                      <div class="col-xs-3 form-inline">
-                        <label class="mr-1" for="phoneNumber">Tlf. nr: </label>
-                        <input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="number" class="form-control">
+
+              <div class="form-group">
+                  <div class="col-xs-3">
+                    <label class="mr-1" for="username">Brugernavn </label>
+                    <input name="username" [(ngModel)]="user.username" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-3">
+                      <label class="mr-1" for="username">Navn </label>
+                      <input name="name" [(ngModel)]="user.name" type="text" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="col-xs-3">
+                        <label class="mr-1" for="username">Email </label>
+                        <input name="email" [(ngModel)]="user.email" type="email" class="form-control">
                       </div>
                     </div>
-          </div>
 
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="ml-1" for="role">Rolle </label>
+                            <select [(ngModel)]="selectedRole" name="role" id="role">
+                              <option  *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+                            </select>
+                        </div>
+                      </div>
+
+               
+              
+                  <div class="form-inline">
+                        <label class="mr-1" for="phoneNumber">Tlf. nr: </label>
+                        <input name="phoneNumber" [(ngModel)]="user.phoneNumber" type="number" class="form-control">
+                        <br>
+                        <label class="ml-1" for="enabled">Status </label>
+                        <select [(ngModel)]="user.enabled" name="enabled" id="enabled">
+                          <option value="true">Aktiv</option>
+                          <option value="false">Inaktiv</option>
+                        </select>
+                    </div>
+          </div>
+          <br>
           <div class="form-inline">
               <label class="mr-1" for="city">By: </label>
               <input name="city" [(ngModel)]="user.city" type="text" class="form-control">
               <br>
-              <label class="mr-1" for="country">Land: </label>
+              <label class="ml-1" for="country">Land: </label>
               <input name="country" [(ngModel)]="user.country" type="text" class="form-control">
             </div>
 

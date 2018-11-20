@@ -50,6 +50,13 @@ namespace BiografCSharpTest.Controllers
             return Ok (userToReturn);
         }
 
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetRoles() {
+            var roles = await _repo.GetRoles();
+
+            return Ok(roles);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser (int id, UserForUpdateDto userForUpdateDto) {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {

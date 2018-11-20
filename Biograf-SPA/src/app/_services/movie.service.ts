@@ -21,6 +21,11 @@ export class MovieService {
       return this.http.get<Movie>(this.baseUrl + 'movies/' + id, { observe: 'response'});
     }
 
+    createMovie(movie: Movie) {
+    return this.http.post(this.baseUrl + 'movies/', movie);
+
+    }
+
 
     getMovies(page?, itemsPerPage?, movieParams?): Observable<PaginatedResult<Movie[]>> {
         const paginatedResult: PaginatedResult<Movie[]> = new PaginatedResult<Movie[]>();

@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BiografCSharpTest.Data;
 using BiografCSharpTest.Dtos;
 using BiografCSharpTest.Helpers;
+using BiografCSharpTest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +35,7 @@ namespace BiografCSharpTest.Controllers
             return Ok(genres);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetMovie")]
         [AllowAnonymous]
         public async Task<IActionResult> GetMovie(int id) {
             var movie = await _repo.GetMovie(id);
@@ -42,6 +45,37 @@ namespace BiografCSharpTest.Controllers
             }
 
             return NoContent();
+        } 
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMovie(MovieForCreationDto movieForCreationDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            
+
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
+                return Unauthorized();
+            }
+
+            var movie = _mapper.Map<Movie>(movieForCreationDto);
+
+            _repo.Add(movie); 
+
+            if (await _repo.SaveAll()) {
+                var movieToReturn = _mapper.Map<MovieForReturnDto>(movie);
+                return CreatedAtRoute("GetMovie", new {id = movie.Id}, movieToReturn);
+            }
+
+            throw new Exception("Kunne ikke oprette reservationen");
         } 
 
         [HttpGet]

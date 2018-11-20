@@ -102,7 +102,7 @@ namespace BiografCSharpTest
            seeder.SeedMovies();
            seeder.SeedShows();
            seeder.SeedReservations();
-            //seeder.CleanDatabase();
+            // seeder.CleanDatabase();
 
             app.UseMvc();
         }

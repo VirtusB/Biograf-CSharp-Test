@@ -46,6 +46,7 @@ import { EditUsersTabComponent } from './admin/edit-users-tab/edit-users-tab.com
 import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { EditUserModalComponent } from './admin/edit-user-modal/edit-user-modal.component';
+import { CreateMovieTabComponent } from './admin/create-movie-tab/create-movie-tab.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -74,7 +75,8 @@ export function tokenGetter() {
       AdminControlPanelComponent,
       EditUsersTabComponent,
       UserListComponent,
-      EditUserModalComponent
+      EditUserModalComponent,
+      CreateMovieTabComponent
    ],
    entryComponents: [EditUserModalComponent],
    imports: [
