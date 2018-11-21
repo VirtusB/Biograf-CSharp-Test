@@ -31,6 +31,7 @@ namespace BiografCSharpTest.Helpers
             #region Shows
             CreateMap<Show, ShowForListDto>();
             CreateMap<ShowForCreationDto, Show>();
+            CreateMap<ShowForUpdateByAdminDto, Show>();
             CreateMap<Show, ShowForReturnDto>();
             #endregion
 

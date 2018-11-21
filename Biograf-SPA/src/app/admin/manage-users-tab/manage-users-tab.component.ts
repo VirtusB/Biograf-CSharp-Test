@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../_models/user';
-import { Pagination, PaginatedResult } from '../../_models/pagination';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
+import { PaginatedResult, Pagination } from '../../_models/pagination';
+import { User } from '../../_models/user';
 
 @Component({
-  selector: 'app-edit-users-tab',
-  templateUrl: './edit-users-tab.component.html',
-  styleUrls: ['./edit-users-tab.component.css']
+  selector: 'app-manage-users-tab',
+  templateUrl: './manage-users-tab.component.html',
+  styleUrls: ['./manage-users-tab.component.css']
 })
-export class EditUsersTabComponent implements OnInit {
+export class ManageUsersTabComponent implements OnInit {
   users: User[];
   userParams: any = {};
   pagination: Pagination;
   enabled: any;
+  pageSizes = [5, 10, 15, 20];
+  pageSize: number;
+
 
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -24,8 +27,10 @@ export class EditUsersTabComponent implements OnInit {
       this.pagination = data['users'].pagination;
     });
 
-    
+
     this.userParams.enabled = true;
+    this.userParams.pageSize = 5;
+
 
     this.loadUsers();
   }
@@ -37,10 +42,11 @@ export class EditUsersTabComponent implements OnInit {
 
   resetFilters() {
     this.userParams.enabled = true;
+    this.userParams.pageSize = 5;
     this.loadUsers();
   }
 
- 
+
 
   loadUsers() {
     this.userService.

@@ -42,16 +42,20 @@ import { MemberDiscountStepComponent } from './members/member-discount-step/memb
 import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
 import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
 import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-control-panel.component';
-import { EditUsersTabComponent } from './admin/edit-users-tab/edit-users-tab.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { EditUserModalComponent } from './admin/edit-user-modal/edit-user-modal.component';
-import { CreateMovieTabComponent } from './admin/create-movie-tab/create-movie-tab.component';
 import { ManageDiscountsTabComponent } from './admin/manage-discounts-tab/manage-discounts-tab.component';
 import { DiscountService } from './_services/discount.service';
 import { EditDiscountModalComponent } from './admin/edit-discount-modal/edit-discount-modal.component';
-import { CreateShowTabComponent } from './admin/create-show-tab/create-show-tab.component';
 import { AddDiscountModalComponent } from './admin/add-discount-modal/add-discount-modal.component';
+import { AddUserModalComponent } from './admin/add-user-modal/add-user-modal.component';
+import { ManageUsersTabComponent } from './admin/manage-users-tab/manage-users-tab.component';
+import { ManageShowsTabComponent } from './admin/manage-shows-tab/manage-shows-tab.component';
+import { ManageMoviesTabComponent } from './admin/manage-movies-tab/manage-movies-tab.component';
+import { EditShowModalComponent } from './admin/edit-show-modal/edit-show-modal.component';
+import { AddShowModalComponent } from './admin/add-show-modal/add-show-modal.component';
+import { AdminShowsListComponent } from './admin/admin-shows-list/admin-shows-list.component';
+import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -78,16 +82,27 @@ export function tokenGetter() {
       MemberDiscountStepComponent,
       ReservationValidationComponent,
       AdminControlPanelComponent,
-      EditUsersTabComponent,
-      UserListComponent,
       EditUserModalComponent,
-      CreateMovieTabComponent,
       ManageDiscountsTabComponent,
       EditDiscountModalComponent,
-      CreateShowTabComponent,
-      AddDiscountModalComponent
+      AddDiscountModalComponent,
+      AddUserModalComponent,
+      ManageUsersTabComponent,
+      ManageShowsTabComponent,
+      ManageMoviesTabComponent,
+      EditShowModalComponent,
+      AddShowModalComponent,
+      AdminShowsListComponent,
+      AdminUsersListComponent
    ],
-   entryComponents: [EditUserModalComponent, EditDiscountModalComponent, AddDiscountModalComponent],
+   entryComponents: [
+    EditUserModalComponent,
+    EditDiscountModalComponent,
+    AddDiscountModalComponent,
+    AddUserModalComponent,
+    AddShowModalComponent,
+    EditShowModalComponent
+],
    imports: [
       BrowserModule,
       HttpClientModule,

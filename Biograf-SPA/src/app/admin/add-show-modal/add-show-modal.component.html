@@ -1,13 +1,14 @@
-<div class="container">
-    <div class="row">
-      <div class="col-2">
-        &nbsp;
-      </div>
-      <div class="col-8">
-          <form [formGroup]="showForm" (ngSubmit)="createShow()">
-              <h2 class="text-center text-primary">Opret forestilling</h2>
-              <hr>
-                          <div class="form-group">
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="showForm" id="showForm" (ngSubmit)="createShow()">
+          <div class="container">
+  
+              <div class="form-group">
                               <label for="movie">Film: </label>
                               <select class="form-control" formControlName="movie"  id="movie">
                                   <option [ngValue]="movie" *ngFor="let movie of movies">{{movie.name}}</option>
@@ -35,19 +36,15 @@
                                           <option [ngValue]="hall" *ngFor="let hall of halls">{{hall}}</option>
                                         </select>
                                     </div>
+
+                     
+          </div>
+  
           
-            
-              <div class="form-group text-center">
-                <button [disabled]="!showForm.valid" class="btn btn-success mr-2" type="submit">Opret</button>
-              </div>
-              
-            </form>
-      </div>
-      <div class="col-2">
-        &nbsp;
-      </div>
-    </div>
-    
+  
+  
+      </form>
   </div>
-    
-    
+  <div class="modal-footer">
+    <button class="btn btn-default" [disabled]="!showForm.valid" form="showForm">{{closeBtnName}}</button>
+  </div>

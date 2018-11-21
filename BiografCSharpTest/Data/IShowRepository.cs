@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BiografCSharpTest.Helpers;
 using BiografCSharpTest.Models;
@@ -11,5 +12,6 @@ namespace BiografCSharpTest.Data
         Task<bool> SaveAll();
         Task<Show> GetShow(int id);
         Task<PagedList<Show>> GetShows(ShowParams showParams);
+        Task<List<Show>> GetAllShowsWithoutPagination();
     }
 }

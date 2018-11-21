@@ -66,6 +66,57 @@ namespace BiografCSharpTest.Controllers
         }
 
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateShow (int id, ShowForUpdateByAdminDto showForUpdateByAdminDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            var showFromRepo = await _showRepo.GetShow(id);
+
+            // TODO: skal laves om
+            var movieForShow = await _movieRepo.GetMovie(showForUpdateByAdminDto.Movie.Id);
+            showForUpdateByAdminDto.Movie = movieForShow;
+
+            
+
+            _mapper.Map(showForUpdateByAdminDto, showFromRepo);
+
+            if (await _showRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Opdatering af forestilling med {id} fejlede");
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteShow(int id) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            //TODO: slet show uden først at lave et DB kald
+            var showFroMRepo = await _showRepo.GetShow(id);
+
+            _showRepo.Delete(showFroMRepo);
+
+            if (await _showRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Kunne ikke slette forestilling med ID {id}");
+        }
+
+
         [HttpGet("{id}", Name = "GetShow")]
         [AllowAnonymous]
         public async Task<IActionResult> GetShow(int id) {
@@ -87,6 +138,29 @@ namespace BiografCSharpTest.Controllers
 
 
             Response.AddPagination(shows.CurrentPage, showParams.PageSize, shows.TotalCount, shows.TotalPages);
+
+            return Ok (showsToReturn);
+        }
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllShows () {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
+                return Unauthorized();
+            }
+            
+            var shows = await _showRepo.GetAllShowsWithoutPagination();
+            var showsToReturn = _mapper.Map<IEnumerable<ShowForListDto>>(shows);
 
             return Ok (showsToReturn);
         }

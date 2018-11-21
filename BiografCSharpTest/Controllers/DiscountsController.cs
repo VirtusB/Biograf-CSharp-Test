@@ -44,6 +44,7 @@ namespace BiografCSharpTest.Controllers
                 return Unauthorized();
             }
 
+            //TODO: slet discount uden først at lave et DB kald
             var discountFromRepo = await _discountRepo.GetDiscount(id);
 
             _discountRepo.Delete(discountFromRepo);

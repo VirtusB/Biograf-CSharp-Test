@@ -56,7 +56,7 @@ export class EditUserModalComponent implements OnInit {
       this.alertify.error(error);
     });
 
-
+  
     this.bsModalRef.hide();
   }
 

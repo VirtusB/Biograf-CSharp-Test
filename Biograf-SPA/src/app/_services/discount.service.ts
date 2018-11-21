@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class DiscountService {
   baseUrl = environment.apiUrl;
-  
+
   constructor(private http: HttpClient) { }
 
 getDiscounts(): Observable<Discount[]> {

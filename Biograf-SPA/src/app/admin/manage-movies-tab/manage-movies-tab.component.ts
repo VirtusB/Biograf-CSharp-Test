@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from 'src/app/_models/movie';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MovieService } from 'src/app/_services/movie.service';
-import { AlertifyService } from 'src/app/_services/alertify.service';
+import { Movie } from '../../_models/movie';
+import { MovieService } from '../../_services/movie.service';
+import { AlertifyService } from '../../_services/alertify.service';
 
 @Component({
-  selector: 'app-create-movie-tab',
-  templateUrl: './create-movie-tab.component.html',
-  styleUrls: ['./create-movie-tab.component.css']
+  selector: 'app-manage-movies-tab',
+  templateUrl: './manage-movies-tab.component.html',
+  styleUrls: ['./manage-movies-tab.component.css']
 })
-export class CreateMovieTabComponent implements OnInit {
+export class ManageMoviesTabComponent implements OnInit {
   movieForm: FormGroup;
   movie: Movie;
   stars = [1, 2, 3, 4, 5];
@@ -47,4 +47,5 @@ export class CreateMovieTabComponent implements OnInit {
       this.movieForm.reset();
     });
   }
+
 }

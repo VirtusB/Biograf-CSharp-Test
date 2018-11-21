@@ -6,15 +6,15 @@
       <div class="tab-panel">
         <tabset class="member-tabset">
           <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Brugere"> 
-              <app-edit-users-tab></app-edit-users-tab>
+              <app-manage-users-tab></app-manage-users-tab>
           </tab>
             
           <tab heading="Film">
-              <app-create-movie-tab></app-create-movie-tab> 
+              <app-manage-movies-tab></app-manage-movies-tab>
              </tab>
 
           <tab heading="Forestillinger"> 
-            <app-create-show-tab></app-create-show-tab>
+            <app-manage-shows-tab></app-manage-shows-tab>
           </tab>
           <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Rabatter">
             <app-manage-discounts-tab></app-manage-discounts-tab>

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CreateShowTabComponent } from './create-show-tab.component';
+import { EditShowModalComponent } from './edit-show-modal.component';
 
-describe('CreateShowTabComponent', () => {
-  let component: CreateShowTabComponent;
-  let fixture: ComponentFixture<CreateShowTabComponent>;
+describe('EditShowModalComponent', () => {
+  let component: EditShowModalComponent;
+  let fixture: ComponentFixture<EditShowModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateShowTabComponent ]
+      declarations: [ EditShowModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateShowTabComponent);
+    fixture = TestBed.createComponent(EditShowModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

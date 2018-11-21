@@ -28,6 +28,10 @@ getUsers(page?, itemsPerPage?, userParams?): Observable<PaginatedResult<User[]>>
 
   if (userParams != null) {
     params = params.append('enabled', userParams.enabled);
+
+    if (userParams.pageSize) {
+      params = params.set('pageSize', userParams.pageSize);
+    }
   }
 
   return this.http.get<User[]>(this.baseUrl + 'users', { observe: 'response', params})
@@ -46,12 +50,20 @@ getUser(id): Observable<User> {
   return this.http.get<User>(this.baseUrl + 'users/' + id);
 }
 
+createUser(user: User) {
+  return this.http.post(this.baseUrl + 'auth/register', user);
+  }
+
 updateUser(id: number, user: User) {
   return this.http.put(this.baseUrl + 'users/' + id, user);
 }
 
 updateUserByAdmin(id: number, user: User) {
   return this.http.patch(this.baseUrl + 'users/' + id, user);
+}
+
+deleteUser(id: number) {
+  return this.http.delete(this.baseUrl + 'users/' + id);
 }
 
 getRoles(): Observable<Role[]> {

@@ -19,8 +19,25 @@ export class ShowService {
       return this.http.get<Show>(this.baseUrl + 'shows/' + id, { observe: 'response'});
     }
 
+    updateShowByAdmin(id: number, show: Show) {
+      return this.http.put(this.baseUrl + 'shows/' + id, show);
+    }
+
+    deleteShow(id: number) {
+      return this.http.delete(this.baseUrl + 'shows/' + id);
+    }
+
     createShow(show: Show) {
       return this.http.post(this.baseUrl + 'shows/', show);
+      }
+
+      getAllShowsWithoutPagination(): Observable<Show[]> {
+        return this.http.get<Show[]>(this.baseUrl + 'shows/all', { observe: 'response'})
+          .pipe(
+            map(response => {
+              return response.body;
+            })
+          );
       }
 
 
@@ -37,6 +54,10 @@ export class ShowService {
         if (showParams != null) {
           params = params.append('maxTicketPrice', showParams.maxTicketPrice);
           params = params.append('stars', showParams.stars);
+
+          if (showParams.pageSize) {
+            params = params.set('pageSize', showParams.pageSize);
+          }
         }
 
 

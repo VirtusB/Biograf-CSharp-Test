@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BiografCSharpTest.Helpers;
@@ -51,6 +52,12 @@ namespace BiografCSharpTest.Data
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
+        }
+
+        public async Task<List<Show>> GetAllShowsWithoutPagination() {
+            var shows = await _context.Shows.Include(s => s.Movie).ToListAsync();
+
+            return shows;
         }
     }
 }

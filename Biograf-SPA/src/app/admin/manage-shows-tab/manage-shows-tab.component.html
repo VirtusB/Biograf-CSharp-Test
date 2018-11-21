@@ -1,0 +1,47 @@
+<h4 style="text-align: center;">Forestillinger - {{pagination.totalItems}} i alt</h4>
+
+<form class="form-inline" #form="ngForm" (ngSubmit)="loadShows()" style="margin: 0 auto; text-align: center; max-width: fit-content;" novalidate>
+    
+    
+  <div class="form-group ml-1">
+    <label for="prices">Billet pris</label>
+    <select class="form-control ml-1" id="prices" name="prices" [(ngModel)]="showParams.maxTicketPrice">
+      <option *ngFor="let price of prices" value="{{price}}">Max. {{price}} kr.</option>
+    </select>
+  </div>
+
+  <div class="form-group ml-1">
+      <label for="stars">Stjerner</label>
+      <select class="form-control ml-1" id="stars" name="stars" [(ngModel)]="showParams.stars">
+        <option *ngFor="let star of stars" value="{{star}}">Min. {{star}}</option>
+      </select>
+    </div>
+
+      <div class="form-group ml-1">
+        <label for="pageSize">Vis</label>
+        <select class="form-control ml-1" id="pageSize" name="pageSize" [(ngModel)]="showParams.pageSize">
+          <option *ngFor="let pageSize of pageSizes" value="{{pageSize}}">{{pageSize}}</option>
+        </select>
+      </div>
+
+      
+    
+    <button type="submit" class="btn btn-primary" style="margin-left:10px">Anvend filtre</button>
+    <button (click)="resetFilters()" type="button" class="btn btn-info" style="margin-left:10px">Nulstil filtre</button>
+    
+  </form>
+
+  <div class="row">
+      <app-admin-shows-list  [shows]="shows" class="text-center" style="margin: 0 auto;"></app-admin-shows-list>
+    </div>
+
+
+<div class="d-flex justify-content-center">
+    <pagination [boundaryLinks]="true" 
+    [totalItems]="pagination.totalItems" 
+    [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  
+    </pagination>
