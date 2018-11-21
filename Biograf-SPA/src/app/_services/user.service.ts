@@ -68,6 +68,10 @@ deleteUser(id: number) {
   return this.http.delete(this.baseUrl + 'users/' + id);
 }
 
+deleteMyUser(id: number) {
+  return this.http.delete(this.baseUrl + 'users/user/' + id);
+}
+
 getRoles(): Observable<Role[]> {
   return this.http.get<Role[]>(this.baseUrl + 'users/roles');
 }

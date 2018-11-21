@@ -99,12 +99,32 @@ namespace BiografCSharpTest.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id) {
+        public async Task<IActionResult> DeleteUserByAdmin(int id) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            //TODO: slet bruger uden først at lave et DB kald
+            var userFromRepo = await _userRepo.GetUser(id);
+
+            _userRepo.Delete(userFromRepo);
+
+            if (await _userRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Kunne ikke slette bruger med ID {id}");
+        }
+
+        [HttpDelete("user/{id}")]
+        public async Task<IActionResult> DeleteUser(int id) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (id != userMakingRequestId) {
                 return Unauthorized();
             }
 
