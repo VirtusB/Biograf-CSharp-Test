@@ -18,6 +18,13 @@
                   <option *ngFor="let star of stars" value="{{star}}">Min. {{star}}</option>
                 </select>
               </div>
+
+              <div class="form-group ml-1">
+                  <label for="hallNumber">Sal</label>
+                  <select class="form-control ml-1" id="hallNumber" name="hallNumber" [(ngModel)]="showParams.hallNumber">
+                    <option *ngFor="let hall of halls" value="{{hall}}">{{hall}}</option>
+                  </select>
+                </div>
           
           <button type="submit" class="btn btn-primary" style="margin-left:10px">Anvend filtre</button>
           <button (click)="resetFilters()" type="button" class="btn btn-info" style="margin-left:10px">Nulstil filtre</button>

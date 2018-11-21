@@ -18,6 +18,7 @@ export class ShowListComponent implements OnInit {
   pagination: Pagination;
   prices = [100, 200, 300, 400, 500];
   stars = [1, 2, 3, 4, 5];
+  halls = [1, 2, 3, 4];
 
 
   constructor(private showService: ShowService, private alertify: AlertifyService, private route: ActivatedRoute) { }
@@ -31,6 +32,7 @@ export class ShowListComponent implements OnInit {
 
     this.showParams.maxTicketPrice = 500;
     this.showParams.stars = 0;
+    this.showParams.hallNumber = 0;
 
   }
 
@@ -44,6 +46,7 @@ export class ShowListComponent implements OnInit {
   resetFilters() {
     this.showParams.maxTicketPrice = 500;
     this.showParams.stars = 0;
+    this.showParams.hallNumber = 0;
     this.loadShows();
   }
 

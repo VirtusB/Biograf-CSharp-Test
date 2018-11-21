@@ -14,5 +14,6 @@ namespace BiografCSharpTest.Helpers
         public int ShowId { get; set; }
         public int Stars { get; set; } = 0;
         public float MaxTicketPrice { get; set; } = 500; // maks 500 som standard sortering
+        public int HallNumber { get; set; } = 0;
     }
 }

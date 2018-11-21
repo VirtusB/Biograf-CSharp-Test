@@ -54,6 +54,7 @@ export class ShowService {
         if (showParams != null) {
           params = params.append('maxTicketPrice', showParams.maxTicketPrice);
           params = params.append('stars', showParams.stars);
+          params = params.append('hallNumber', showParams.hallNumber);
 
           if (showParams.pageSize) {
             params = params.set('pageSize', showParams.pageSize);

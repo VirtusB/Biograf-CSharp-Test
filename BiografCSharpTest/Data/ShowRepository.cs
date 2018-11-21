@@ -35,6 +35,10 @@ namespace BiografCSharpTest.Data
             if (showParams.Stars != 0) {
                 shows = shows.Where(s => s.Movie.Stars >= showParams.Stars);
             }
+
+            if (showParams.HallNumber != 0) {
+                shows = shows.Where(s => s.HallNumber == showParams.HallNumber);
+            }
             
             return await PagedList<Show>.CreateAsync(shows, showParams.PageNumber, showParams.PageSize);
         }
