@@ -1,0 +1,13 @@
+.sortings {
+    width: 100%;
+    display: flex;
+}
+
+.sorting-buttons {
+    margin: 0 auto;
+}
+
+.inner-sorting {
+    display: flex;
+    margin: 0 auto;
+}

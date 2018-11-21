@@ -54,6 +54,8 @@ createUser(user: User) {
   return this.http.post(this.baseUrl + 'auth/register', user);
   }
 
+  
+
 updateUser(id: number, user: User) {
   return this.http.put(this.baseUrl + 'users/' + id, user);
 }

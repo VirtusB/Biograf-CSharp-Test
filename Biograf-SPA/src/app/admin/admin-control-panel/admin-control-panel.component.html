@@ -5,20 +5,35 @@
     <div class="col-12">
       <div class="tab-panel">
         <tabset class="member-tabset">
-          <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Brugere"> 
-              <app-manage-users-tab></app-manage-users-tab>
-          </tab>
-            
-          <tab heading="Film">
-              <app-manage-movies-tab></app-manage-movies-tab>
-             </tab>
 
-          <tab heading="Forestillinger"> 
+          <!-- Brug ngIf på alle tabs, da de på den måde kan sorteres -->
+
+            <tab *ngIf="true === true" heading="Film">
+                <app-manage-movies-tab></app-manage-movies-tab>
+               </tab>
+
+            <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Brugere"> 
+                <app-manage-users-tab></app-manage-users-tab>
+            </tab>
+          
+            <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Rabatter">
+                <app-manage-discounts-tab></app-manage-discounts-tab>
+                 </tab>
+          
+
+          <tab *ngIf="true === true" heading="Forestillinger"> 
             <app-manage-shows-tab></app-manage-shows-tab>
           </tab>
-          <tab *ngIf="authService.currentUser.role.name === 'Admin'" heading="Rabatter">
-            <app-manage-discounts-tab></app-manage-discounts-tab>
-             </tab>
+
+          
+
+          
+
+          
+
+             
+
+               
         </tabset>
       </div>
     </div>

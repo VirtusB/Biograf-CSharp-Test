@@ -9,29 +9,29 @@
           <div class="container">
   
               <div class="form-group">
-                              <label for="movie">Film: </label>
+                              <label for="movie">Film </label>
                               <select class="form-control" formControlName="movie"  id="movie">
                                   <option [ngValue]="movie" *ngFor="let movie of movies">{{movie.name}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="startDate">Start dato: </label>
+                                <label for="startDate">Start dato </label>
                                 <input [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" formControlName="startDate" bsDatepicker type="text">
                               </div>
 
                               <div class="form-group">
-                                  <label for="endDate">Slut dato: </label>
+                                  <label for="endDate">Slut dato </label>
                                   <input [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" formControlName="endDate" bsDatepicker type="text">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="ticketPrice">Billet pris: </label>
+                                    <label for="ticketPrice">Billet pris </label>
                                     <input class="form-control" formControlName="ticketPrice"  type="number">
                                   </div>
 
                                   <div class="form-group">
-                                      <label for="hallNumber">Sal: </label>
+                                      <label for="hallNumber">Sal </label>
                                       <select class="form-control" formControlName="hallNumber"  id="hallNumber">
                                           <option [ngValue]="hall" *ngFor="let hall of halls">{{hall}}</option>
                                         </select>

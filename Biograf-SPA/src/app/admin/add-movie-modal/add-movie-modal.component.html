@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="movieForm" id="movieForm" (ngSubmit)="createMovie()">
+          <div class="container">
+  
+             
+   
+
+                  <div class="form-group">
+                      <label for="name">Navn </label>
+                      <input class="form-control" formControlName="name"  type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genre">Genre </label>
+                        <select class="form-control" formControlName="genre"  id="genre">
+                            <option [ngValue]="genre" *ngFor="let genre of genres">{{genre}}</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="minutes">Længde </label>
+                          <input class="form-control" formControlName="minutes"  type="number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">År </label>
+                            <input class="form-control" formControlName="year"  type="number">
+                          </div>
+
+                          <div class="form-group">
+                              <label for="director">Instruktør </label>
+                              <input class="form-control" formControlName="director"  type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="poster">Billede URL </label>
+                                <input class="form-control" formControlName="poster"  type="text">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="description">Beskrivelse </label>
+                                  <textarea class="form-control" formControlName="description"  rows="4" cols="50"></textarea>
+                                </div>
+
+                              
+                
+
+                                  <div class="form-group">
+                                      <label for="stars">Stjerner </label>
+                                      <select class="form-control" formControlName="stars"  id="stars">
+                                          <option [ngValue]="star" *ngFor="let star of stars">{{star}}</option>
+                                        </select>
+                                    </div>
+
+                     
+         
+  </div>
+          
+  
+  
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" [disabled]="!movieForm.valid" form="movieForm">{{closeBtnName}}</button>
+  </div>

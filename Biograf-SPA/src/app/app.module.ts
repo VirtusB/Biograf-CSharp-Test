@@ -56,6 +56,9 @@ import { EditShowModalComponent } from './admin/edit-show-modal/edit-show-modal.
 import { AddShowModalComponent } from './admin/add-show-modal/add-show-modal.component';
 import { AdminShowsListComponent } from './admin/admin-shows-list/admin-shows-list.component';
 import { AdminUsersListComponent } from './admin/admin-users-list/admin-users-list.component';
+import { AdminMoviesListComponent } from './admin/admin-movies-list/admin-movies-list.component';
+import { EditMovieModalComponent } from './admin/edit-movie-modal/edit-movie-modal.component';
+import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -93,7 +96,10 @@ export function tokenGetter() {
       EditShowModalComponent,
       AddShowModalComponent,
       AdminShowsListComponent,
-      AdminUsersListComponent
+      AdminUsersListComponent,
+      AdminMoviesListComponent,
+      EditMovieModalComponent,
+      AddMovieModalComponent
    ],
    entryComponents: [
     EditUserModalComponent,
@@ -101,7 +107,9 @@ export function tokenGetter() {
     AddDiscountModalComponent,
     AddUserModalComponent,
     AddShowModalComponent,
-    EditShowModalComponent
+    EditShowModalComponent,
+    EditMovieModalComponent,
+    AddMovieModalComponent
 ],
    imports: [
       BrowserModule,

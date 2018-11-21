@@ -1,0 +1,51 @@
+<div *ngIf="movies">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col"><i class="fa fa-picture-o"></i></th>
+                        <th scope="col">Navn</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Længde</th>
+                        <th scope="col">År</th>
+                        <th scope="col">Instruktør</th>
+                        <th scope="col">Stjerner</th>
+                        <th scope="col">Handling</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let movie of movies">
+                        <td><img class="movie-image" src="{{movie.poster}}"></td>
+                        <td><a style="text-decoration: none" [routerLink]="['/movies/', movie.id]">{{movie.name}}</a></td>
+                        <td>{{movie.genre}}</td>
+                        <td>{{movie.minutes | minuteSeconds}}</td>
+                        <td>{{movie.year}}</td>
+                        <td>{{movie.director}}</td>
+                        <td [innerHTML]="movie.stars | formatStars"></td>
+                        <td style="width: 17%;">
+                          <button (click)="editMovieModal(movie.id)" class="btn btn-primary btn-sm mr-1" type="button"><i class="fa fa-pencil"></i></button>
+                          <button (click)="deleteMovie(movie.id)" class="btn btn-danger btn-sm" type="button"><i class="fa fa-times"></i></button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                          <button (click)="addNewMovieModal()" class="btn btn-secondary btn-sm" type="button"><i class="fa fa-plus"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+    </div>
+    
+  </div>
+  

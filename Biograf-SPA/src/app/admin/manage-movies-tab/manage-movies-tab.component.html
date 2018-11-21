@@ -1,62 +1,68 @@
-<div class="container">
+<h4 style="text-align: center;">Film - {{pagination.totalItems}} i alt</h4>
+
+<form class="form-inline" #form="ngForm" (ngSubmit)="loadMovies()" style="margin: 0 auto; text-align: center; max-width: fit-content;" novalidate>
+    
+    
+  <div class="sortings">
+
+    <div class="inner-sorting">
+
+    <div class="form-group">
+        <label for="minYear">År fra</label>
+        <input [(ngModel)]="movieParams.minYear" type="number" class="form-control ml-1" style="width: 100px" id="minYear" name="minYear">
+      </div>
+    
+      <div class="form-group px-2">
+        <label for="maxAge">År til</label>
+        <input [(ngModel)]="movieParams.maxYear" type="number" class="form-control ml-1" style="width: 100px" id="maxYear" name="maxYear">
+      </div>
+
+      <br>
+      
+      <div class="form-group">
+          <label for="genre">Genre</label>
+          <select class="form-control ml-1" id="genre" name="genre" [(ngModel)]="movieParams.genre">
+            <option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</option>
+          </select>
+        </div>
+
+        <div class="form-group ml-1">
+          <label for="stars">Stjerner</label>
+          <select class="form-control ml-1" id="stars" name="stars" [(ngModel)]="movieParams.stars">
+            <option *ngFor="let star of stars" value="{{star}}">Min. {{star}}</option>
+          </select>
+        </div>
+
+      <div class="form-group ml-1">
+        <label for="pageSize">Vis</label>
+        <select class="form-control ml-1" id="pageSize" name="pageSize" [(ngModel)]="movieParams.pageSize">
+          <option *ngFor="let pageSize of pageSizes" value="{{pageSize}}">{{pageSize}}</option>
+        </select>
+      </div>
+
+      </div>
+
+      </div>
+   
+      <div class="sorting-buttons mt-3">
+          <button type="submit" class="btn btn-primary" style="margin-left:10px">Anvend filtre</button>
+          <button (click)="resetFilters()" type="button" class="btn btn-info" style="margin-left:10px">Nulstil filtre</button>
+      </div>
+    
+    
+  </form>
+
   <div class="row">
-    <div class="col-2">
-      &nbsp;
+      <app-admin-movies-list  [movies]="movies" class="text-center" style="margin: 0 auto;"></app-admin-movies-list>
     </div>
-    <div class="col-8">
-        <form [formGroup]="movieForm" (ngSubmit)="createMovie()">
-            <h2 class="text-center text-primary">Opret film</h2>
-            <hr>
-          
-          
-          
-            <div class="form-group">
-              <input type="text" formControlName="name" class="form-control"  placeholder="Navn">
-            </div>
-        
-            <div class="form-group">
-                <input type="text" formControlName="genre" class="form-control"  placeholder="Genre">
-              </div>
-        
-              <div class="form-group">
-                  <input type="number" formControlName="minutes" class="form-control"  placeholder="Spilletid">
-                </div>
-        
-                <div class="form-group">
-                    <input type="number" formControlName="year" class="form-control"  placeholder="År">
-                  </div>
-        
-                  <div class="form-group">
-                      <input type="text" formControlName="director" class="form-control"  placeholder="Instruktør">
-                    </div>
-        
-                    <div class="form-group">
-                        <input type="text" formControlName="description" class="form-control"  placeholder="Beskrivelse">
-                      </div>
-                      
-                      <div class="form-group">
-                          <input type="url" formControlName="poster" class="form-control"  placeholder="Billede URL">
-                        </div>
-        
-                        <div class="form-group">
-                            <label class="" for="stars">Stjerner: </label>
-                            <select id="stars" class="form-control" formControlName="stars">
-                                <option  *ngFor="let star of stars" value="{{star}}">{{star}}</option>
-                            </select>
-                          </div>
-        
-          
-            <div class="form-group text-center">
-              <button [disabled]="!movieForm.valid" class="btn btn-success mr-2" type="submit">Opret</button>
-            </div>
-            
-          </form>
-    </div>
-    <div class="col-2">
-      &nbsp;
-    </div>
-  </div>
+
+
+<div class="d-flex justify-content-center">
+    <pagination [boundaryLinks]="true" 
+    [totalItems]="pagination.totalItems" 
+    [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
   
-</div>
-  
-  
+    </pagination>

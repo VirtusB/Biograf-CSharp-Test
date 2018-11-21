@@ -116,6 +116,53 @@ namespace BiografCSharpTest.Controllers
             return Ok (moviesToReturn);
         }
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMovie (int id, MovieForUpdateByAdminDto movieForUpdateByAdminDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            var movieFromRepo = await _movieRepo.GetMovie(id);
+
+            
+
+            _mapper.Map(movieForUpdateByAdminDto, movieFromRepo);
+
+            if (await _movieRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Opdatering af forestilling med {id} fejlede");
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            //TODO: slet film uden først at lave et DB kald
+            var movieFromRepo = await _movieRepo.GetMovie(id);
+
+            _movieRepo.Delete(movieFromRepo);
+
+            if (await _movieRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Kunne ikke slette forestilling med ID {id}");
+        }
+
         
     }
 }

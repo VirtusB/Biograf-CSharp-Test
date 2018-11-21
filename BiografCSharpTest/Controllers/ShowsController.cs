@@ -105,9 +105,9 @@ namespace BiografCSharpTest.Controllers
             }
 
             //TODO: slet show uden først at lave et DB kald
-            var showFroMRepo = await _showRepo.GetShow(id);
+            var showFromRepo = await _showRepo.GetShow(id);
 
-            _showRepo.Delete(showFroMRepo);
+            _showRepo.Delete(showFromRepo);
 
             if (await _showRepo.SaveAll()) {
                 return NoContent();

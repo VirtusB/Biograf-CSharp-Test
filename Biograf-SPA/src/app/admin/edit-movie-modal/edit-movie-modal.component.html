@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #editForm="ngForm" id="editForm" (ngSubmit)="saveChangesToMovie()">
+          <div class="container">
+  
+  
+                <div class="form-group">
+                    <div class="col-xs-3">
+                      <label class="mr-1" for="name">Navn </label>
+                      <input name="name" [(ngModel)]="movie.name" type="text" class="form-control">
+                    </div>
+                  </div>
+
+
+                    <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="mr-1" for="genre">Genre</label>
+                            <select class="form-control" id="genre" name="genre" [(ngModel)]="movie.genre">
+                              <option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</option>
+                            </select>
+                        </div>
+                      </div>
+              
+                      <div class="form-group">
+                        <div class="col-xs-3">
+                            <label class="mr-1" for="stars">Stjerner</label>
+                            <select class="form-control" id="stars" name="stars" [(ngModel)]="movie.stars">
+                              <option *ngFor="let star of stars" value="{{star}}">{{star}}</option>
+                            </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-3">
+                            <label class="mr-1" for="minutes">Længde </label>
+                            <input name="minutes" [(ngModel)]="movie.minutes" type="number" class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-3">
+                              <label class="mr-1" for="year">År </label>
+                              <input name="year" [(ngModel)]="movie.year" type="number" class="form-control">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-xs-3">
+                                <label class="mr-1" for="director">Instruktør </label>
+                                <input name="director" [(ngModel)]="movie.director" type="text" class="form-control">
+                              </div>
+                            </div>
+                            
+
+                            <div class="form-group">
+                                <div class="col-xs-3">
+                                  <label class="mr-1" for="poster">Billede URL </label>
+                                  <input name="poster" [(ngModel)]="movie.poster" type="text" class="form-control">
+                                </div>
+                              </div>
+
+                              
+
+                                <div class="form-group">
+                                  <div class="col-xs-3">
+                                      <label class="mr-1" for="description">Beskrivelse </label>
+                                    <textarea class="form-control" [(ngModel)]="movie.description" name="description"  rows="4" cols="50"></textarea>
+                                  </div>
+                                </div>
+
+
+                     
+          </div>
+  
+          
+  
+  
+      </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" form="editForm">{{closeBtnName}}</button>
+  </div>

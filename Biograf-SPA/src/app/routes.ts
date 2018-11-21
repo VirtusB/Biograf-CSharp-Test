@@ -23,7 +23,7 @@ export const appRoutes: Routes = [
         canActivate: [PersonaleAdminGuard],
         children: [
             {path: 'reservations/validation', component: ReservationValidationComponent},
-            {path: 'admin', component: AdminControlPanelComponent, resolve: {users: UserListResolver, shows: ShowListResolver}}
+            {path: 'admin', component: AdminControlPanelComponent, resolve: {users: UserListResolver, shows: ShowListResolver, movies: MovieListResolver}}
         ]
     },
     {

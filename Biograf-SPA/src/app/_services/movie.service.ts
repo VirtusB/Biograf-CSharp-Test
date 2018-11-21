@@ -25,6 +25,14 @@ export class MovieService {
     return this.http.post(this.baseUrl + 'movies/', movie);
     }
 
+    updateMovieByAdmin(id: number, movie: Movie) {
+      return this.http.put(this.baseUrl + 'movies/' + id, movie);
+    }
+
+    deleteMovie(id: number) {
+      return this.http.delete(this.baseUrl + 'movies/' + id);
+    }
+
     getAllMoviesWithoutPagination(): Observable<Movie[]> {
       return this.http.get<Movie[]>(this.baseUrl + 'movies/all', { observe: 'response'})
         .pipe(
@@ -50,6 +58,10 @@ export class MovieService {
           params = params.append('maxYear', movieParams.maxYear);
           params = params.append('genre', movieParams.genre);
           params = params.append('stars', movieParams.stars);
+
+          if (movieParams.pageSize) {
+            params = params.set('pageSize', movieParams.pageSize);
+          }
         }
 
 

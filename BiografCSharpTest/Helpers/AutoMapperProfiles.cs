@@ -26,6 +26,7 @@ namespace BiografCSharpTest.Helpers
             CreateMap<MovieForCreationDto, Movie>();
             CreateMap<Movie, MovieForListDto>();
             CreateMap<Movie, MovieForReturnDto>();
+            CreateMap<MovieForUpdateByAdminDto, Movie>();
             #endregion
 
             #region Shows
