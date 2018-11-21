@@ -51,7 +51,7 @@ updateUser(id: number, user: User) {
 }
 
 updateUserByAdmin(id: number, user: User) {
-  return this.http.put(this.baseUrl + 'admin/' + id, user);
+  return this.http.patch(this.baseUrl + 'users/' + id, user);
 }
 
 getRoles(): Observable<Role[]> {

@@ -73,5 +73,29 @@ namespace BiografCSharpTest.Controllers
 
             throw new Exception($"Opdatering af bruger {id} fejlede");
         }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateUserByAdmin (int id, UserForUpdateByAdminDto userForUpdateByAdminDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            var userFromRepo = await _userRepo.GetUser(id);
+
+            var role = await _userRepo.GetRole(userForUpdateByAdminDto.Role.Id);
+            userForUpdateByAdminDto.Role = role;
+
+            _mapper.Map(userForUpdateByAdminDto, userFromRepo);
+
+            if (await _userRepo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Opdatering af bruger {id} fejlede");
+        }
     }
 }
