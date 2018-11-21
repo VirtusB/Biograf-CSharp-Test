@@ -51,6 +51,7 @@ import { ManageDiscountsTabComponent } from './admin/manage-discounts-tab/manage
 import { DiscountService } from './_services/discount.service';
 import { EditDiscountModalComponent } from './admin/edit-discount-modal/edit-discount-modal.component';
 import { CreateShowTabComponent } from './admin/create-show-tab/create-show-tab.component';
+import { AddDiscountModalComponent } from './admin/add-discount-modal/add-discount-modal.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -83,9 +84,10 @@ export function tokenGetter() {
       CreateMovieTabComponent,
       ManageDiscountsTabComponent,
       EditDiscountModalComponent,
-      CreateShowTabComponent
+      CreateShowTabComponent,
+      AddDiscountModalComponent
    ],
-   entryComponents: [EditUserModalComponent, EditDiscountModalComponent],
+   entryComponents: [EditUserModalComponent, EditDiscountModalComponent, AddDiscountModalComponent],
    imports: [
       BrowserModule,
       HttpClientModule,

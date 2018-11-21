@@ -8,6 +8,8 @@ import { AuthService } from '../../_services/auth.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import range from 'lodash/range';
 import { ReservationService } from '../../_services/reservation.service';
+import { DiscountService } from '../../_services/discount.service';
+import { Discount } from '../../_models/discount';
 
 
 
@@ -23,7 +25,8 @@ export class ReservationCheckoutComponent implements OnInit  {
   seatRange = range(1, 51);
   selectedSeats = [];
   phoneNumber: number;
-
+  discountInformation: any;
+  amountSaved = 0;
 
 
 
@@ -33,6 +36,7 @@ export class ReservationCheckoutComponent implements OnInit  {
     private authService: AuthService,
     private alertify: AlertifyService,
     private reservationService: ReservationService,
+    private discountService: DiscountService,
     private fb: FormBuilder,
     private router: Router
   ) { }
@@ -46,13 +50,24 @@ export class ReservationCheckoutComponent implements OnInit  {
     });
   }
 
-//
+
   updateFinalOrderPrice() {
-    this.finalOrderPrice = this.selectedSeats.length * this.show.ticketPrice;
+    const discountAmount = this.discountInformation.discountStep.amount / 100;
+    const rate = 1.00 - discountAmount;
+
+    this.finalOrderPrice = this.selectedSeats.length * this.show.ticketPrice * rate;
+
+    this.amountSaved = this.selectedSeats.length * this.show.ticketPrice * discountAmount;
   }
 
   seatInSelectedSeats(seatNumber) {
     return this.selectedSeats.includes(seatNumber);
+  }
+
+  getDiscountStep() {
+    this.discountService.getDiscountStep(this.authService.decodedToken.nameid).subscribe(data => {
+      this.discountInformation = data.body;
+    });
   }
 
   toggleSeat(seatNumber) {
@@ -87,6 +102,8 @@ export class ReservationCheckoutComponent implements OnInit  {
         this.show = data.body;
       });
     });
+
+    this.getDiscountStep();
 
   }
 

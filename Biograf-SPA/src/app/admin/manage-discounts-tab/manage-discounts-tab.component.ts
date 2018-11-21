@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AlertifyService } from '../../_services/alertify.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { EditDiscountModalComponent } from '../edit-discount-modal/edit-discount-modal.component';
+import { AddDiscountModalComponent } from '../add-discount-modal/add-discount-modal.component';
 
 @Component({
   selector: 'app-manage-discounts-tab',
@@ -14,6 +15,7 @@ import { EditDiscountModalComponent } from '../edit-discount-modal/edit-discount
 export class ManageDiscountsTabComponent implements OnInit {
   discounts: Discount[];
   editDiscountModalRef: BsModalRef;
+  addDiscountModalRef: BsModalRef;
 
   constructor(
     private discountService: DiscountService,
@@ -36,7 +38,7 @@ export class ManageDiscountsTabComponent implements OnInit {
   }
 
   deleteDiscountStep(id: number) {
-    this.alertify.confirm('Er du sikker?', () => {
+    this.alertify.confirm('Slet rabattrin', 'Er du sikker?', () => {
       this.discountService.deleteDiscount(id).subscribe((res) => {
         const index = this.discounts.findIndex((d) => d.id === id);
 
@@ -62,7 +64,14 @@ export class ManageDiscountsTabComponent implements OnInit {
   }
 
   addNewDiscountStepModal() {
-    alert('Ikke lavet endnu');
+    const initialState = {
+      title: 'Opret rabat'
+    };
+    this.addDiscountModalRef = this.modalService.show(AddDiscountModalComponent, {initialState});
+    this.addDiscountModalRef.content.closeBtnName = 'Opret rabat';
+    this.addDiscountModalRef.content.onSave.subscribe(addedDiscount => {
+      this.discounts.push(addedDiscount);
+    });
   }
 
 }

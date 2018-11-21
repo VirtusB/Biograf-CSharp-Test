@@ -14,9 +14,7 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
-  getDiscountStep(id: number) {
-    return this.http.get<number>(this.baseUrl + 'reservations/discountstep/' + id, { observe: 'response'});
-  }
+  
 
   setBookingState(userId: number, id: number, reservation: Reservation) {
     return this.http.post<Reservation>(this.baseUrl + 'reservations/' + userId + '/' + id, reservation);

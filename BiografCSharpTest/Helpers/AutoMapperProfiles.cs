@@ -9,21 +9,37 @@ namespace BiografCSharpTest.Helpers
     {
         public AutoMapperProfiles()
         {
+            #region Users
             CreateMap<User, UserForDetailedDto>();
-            CreateMap<Reservation, ReservationForReturnDto>();
-            CreateMap<Movie, MovieForReturnDto>();
-            CreateMap<Show, ShowForReturnDto>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<UserForUpdateByAdminDto, User>();
-            CreateMap<DiscountForUpdateByAdminDto, Discount>();
-            CreateMap<ReservationForUpdateDto, Reservation>();
-            CreateMap<MovieForCreationDto, Movie>();
-            CreateMap<ShowForCreationDto, Show>();
             CreateMap<UserForRegisterDto, User>();
+            #endregion
+            
+            #region Discounts
+            CreateMap<DiscountForCreationDto, Discount>();
+            CreateMap<DiscountForUpdateByAdminDto, Discount>();
+            CreateMap<Discount, DiscountForReturnDto>();
+            #endregion
+
+            #region Movies
+            CreateMap<MovieForCreationDto, Movie>();
             CreateMap<Movie, MovieForListDto>();
+            CreateMap<Movie, MovieForReturnDto>();
+            #endregion
+
+            #region Shows
             CreateMap<Show, ShowForListDto>();
+            CreateMap<ShowForCreationDto, Show>();
+            CreateMap<Show, ShowForReturnDto>();
+            #endregion
+
+            #region Reservations
+            CreateMap<ReservationForUpdateDto, Reservation>();
             CreateMap<ReservationForCreationDto, Reservation>();
             CreateMap<Reservation, ReservationForReturnDto>();
+            CreateMap<Reservation, ReservationForReturnDto>();
+            #endregion
         }
 }
 }

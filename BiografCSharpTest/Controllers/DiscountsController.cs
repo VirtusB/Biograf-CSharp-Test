@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BiografCSharpTest.Data;
 using BiografCSharpTest.Dtos;
+using BiografCSharpTest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -74,6 +76,36 @@ namespace BiografCSharpTest.Controllers
             }
 
             throw new Exception($"Opdatering af rabat {id} fejlede");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateDiscount(DiscountForCreationDto discountForCreationDto) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+
+            var discount = _mapper.Map<Discount>(discountForCreationDto);
+
+            _repo.Add(discount); 
+
+            if (await _repo.SaveAll()) {
+                var discountToReturn = _mapper.Map<DiscountForReturnDto>(discount);
+                return CreatedAtRoute("GetDiscount", new {id = discount.Id}, discountToReturn);
+            }
+
+            throw new Exception("Kunne ikke oprette rabat trinet");
+        } 
+
+        [HttpGet("{id}", Name = "GetDiscount")]
+        public async Task<IActionResult> GetDiscount(int id) {
+            var discount = await _repo.GetDiscount(id);
+
+            return Ok(discount);
         }
     }
 }
