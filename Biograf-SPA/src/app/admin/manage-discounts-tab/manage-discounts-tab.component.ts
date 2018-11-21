@@ -36,7 +36,16 @@ export class ManageDiscountsTabComponent implements OnInit {
   }
 
   deleteDiscountStep(id: number) {
-    alert('Ikke lavet endnu');
+    this.alertify.confirm('Er du sikker?', () => {
+      this.discountService.deleteDiscount(id).subscribe((res) => {
+        const index = this.discounts.findIndex((d) => d.id === id);
+
+        this.discounts.splice(index, 1);
+        this.alertify.success('Rabattrin slettet');
+      }, error => {
+        this.alertify.error(error);
+      });
+    });
   }
 
   editDiscountModal(id: number) {

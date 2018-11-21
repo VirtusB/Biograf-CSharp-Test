@@ -16,8 +16,6 @@ namespace BiografCSharpTest.Data
         Task<Discount> GetNextDiscountStep(int id);
         Task<Role> GetRole(int id);
         Task<List<Role>> GetRoles();
-        Task<List<Discount>> GetDiscounts();
-        Task<Discount> GetDiscount(int id);
         Task<List<string>> GetGenres();
         Task<List<Reservation>> GetReservations(int id);
         Task<Reservation> GetReservation(int id);

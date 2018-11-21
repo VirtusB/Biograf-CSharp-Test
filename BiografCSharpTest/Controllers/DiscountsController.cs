@@ -14,13 +14,15 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class DiscountsController : ControllerBase
     {
-        private readonly IBiografRepository _repo;
+        private readonly IDiscountRepository _repo;
+        private readonly IBiografRepository _bioRepo;
         private readonly IMapper _mapper;
 
-        public DiscountsController(IBiografRepository repo, IMapper mapper)
+        public DiscountsController(IDiscountRepository repo, IMapper mapper, IBiografRepository bioRepo)
         {
             this._mapper = mapper;
             this._repo = repo;
+            this._bioRepo = bioRepo;
         }
         
         [HttpGet]
@@ -30,11 +32,32 @@ namespace BiografCSharpTest.Controllers
             return Ok(discounts);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDiscount(int id) {
+            var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
+
+            if (userMakingRequest.Role.Name != "Admin") {
+                return Unauthorized();
+            }
+
+            var discountFromRepo = await _repo.GetDiscount(id);
+
+            _repo.Delete(discountFromRepo);
+
+            if (await _repo.SaveAll()) {
+                return NoContent();
+            }
+
+            throw new Exception($"Kunne ikke slette rabat med ID {id}");
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDiscount (int id, DiscountForUpdateByAdminDto discountForUpdateByAdminDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
                 return Unauthorized();

@@ -16,6 +16,10 @@ getDiscounts(): Observable<Discount[]> {
   return this.http.get<Discount[]>(this.baseUrl + 'discounts');
 }
 
+deleteDiscount(id: number) {
+  return this.http.delete(this.baseUrl + 'discounts/' + id);
+}
+
 updateDiscountByAdmin(id: number, discount: Discount) {
   return this.http.put(this.baseUrl + 'discounts/' + id, discount);
 }
