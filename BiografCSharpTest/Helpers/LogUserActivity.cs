@@ -22,14 +22,14 @@ namespace BiografCSharpTest.Helpers
 
             var userId = int.Parse(claimUser.Value);
 
-            var repo = resultContext.HttpContext.RequestServices.GetService<IBiografRepository>();
+            var userRepo = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
 
-            var user = await repo.GetUser(userId);
+            var user = await userRepo.GetUser(userId);
 
             if (user != null) {
                 user.LastActive = DateTime.Now;
 
-                await repo.SaveAll();
+                await userRepo.SaveAll();
             }
         }
     }

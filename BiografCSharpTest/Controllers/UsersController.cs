@@ -17,22 +17,22 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IBiografRepository _repo;
+        private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
-        public UsersController (IBiografRepository repo, IMapper mapper) {
+        public UsersController (IUserRepository userRepo, IMapper mapper) {
             this._mapper = mapper;
-            this._repo = repo;
+            this._userRepo = userRepo;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetUsers ([FromQuery]UserParams userParams) {
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userFromRepo = await _repo.GetUser(currentUserId);
+            var userFromRepo = await _userRepo.GetUser(currentUserId);
 
             userParams.UserId = currentUserId;
 
-            var users = await _repo.GetUsers(userParams);
+            var users = await _userRepo.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForDetailedDto>>(users);
 
@@ -43,7 +43,7 @@ namespace BiografCSharpTest.Controllers
 
         [HttpGet ("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser (int id) {
-            var user = await _repo.GetUser (id);
+            var user = await _userRepo.GetUser (id);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
@@ -52,7 +52,7 @@ namespace BiografCSharpTest.Controllers
 
         [HttpGet("roles")]
         public async Task<IActionResult> GetRoles() {
-            var roles = await _repo.GetRoles();
+            var roles = await _userRepo.GetRoles();
 
             return Ok(roles);
         }
@@ -63,11 +63,11 @@ namespace BiografCSharpTest.Controllers
                 return Unauthorized();
             }
 
-            var userFromRepo = await _repo.GetUser(id);
+            var userFromRepo = await _userRepo.GetUser(id);
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
-            if (await _repo.SaveAll()) {
+            if (await _userRepo.SaveAll()) {
                 return NoContent();
             }
 

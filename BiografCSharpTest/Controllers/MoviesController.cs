@@ -18,19 +18,21 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private readonly IBiografRepository _repo;
+        private readonly IUserRepository _userRepo;
+        private readonly IMovieRepository _movieRepo;
         private readonly IMapper _mapper;
 
-        public MoviesController(IBiografRepository repo, IMapper mapper)
+        public MoviesController(IUserRepository userRepo, IMapper mapper, IMovieRepository movieRepo)
         {
             this._mapper = mapper;
-            this._repo = repo;
+            this._userRepo = userRepo;
+            this._movieRepo = movieRepo;
         }
 
         [HttpGet("genres")]
         [AllowAnonymous]
         public async Task<IActionResult> GetGenres() {
-            var genres = await _repo.GetGenres();
+            var genres = await _movieRepo.GetGenres();
 
             return Ok(genres);
         }
@@ -38,7 +40,7 @@ namespace BiografCSharpTest.Controllers
         [HttpGet("{id}", Name = "GetMovie")]
         [AllowAnonymous]
         public async Task<IActionResult> GetMovie(int id) {
-            var movie = await _repo.GetMovie(id);
+            var movie = await _movieRepo.GetMovie(id);
 
             if (movie != null) {
                 return Ok(movie);
@@ -52,7 +54,7 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> CreateMovie(MovieForCreationDto movieForCreationDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             List<string> allowedRoles = new List<string>(new string[] 
             { 
@@ -68,9 +70,9 @@ namespace BiografCSharpTest.Controllers
 
             var movie = _mapper.Map<Movie>(movieForCreationDto);
 
-            _repo.Add(movie); 
+            _movieRepo.Add(movie); 
 
-            if (await _repo.SaveAll()) {
+            if (await _movieRepo.SaveAll()) {
                 var movieToReturn = _mapper.Map<MovieForReturnDto>(movie);
                 return CreatedAtRoute("GetMovie", new {id = movie.Id}, movieToReturn);
             }
@@ -82,7 +84,7 @@ namespace BiografCSharpTest.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetMovies ([FromQuery]MovieParams movieParams) {
             
-            var movies = await _repo.GetMovies(movieParams);
+            var movies = await _movieRepo.GetMovies(movieParams);
             var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);
 
 
@@ -95,7 +97,7 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> GetAllMovies () {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             List<string> allowedRoles = new List<string>(new string[] 
             { 
@@ -108,7 +110,7 @@ namespace BiografCSharpTest.Controllers
                 return Unauthorized();
             }
             
-            var movies = await _repo.GetAllMoviesWithoutPagination();
+            var movies = await _movieRepo.GetAllMoviesWithoutPagination();
             var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);
 
             return Ok (moviesToReturn);

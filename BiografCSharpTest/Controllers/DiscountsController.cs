@@ -16,20 +16,20 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class DiscountsController : ControllerBase
     {
-        private readonly IDiscountRepository _repo;
-        private readonly IBiografRepository _bioRepo;
+        private readonly IDiscountRepository _discountRepo;
+        private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
 
-        public DiscountsController(IDiscountRepository repo, IMapper mapper, IBiografRepository bioRepo)
+        public DiscountsController(IDiscountRepository discountRepo, IMapper mapper, IUserRepository userRepo)
         {
             this._mapper = mapper;
-            this._repo = repo;
-            this._bioRepo = bioRepo;
+            this._discountRepo = discountRepo;
+            this._userRepo = userRepo;
         }
         
         [HttpGet]
         public async Task<IActionResult> GetDiscounts() {
-            var discounts = await _repo.GetDiscounts();
+            var discounts = await _discountRepo.GetDiscounts();
 
             return Ok(discounts);
         }
@@ -38,17 +38,17 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> DeleteDiscount(int id) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
                 return Unauthorized();
             }
 
-            var discountFromRepo = await _repo.GetDiscount(id);
+            var discountFromRepo = await _discountRepo.GetDiscount(id);
 
-            _repo.Delete(discountFromRepo);
+            _discountRepo.Delete(discountFromRepo);
 
-            if (await _repo.SaveAll()) {
+            if (await _discountRepo.SaveAll()) {
                 return NoContent();
             }
 
@@ -59,19 +59,19 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> UpdateDiscount (int id, DiscountForUpdateByAdminDto discountForUpdateByAdminDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
                 return Unauthorized();
             }
 
-            var discountFromRepo = await _repo.GetDiscount(id);
+            var discountFromRepo = await _discountRepo.GetDiscount(id);
 
             
 
             _mapper.Map(discountForUpdateByAdminDto, discountFromRepo);
 
-            if (await _repo.SaveAll()) {
+            if (await _discountRepo.SaveAll()) {
                 return NoContent();
             }
 
@@ -82,7 +82,7 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> CreateDiscount(DiscountForCreationDto discountForCreationDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _bioRepo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
                 return Unauthorized();
@@ -91,9 +91,9 @@ namespace BiografCSharpTest.Controllers
 
             var discount = _mapper.Map<Discount>(discountForCreationDto);
 
-            _repo.Add(discount); 
+            _discountRepo.Add(discount); 
 
-            if (await _repo.SaveAll()) {
+            if (await _discountRepo.SaveAll()) {
                 var discountToReturn = _mapper.Map<DiscountForReturnDto>(discount);
                 return CreatedAtRoute("GetDiscount", new {id = discount.Id}, discountToReturn);
             }
@@ -103,7 +103,7 @@ namespace BiografCSharpTest.Controllers
 
         [HttpGet("{id}", Name = "GetDiscount")]
         public async Task<IActionResult> GetDiscount(int id) {
-            var discount = await _repo.GetDiscount(id);
+            var discount = await _discountRepo.GetDiscount(id);
 
             return Ok(discount);
         }

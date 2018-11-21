@@ -52,10 +52,13 @@ namespace BiografCSharpTest
             Mapper.Reset(); // skal ikke bruges i produktion
             services.AddAutoMapper();
 
-            services.AddScoped<IBiografRepository, BiografRepository>();
+
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IShowRepository, ShowRepository>();
             services.AddScoped<IDiscountRepository, DiscountRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<LogUserActivity>();
 

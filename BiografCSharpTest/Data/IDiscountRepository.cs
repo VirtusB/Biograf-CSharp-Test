@@ -11,5 +11,8 @@ namespace BiografCSharpTest.Data
          Task<bool> SaveAll();
          Task<List<Discount>> GetDiscounts();
          Task<Discount> GetDiscount(int id);
+         Task<int> GetHighestRequiredBookings();
+         Task<Discount> GetCurrentDiscountStep(int id);
+         Task<Discount> GetNextDiscountStep(int id);
     }
 }

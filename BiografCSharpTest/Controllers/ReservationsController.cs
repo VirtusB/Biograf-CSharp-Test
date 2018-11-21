@@ -16,32 +16,38 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class ReservationsController : ControllerBase
     {
-        private readonly IBiografRepository _repo;
+        private readonly IUserRepository _userRepo;
         private readonly IShowRepository _showRepo;
+        private readonly IDiscountRepository _discountRepo;
+        private readonly IMovieRepository _movieRepo;
+        private readonly IReservationRepository _reservationRepo;
         private readonly IMapper _mapper;
-        public ReservationsController (IBiografRepository repo, IMapper mapper, IShowRepository showRepo) {
+        public ReservationsController (IUserRepository userRepo, IMapper mapper, IShowRepository showRepo, IMovieRepository movieRepo, IDiscountRepository discountRepo, IReservationRepository reservationRepo) {
             this._mapper = mapper;
-            this._repo = repo;
+            this._userRepo = userRepo;
             this._showRepo = showRepo;
+            this._movieRepo = movieRepo;
+            this._discountRepo = discountRepo;
+            this._reservationRepo = reservationRepo;
         }
 
         
         [HttpGet("all/{id}")]
         public async Task<IActionResult> GetReservations(int id) {
-            var reservations = await _repo.GetReservations(id);
+            var reservations = await _reservationRepo.GetReservations(id);
 
             return Ok(reservations);
         }
 
         [HttpGet("discountstep/{id}")]
         public async Task<IActionResult> GetDiscountStep(int id) {
-            var discountStep = await _repo.GetCurrentDiscountStep(id);
+            var discountStep = await _discountRepo.GetCurrentDiscountStep(id);
 
-            var nextStep = await _repo.GetNextDiscountStep(id);
+            var nextStep = await _discountRepo.GetNextDiscountStep(id);
 
-            var paidCount =  await _repo.GetPaidReservationsCount(id);
+            var paidCount =  await _reservationRepo.GetPaidReservationsCount(id);
             
-            var highestRequiredBookings = await _repo.GetHighestRequiredBookings();
+            var highestRequiredBookings = await _discountRepo.GetHighestRequiredBookings();
 
             var all = new {
                 discountStep,
@@ -56,14 +62,14 @@ namespace BiografCSharpTest.Controllers
 
         [HttpGet("paidCount/{id}")]
         public async Task<IActionResult> GetPaidReservationsCount(int id) {
-            var reservations = await _repo.GetPaidReservationsCount(id);
+            var reservations = await _reservationRepo.GetPaidReservationsCount(id);
 
             return Ok(reservations);
         }
 
         [HttpGet("{id}", Name = "GetReservation")]
         public async Task<IActionResult> GetReservation(int id) {
-            var reservation = await _repo.GetReservation(id);
+            var reservation = await _reservationRepo.GetReservation(id);
             var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
 
             return Ok(reservationToReturn);
@@ -74,7 +80,7 @@ namespace BiografCSharpTest.Controllers
         public async Task<IActionResult> SetBookingState(int userId, int id, [FromBody] ReservationForUpdateDto reservationForUpdateDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             List<string> allowedRoles = new List<string>(new string[] 
             { 
@@ -88,14 +94,14 @@ namespace BiografCSharpTest.Controllers
                 return Unauthorized();
             }
 
-              var reservation = await _repo.GetReservation(id);
+              var reservation = await _reservationRepo.GetReservation(id);
 
              _mapper.Map(reservationForUpdateDto, reservation);
 
             
 
 
-            if (await _repo.SaveAll()) {
+            if (await _reservationRepo.SaveAll()) {
                 var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
                 return Ok(reservationToReturn);
             }
@@ -105,7 +111,7 @@ namespace BiografCSharpTest.Controllers
 
         [HttpPost("{id}")]
         public async Task<IActionResult> CreateReservation(int id, ReservationForCreationDto reservationForCreationDto) {
-            var user = await _repo.GetUser(id);
+            var user = await _userRepo.GetUser(id);
             
             if (user.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
                 return Unauthorized();
@@ -114,7 +120,7 @@ namespace BiografCSharpTest.Controllers
         
 
             // TODO: skal laves helt om...
-            var movie = await _repo.GetMovie(reservationForCreationDto.Show.Movie.Id);
+            var movie = await _movieRepo.GetMovie(reservationForCreationDto.Show.Movie.Id);
             reservationForCreationDto.Show.Movie = movie;
             var show = await _showRepo.GetShow(reservationForCreationDto.Show.Id);
             reservationForCreationDto.Show = show;
@@ -125,10 +131,10 @@ namespace BiografCSharpTest.Controllers
          
 
 
-            _repo.Add(reservation); 
+            _reservationRepo.Add(reservation); 
 
 
-            if (await _repo.SaveAll()) {
+            if (await _reservationRepo.SaveAll()) {
                 var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
                 return CreatedAtRoute("GetReservation", new {id = reservation.Id}, reservationToReturn);
             }

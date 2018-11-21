@@ -15,33 +15,33 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IBiografRepository _repo;
+        private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
 
-        public AdminController(IBiografRepository repo, IMapper mapper)
+        public AdminController(IUserRepository userRepo, IMapper mapper)
         {
             this._mapper = mapper;
-            this._repo = repo;
+            this._userRepo = userRepo;
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser (int id, UserForUpdateByAdminDto userForUpdateByAdminDto) {
             var userMakingRequestId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userMakingRequest = await _repo.GetUser(userMakingRequestId);
+            var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
             if (userMakingRequest.Role.Name != "Admin") {
                 return Unauthorized();
             }
 
-            var userFromRepo = await _repo.GetUser(id);
+            var userFromRepo = await _userRepo.GetUser(id);
 
-            var role = await _repo.GetRole(userForUpdateByAdminDto.Role.Id);
+            var role = await _userRepo.GetRole(userForUpdateByAdminDto.Role.Id);
             userForUpdateByAdminDto.Role = role;
 
             _mapper.Map(userForUpdateByAdminDto, userFromRepo);
 
-            if (await _repo.SaveAll()) {
+            if (await _userRepo.SaveAll()) {
                 return NoContent();
             }
 

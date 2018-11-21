@@ -17,34 +17,34 @@ namespace BiografCSharpTest.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthRepository _repo;
+        private readonly IAuthRepository _authRepo;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
 
-        private readonly IBiografRepository _bioRepo;
+        private readonly IUserRepository _userRepo;
 
-        public AuthController (IAuthRepository repo, IConfiguration config, IMapper mapper, IBiografRepository bioRepo) {
+        public AuthController (IAuthRepository authRepo, IConfiguration config, IMapper mapper, IUserRepository userRepo) {
             this._mapper = mapper;
             this._config = config;
-            this._repo = repo;
-            this._bioRepo = bioRepo;
+            this._authRepo = authRepo;
+            this._userRepo = userRepo;
         }
 
         [HttpPost ("register")]
         public async Task<IActionResult> Register (UserForRegisterDto userForRegisterDto) {
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
 
-            if (await _repo.UserExists (userForRegisterDto.Username)) {
+            if (await _authRepo.UserExists (userForRegisterDto.Username)) {
                 return BadRequest ("Username already exists");
             }
 
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            Role standardRole = await _bioRepo.GetRole(1);
+            Role standardRole = await _userRepo.GetRoleByName("Standard");
             userToCreate.Role = standardRole;
             
 
-            var createdUser = await _repo.Register (userToCreate, userForRegisterDto.Password);
+            var createdUser = await _authRepo.Register (userToCreate, userForRegisterDto.Password);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser); // TODO: create different DTO for clarity, as this has nothing to do with the list, temporary
 
@@ -54,7 +54,7 @@ namespace BiografCSharpTest.Controllers
 
         [HttpPost ("login")]
         public async Task<IActionResult> Login (UserForLoginDto userForLoginDto) {
-            var userFromRepo = await _repo.Login (userForLoginDto.Username.ToLower (), userForLoginDto.Password);
+            var userFromRepo = await _authRepo.Login (userForLoginDto.Username.ToLower (), userForLoginDto.Password);
 
             if (userFromRepo == null) {
                 return Unauthorized ();
