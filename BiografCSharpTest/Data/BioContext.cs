@@ -6,8 +6,7 @@ namespace BiografCSharpTest.Data
 {
     public class BioContext : DbContext
     {
-        //public BioContext(DbContextOptions<BioContext> options) : base (options) { }
-        public BioContext() : base () { }
+        public BioContext(DbContextOptions<BioContext> options) : base (options) { }
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }
@@ -16,12 +15,6 @@ namespace BiografCSharpTest.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connString = String.Format(@"Server={0};Database=BioBTest;Trusted_Connection=True;User Id=virtus;Password=password;", Environment.MachineName);
-            optionsBuilder.UseSqlServer(connString);
-        }
 
 
 

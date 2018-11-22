@@ -1,0 +1,17 @@
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.deps.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.runtimeconfig.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.runtimeconfig.dev.json
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.pdb
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.pdb
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csprojAssemblyReference.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.AssemblyInfoInputs.cache
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.AssemblyInfo.cs
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csproj.CopyComplete
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.dll
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.pdb

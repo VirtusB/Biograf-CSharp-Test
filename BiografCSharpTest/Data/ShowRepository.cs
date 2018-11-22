@@ -28,6 +28,7 @@ namespace BiografCSharpTest.Data
                 .OrderByDescending(s => s.StartDate)
                 .AsQueryable();
 
+            //TODO: fiks så kun CRUD bliver lavet i repository'en
             if (showParams.MaxTicketPrice != 500) {
                 shows = shows.Where(s => s.TicketPrice < showParams.MaxTicketPrice);
             }

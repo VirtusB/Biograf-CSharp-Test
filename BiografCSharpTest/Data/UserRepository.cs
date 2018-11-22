@@ -55,6 +55,7 @@ namespace BiografCSharpTest.Data
                 .OrderByDescending(u => u.LastActive)
                 .AsQueryable();
 
+            //TODO: fiks så kun bliver lavet CRUD i repository'en
             if (userParams.Enabled != true) {
                 users = users.Where(u => u.Enabled == userParams.Enabled);
             }

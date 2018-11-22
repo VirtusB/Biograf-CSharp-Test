@@ -52,6 +52,8 @@ namespace BiografCSharpTest.Data
                 .OrderByDescending(m => m.Year)
                 .AsQueryable();
 
+            //TODO: repository bør ikke være stedet hvor movieParams tjekkes, da det ikke er CRUD
+
             if (movieParams.MinYear != 1920 || movieParams.MaxYear != 2018) {
                 movies = movies.Where(u => u.Year >= movieParams.MinYear && u.Year <= movieParams.MaxYear);
             }

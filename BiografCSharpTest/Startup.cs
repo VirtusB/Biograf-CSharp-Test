@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 
 namespace BiografCSharpTest
 {
@@ -41,7 +42,9 @@ namespace BiografCSharpTest
                         opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                     });
 
-            services.AddDbContext<BioContext>(); // tilføj vores database
+            // tilføj database
+            services.AddDbContext<BioContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddCors(); // tilføj CORS, så vi kan tilgå API'en fra andre websider eller andre APIer
             services.AddAutoMapper(); // tilføj AutoMapper, så vi automatisk kan mappe objekter til DTO'er
 

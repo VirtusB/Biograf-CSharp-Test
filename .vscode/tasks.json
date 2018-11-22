@@ -10,6 +10,11 @@
                 "${workspaceFolder}/BiografCSharpTest/BiografCSharpTest.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run dotnet tests",
+            "command": "cd BiografCSharpTest.UnitTests; dotnet test",
+            "type": "shell"
         }
     ]
 }
