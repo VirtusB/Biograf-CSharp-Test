@@ -51,7 +51,7 @@ export class ManageDiscountsTabComponent implements OnInit {
   }
 
   editDiscountModal(id: number) {
-    let discount = this.discounts.find((u) => {
+    const discount = this.discounts.find((u) => {
       return u.id === id;
     });
 

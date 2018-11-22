@@ -21,7 +21,7 @@ export class AddShowModalComponent implements OnInit {
   showForm: FormGroup;
   public onSave: Subject<Show>;
   movies: Movie[];
-  halls = [1, 2, 3, 4];
+  hallNumbers = [1, 2, 3, 4];
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -56,7 +56,7 @@ export class AddShowModalComponent implements OnInit {
     });
   }
 
-  
+
 
   createShow() {
     this.show = Object.assign({}, this.showForm.value);
