@@ -96,7 +96,7 @@ namespace BiografCSharpTest
                 });
             }
             
-            app.UseCors(x => x.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); // tillad at en side/service/api tilgår vores API fra port 4200. Angular bruger som default port 4200, så vi kunne f.eks. lave frontend i Angular og bruge API'en på denne måde
+            app.UseCors(x => x.WithOrigins("http://localhost:4200", "http://127.0.0.1").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); // tillad at en side/service/api tilgår vores API fra port 4200. Angular bruger som default port 4200, så vi kunne f.eks. lave frontend i Angular og bruge API'en på denne måde
            // app.UseHttpsRedirection();
            app.UseAuthentication();
            
