@@ -3,10 +3,13 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { DiscountService } from './discount.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 describe('Service: Discount', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DiscountService]
+      providers: [DiscountService],
+      imports: [HttpClientModule ]
     });
   });
 

@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, CarouselModule, TooltipModule, ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -152,6 +152,7 @@ export function tokenGetter() {
     ShowListResolver,
     UserListResolver,
     { provide: LOCALE_ID, useValue: 'da' }
+    
    ],
    bootstrap: [
       AppComponent

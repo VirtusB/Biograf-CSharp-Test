@@ -34,7 +34,7 @@ describe('HomeComponent', () => {
 describe('Testing async functions', () => {
   it('should work with async/await', async () => {
     // Arrange
-    let flag = false;
+    let flag: any = false;
 
     // Act
     flag = await returnTrueAsync();

@@ -2,11 +2,13 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { ShowService } from './show.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('Service: Show', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ShowService]
+      providers: [ShowService],
+      imports: [HttpClientModule ]
     });
   });
 

@@ -2,11 +2,13 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { ReservationService } from './reservation.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('Service: Reservation', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ReservationService]
+      providers: [ReservationService],
+      imports: [HttpClientModule ]
     });
   });
 

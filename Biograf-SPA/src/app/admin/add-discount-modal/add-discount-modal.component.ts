@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Discount } from '../../_models/discount';
 import { BsModalRef } from 'ngx-bootstrap';
 import { DiscountService } from '../../_services/discount.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { AuthService } from '../../_services/auth.service';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
 import { Subject } from 'rxjs';
 
 @Component({

@@ -1,9 +1,12 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AddDiscountModalComponent } from './add-discount-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsModalRef } from 'ngx-bootstrap';
+
 
 describe('AddDiscountModalComponent', () => {
   let component: AddDiscountModalComponent;
@@ -11,7 +14,8 @@ describe('AddDiscountModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddDiscountModalComponent ]
+      declarations: [ AddDiscountModalComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
   }));
