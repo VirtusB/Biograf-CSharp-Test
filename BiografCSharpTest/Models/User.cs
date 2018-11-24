@@ -18,6 +18,7 @@ namespace BiografCSharpTest.Models
         public bool Enabled { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
+        public float LifetimeSavedAmount { get; set; }
         public Role Role { get; set; }
     }
 }

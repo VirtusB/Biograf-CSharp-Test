@@ -21,6 +21,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using BiografCSharpTest.Services;
 
 namespace BiografCSharpTest
 {
@@ -62,6 +63,8 @@ namespace BiografCSharpTest
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<LogUserActivity>();
 

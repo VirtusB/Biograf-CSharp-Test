@@ -1,6 +1,7 @@
 <div *ngIf="discountInformation">
   <h4>Dit rabattrin: {{discountInformation.discountStep.amount}}%</h4>
   <p>Du sparer {{discountInformation.discountStep.amount}}% på alle dine ordre</p>
+  <p>Du har sparet {{user.lifetimeSavedAmount}} DKK i alt</p>
   <br>
   <div *ngIf="discountInformation.paidCount < discountInformation.highestRequiredBookings">
       <p>Næste rabattrin: {{discountInformation.nextStep.amount}}%</p>

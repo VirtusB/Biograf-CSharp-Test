@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiografCSharpTest.Migrations
 {
     [DbContext(typeof(BioContext))]
-    [Migration("20181121103630_InitialCreate")]
+    [Migration("20181124012341_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,6 +147,10 @@ namespace BiografCSharpTest.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<DateTime>("LastActive");
+
+                    b.Property<float>("LifetimeSavedAmount")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0f);
 
                     b.Property<string>("Name");
 

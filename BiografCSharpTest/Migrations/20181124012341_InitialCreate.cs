@@ -95,6 +95,7 @@ namespace BiografCSharpTest.Migrations
                     Enabled = table.Column<bool>(nullable: false, defaultValue: true),
                     PhoneNumber = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: true),
+                    LifetimeSavedAmount = table.Column<float>(nullable: false, defaultValue: 0f),
                     RoleId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

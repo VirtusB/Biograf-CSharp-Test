@@ -23,6 +23,11 @@ namespace BiografCSharpTest.Data
                 .Property(e => e.Enabled)
                 .HasDefaultValue(true);
 
+            builder.Entity<User>()
+                .Property(e => e.LifetimeSavedAmount)
+                .HasDefaultValue(0);
+                
+
             builder.Entity<Reservation>()
                 .Property(s => s.BookingState)
                 .HasDefaultValue(0);

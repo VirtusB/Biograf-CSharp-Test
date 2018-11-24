@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ReservationService } from '../../_services/reservation.service';
 import { AuthService } from '../../_services/auth.service';
 import { DiscountService } from '../../_services/discount.service';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'app-member-discount-step',
@@ -10,6 +11,7 @@ import { DiscountService } from '../../_services/discount.service';
 })
 export class MemberDiscountStepComponent implements OnInit {
   discountInformation: any;
+  @Input() user: User;
 
   constructor(
     private discountService: DiscountService,

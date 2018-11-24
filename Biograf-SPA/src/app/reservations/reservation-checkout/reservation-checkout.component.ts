@@ -167,7 +167,7 @@ export class ReservationCheckoutComponent implements OnInit  {
 
 
         this.reservationService.createReservation(this.authService.currentUser.id, reservation).subscribe(() => {
-          this.alertify.success('Billetterne er nu bestilt');
+          this.alertify.success('Billetten er nu bestilt');
         }, error => {
           this.alertify.error(error);
         }, () => {
@@ -175,12 +175,6 @@ export class ReservationCheckoutComponent implements OnInit  {
         });
 
 
-        // reservation.user = this.authService.currentUser;
-        // reservation.show = this.show;
-        // reservation.bookingState = this.reservationForm.get('bookingState').value;
-        // reservation.row = this.calculateRow(seat);
-        // reservation.seat = this.calculateSeatNumber(seat);
-        
       });
 
     }

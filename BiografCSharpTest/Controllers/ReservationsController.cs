@@ -6,6 +6,7 @@ using AutoMapper;
 using BiografCSharpTest.Data;
 using BiografCSharpTest.Dtos;
 using BiografCSharpTest.Models;
+using BiografCSharpTest.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,14 +22,24 @@ namespace BiografCSharpTest.Controllers
         private readonly IDiscountRepository _discountRepo;
         private readonly IMovieRepository _movieRepo;
         private readonly IReservationRepository _reservationRepo;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        public ReservationsController (IUserRepository userRepo, IMapper mapper, IShowRepository showRepo, IMovieRepository movieRepo, IDiscountRepository discountRepo, IReservationRepository reservationRepo) {
+        public ReservationsController (
+            IUserRepository userRepo, 
+            IMapper mapper, 
+            IShowRepository showRepo, 
+            IMovieRepository movieRepo, 
+            IDiscountRepository discountRepo, 
+            IReservationRepository reservationRepo,
+            IUserService userService
+            ) {
             this._mapper = mapper;
             this._userRepo = userRepo;
             this._showRepo = showRepo;
             this._movieRepo = movieRepo;
             this._discountRepo = discountRepo;
             this._reservationRepo = reservationRepo;
+            this._userService = userService;
         }
 
         
@@ -135,6 +146,8 @@ namespace BiografCSharpTest.Controllers
 
 
             if (await _reservationRepo.SaveAll()) {
+                //await _userService.UpdateLifetimeAmountSaved(id, reservation.Show.TicketPrice); //TODO: virker ikke
+
                 var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
                 return CreatedAtRoute("GetReservation", new {id = reservation.Id}, reservationToReturn);
             }

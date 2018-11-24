@@ -16,5 +16,6 @@ namespace BiografCSharpTest.Dtos
         public string Email { get; set; }
         public bool Enabled { get; set; }
         public Role Role { get; set; }
+        public float LifetimeSavedAmount { get; set; }
     }
 }

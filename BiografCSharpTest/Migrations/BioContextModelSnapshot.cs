@@ -146,6 +146,10 @@ namespace BiografCSharpTest.Migrations
 
                     b.Property<DateTime>("LastActive");
 
+                    b.Property<float>("LifetimeSavedAmount")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(0f);
+
                     b.Property<string>("Name");
 
                     b.Property<byte[]>("PasswordHash");
