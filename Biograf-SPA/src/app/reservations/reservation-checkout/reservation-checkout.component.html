@@ -34,9 +34,9 @@
                         </div>
                 </div>
                 <div class="card-footer">
-                   Subtotal: {{finalOrderPrice}} kroner
+                   Subtotal: <span style="float: right;">{{finalOrderPrice | number:'1.0-0':'da'}} kroner</span> 
                    <br>
-                   Sparet: {{amountSaved}} kroner
+                   Rabat: <span style="float: right;">{{amountSaved | number:'1.0-0':'da'}} kroner</span> 
                 </div>
               </div>
             </div>
@@ -50,7 +50,6 @@
                         <label for="seat-{{i}}" class="seat"></label>
                         
                         <div *ngIf="i % 10 === 0">
-                          <!-- <br><br><br> teett-->
                           <p class="line-breaker"></p>
                         </div>
                       </div>

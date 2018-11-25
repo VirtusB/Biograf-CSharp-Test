@@ -143,7 +143,45 @@ export class ReservationCheckoutComponent implements OnInit  {
     }
   }
 
+  // før, send en reservation af gangen
+  // makeReservation() {
+  //   if (this.reservationForm.valid) {
+  //     this.selectedSeats.forEach(seat => {
+  //       let res = {
+  //         user: {
+  //           id: this.authService.currentUser.id
+  //         },
+  //         show: {
+  //           id: this.show.id,
+  //           movie: {
+  //             id: this.show.movie.id
+  //           }
+  //         },
+  //         bookingState: +this.reservationForm.get('bookingState').value,
+  //         row: this.calculateRow(seat),
+  //         seat: this.calculateSeatNumber(seat)
+  //       } as Reservation;
+
+  //       let reservation = {} as Reservation;
+  //       reservation = Object.assign({}, res);
+
+
+  //       this.reservationService.createReservation(this.authService.currentUser.id, reservation).subscribe(() => {
+  //         this.alertify.success('Billetten er nu bestilt');
+  //       }, error => {
+  //         this.alertify.error(error);
+  //       }, () => {
+  //         this.router.navigate(['/member/edit']);
+  //       });
+
+
+  //     });
+
+  //   }
+  // }
+
   makeReservation() {
+    let allRes: Reservation[] = [];
 
     if (this.reservationForm.valid) {
       this.selectedSeats.forEach(seat => {
@@ -165,16 +203,20 @@ export class ReservationCheckoutComponent implements OnInit  {
         let reservation = {} as Reservation;
         reservation = Object.assign({}, res);
 
+        allRes.push(reservation);
+      });
 
-        this.reservationService.createReservation(this.authService.currentUser.id, reservation).subscribe(() => {
+
+      this.reservationService.createReservations(this.authService.currentUser.id, allRes).subscribe(() => {
+        if (allRes.length > 1) {
+          this.alertify.success('Billeterne er nu bestilt');
+        } else {
           this.alertify.success('Billetten er nu bestilt');
-        }, error => {
-          this.alertify.error(error);
-        }, () => {
-          this.router.navigate(['/member/edit']);
-        });
-
-
+        }
+      }, error => {
+        this.alertify.error(error);
+      }, () => {
+        this.router.navigate(['/member/edit']);
       });
 
     }

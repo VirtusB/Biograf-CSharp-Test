@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -120,39 +121,94 @@ namespace BiografCSharpTest.Controllers
             return BadRequest("Kunne ikke sætte statussen");
         }
 
+        // før, opret en reservation af gangen
+        // [HttpPost("{id}")]
+        // public async Task<IActionResult> CreateReservation(int id, ReservationForCreationDto reservationForCreationDto) {
+        //     var user = await _userRepo.GetUser(id);
+            
+            
+        //     if (user.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
+        //         return Unauthorized();
+        //     }
+
+        
+
+        //     // TODO: skal laves helt om...
+        //     var movie = await _movieRepo.GetMovie(reservationForCreationDto.Show.Movie.Id);
+        //     reservationForCreationDto.Show.Movie = movie;
+        //     var show = await _showRepo.GetShow(reservationForCreationDto.Show.Id);
+        //     reservationForCreationDto.Show = show;
+
+
+        //     var reservation = _mapper.Map<Reservation>(reservationForCreationDto);
+
+         
+
+
+        //     _reservationRepo.Add(reservation); 
+
+
+        //     if (await _reservationRepo.SaveAll()) {
+                
+                
+
+        //         var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
+        //         return CreatedAtRoute("GetReservation", new {id = reservation.Id}, reservationToReturn);
+        //     }
+
+        //     throw new Exception("Kunne ikke oprette reservationen");
+        // }
+
         [HttpPost("{id}")]
-        public async Task<IActionResult> CreateReservation(int id, ReservationForCreationDto reservationForCreationDto) {
+        public async Task<IActionResult> CreateReservations(int id, [FromBody] List<ReservationForCreationDto> reservationForCreationDto) {
             var user = await _userRepo.GetUser(id);
+            
             
             if (user.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
                 return Unauthorized();
             }
 
-        
+            var movie = await _movieRepo.GetMovie(reservationForCreationDto.First().Show.Movie.Id);
+            var show = await _showRepo.GetShow(reservationForCreationDto.First().Show.Id);
 
-            // TODO: skal laves helt om...
-            var movie = await _movieRepo.GetMovie(reservationForCreationDto.Show.Movie.Id);
-            reservationForCreationDto.Show.Movie = movie;
-            var show = await _showRepo.GetShow(reservationForCreationDto.Show.Id);
-            reservationForCreationDto.Show = show;
+            var reservations = new List<ReservationForCreationDto>();
+
+            reservationForCreationDto.ForEach(res => {
+                res.Show.Movie = movie;
+                res.Show = show;
+                reservations.Add(res);
+            });
 
 
-            var reservation = _mapper.Map<Reservation>(reservationForCreationDto);
+            List<Reservation> reservationsToAdd = new List<Reservation>();
+
+            reservations.ForEach( res =>  {
+                var reservation = _mapper.Map<Reservation>(res);
+                reservationsToAdd.Add(reservation);
+            });
 
          
 
-
-            _reservationRepo.Add(reservation); 
+            reservationsToAdd.ForEach(n => _reservationRepo.Add(n));
 
 
             if (await _reservationRepo.SaveAll()) {
-                //await _userService.UpdateLifetimeAmountSaved(id, reservation.Show.TicketPrice); //TODO: virker ikke
+                List<ReservationForReturnDto> reservationsForReturn = new List<ReservationForReturnDto>();
 
-                var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
-                return CreatedAtRoute("GetReservation", new {id = reservation.Id}, reservationToReturn);
+                reservationsToAdd.ForEach(res => {
+                    var r = _mapper.Map<ReservationForReturnDto>(res);
+                    reservationsForReturn.Add(r);
+                });
+
+                // hvis kunden har valgt at købe billetter
+                if (reservationsToAdd.First().BookingState == 2) {
+                    await _userService.UpdateLifetimeAmountSaved(user, reservationsToAdd.First().Show.TicketPrice, reservationsToAdd.Count);
+                }
+            
+                return Ok(reservationsForReturn);
             }
 
-            throw new Exception("Kunne ikke oprette reservationen");
+            throw new Exception("Kunne ikke oprette reservationerne");
         }
 
     }

@@ -14,8 +14,6 @@ namespace BiografCSharpTest.Data
         }
         public async Task<List<Reservation>> GetReservations(int id)
         {
-            
-
             var reservations = await _context.Reservations
                 .Where(r => r.User.Id == id)
                 .OrderByDescending(r => r.Created)
@@ -23,24 +21,17 @@ namespace BiografCSharpTest.Data
                 .ThenInclude(m => m.Movie)
                 .ToListAsync();
 
-
             return reservations;
         }
 
         public async Task<Reservation> GetReservation(int id)
         {
-            
             var reservation = await _context.Reservations
                 .Where(r => r.Id == id)
                 .Include(r => r.User)
                 .Include(s => s.Show) 
                 .ThenInclude(m => m.Movie)
                 .FirstOrDefaultAsync();
-
-      
-
-       
-
 
             return reservation;
         }
@@ -61,6 +52,8 @@ namespace BiografCSharpTest.Data
         {
             _context.Add(entity);
         }
+
+
 
         public void Delete<T>(T entity) where T : class
         {

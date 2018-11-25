@@ -48,7 +48,7 @@ namespace BiografCSharpTest.Data
         {
             var paidReservations = await _reservationRepo.GetPaidReservationsCount(id);
 
-            var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.RequiredBookings <= paidReservations);
+            var discount = await _context.Discounts.LastOrDefaultAsync(d => d.RequiredBookings <= paidReservations);
 
             return discount;
         }
@@ -64,7 +64,7 @@ namespace BiografCSharpTest.Data
             var paidReservations = await _reservationRepo.GetPaidReservationsCount(id);
             
     
-            var discount = await _context.Discounts.OrderBy(d => d.RequiredBookings).FirstOrDefaultAsync(d => d.RequiredBookings >= paidReservations);
+            var discount = await _context.Discounts.OrderBy(d => d.RequiredBookings).FirstOrDefaultAsync(d => d.RequiredBookings > paidReservations);
 
             return discount;
         }
