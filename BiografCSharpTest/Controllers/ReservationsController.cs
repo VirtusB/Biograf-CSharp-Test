@@ -162,8 +162,6 @@ namespace BiografCSharpTest.Controllers
         [HttpPost("{id}")]
         public async Task<IActionResult> CreateReservations(int id, [FromBody] List<ReservationForCreationDto> reservationForCreationDto) {
             var user = await _userRepo.GetUser(id);
-            
-            
             if (user.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
                 return Unauthorized();
             }
@@ -172,7 +170,6 @@ namespace BiografCSharpTest.Controllers
             var show = await _showRepo.GetShow(reservationForCreationDto.First().Show.Id);
 
             var reservations = new List<ReservationForCreationDto>();
-
             reservationForCreationDto.ForEach(res => {
                 res.Show.Movie = movie;
                 res.Show = show;
@@ -181,20 +178,15 @@ namespace BiografCSharpTest.Controllers
 
 
             List<Reservation> reservationsToAdd = new List<Reservation>();
-
             reservations.ForEach( res =>  {
                 var reservation = _mapper.Map<Reservation>(res);
                 reservationsToAdd.Add(reservation);
             });
 
-         
-
             reservationsToAdd.ForEach(n => _reservationRepo.Add(n));
-
 
             if (await _reservationRepo.SaveAll()) {
                 List<ReservationForReturnDto> reservationsForReturn = new List<ReservationForReturnDto>();
-
                 reservationsToAdd.ForEach(res => {
                     var r = _mapper.Map<ReservationForReturnDto>(res);
                     reservationsForReturn.Add(r);

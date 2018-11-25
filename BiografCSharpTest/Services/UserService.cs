@@ -19,7 +19,7 @@ namespace BiografCSharpTest.Services
             this._context = context;
         }
         
-        public async Task<bool> UpdateLifetimeAmountSaved(User user, float ticketPrice, int ticketCount) //TODO: virker ikke
+        public async Task<bool> UpdateLifetimeAmountSaved(User user, float ticketPrice, int ticketCount)
         {
             var discountStep = await _discountRepo.GetCurrentDiscountStep(user.Id);
             float rate = 1.00f * (discountStep.Amount / 100);
