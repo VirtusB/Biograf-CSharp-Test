@@ -2,5 +2,13 @@
   "ProjectFilePath": "f:\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
-  "Configuration": null
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
 }

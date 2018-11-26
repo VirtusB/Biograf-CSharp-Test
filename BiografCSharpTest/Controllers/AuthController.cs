@@ -20,7 +20,6 @@ namespace BiografCSharpTest.Controllers
         private readonly IAuthRepository _authRepo;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
-
         private readonly IUserRepository _userRepo;
 
         public AuthController (IAuthRepository authRepo, IConfiguration config, IMapper mapper, IUserRepository userRepo) {
@@ -35,7 +34,7 @@ namespace BiografCSharpTest.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
 
             if (await _authRepo.UserExists (userForRegisterDto.Username)) {
-                return BadRequest ("Username already exists");
+                return BadRequest ("Brugernavn eksisterer allerede");
             }
 
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
