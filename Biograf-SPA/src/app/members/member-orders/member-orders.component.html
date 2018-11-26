@@ -1,7 +1,7 @@
-<h4>Du har {{countOfRervations}} ordre</h4>
-<p>{{countOfPaidReservations}} betalte ordrer</p>
-<p>{{countOfReservedReservations}} reserveret ordrer</p>
-<p>{{countOfCanceledReservations}} annulleret ordrer</p>
+<h4>Du har {{countOfRervations}} {{countOfRervations > 1 ? 'ordrer' : 'ordre'}}</h4>
+<p>{{countOfPaidReservations}} {{countOfPaidReservations > 1 ? 'betalte ordrer' : 'betalt ordre'}}</p>
+<p>{{countOfReservedReservations}} {{countOfReservedReservations > 1 ? 'reserveret ordrer' : 'reserveret ordre'}}</p>
+<p>{{countOfCanceledReservations}} {{countOfCanceledReservations > 1 ? 'annulleret ordrer' : 'annulleret ordre'}}</p>
 <br>
 <table class="table">
     <thead>

@@ -16,7 +16,7 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { JwtModule } from '@auth0/angular-jwt';
-import {TimeAgoPipe} from 'time-ago-pipe';
+import {TimeAgoPipe} from './pipes/time-ago-pipe/time-ago.pipe';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { MovieListResolver } from './_resolvers/movie-list.resolver';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';

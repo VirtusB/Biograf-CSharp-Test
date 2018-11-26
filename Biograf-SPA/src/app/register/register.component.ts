@@ -67,4 +67,36 @@ export class RegisterComponent implements OnInit {
     this.cancelRegister.emit(false);
   }
 
+  get username() {
+    return this.registerForm.get('username');
+   }
+
+   get name() {
+    return this.registerForm.get('name');
+   }
+
+   get city() {
+    return this.registerForm.get('city');
+   }
+
+   get country() {
+    return this.registerForm.get('country');
+   }
+
+   get email() {
+    return this.registerForm.get('email');
+   }
+
+   get phoneNumber() {
+    return this.registerForm.get('phoneNumber');
+   }
+
+   get password() {
+    return this.registerForm.get('password');
+   }
+
+   get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
+   }
+
 }
