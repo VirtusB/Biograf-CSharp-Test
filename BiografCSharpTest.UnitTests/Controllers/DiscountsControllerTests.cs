@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BiografCSharpTest.Controllers;
 using BiografCSharpTest.Data;
+using BiografCSharpTest.Dtos;
 using BiografCSharpTest.Models;
 using Moq;
 using Xunit;
@@ -13,7 +14,7 @@ namespace BiografCSharpTest.UnitTests.Controllers
     {
         [Fact]
         public async Task GetDiscount_DiscountExists_ReturnsDiscount() {
-            // Arrange
+            
             var mockDiscountRepo = new Mock<IDiscountRepository>();
             var mockAutoMapper = new Mock<IMapper>();
             var mockUserRepo = new Mock<IUserRepository>();
@@ -22,17 +23,17 @@ namespace BiografCSharpTest.UnitTests.Controllers
                 .ReturnsAsync(GetTestDiscount());
             var controller = new DiscountsController(mockDiscountRepo.Object, mockAutoMapper.Object, mockUserRepo.Object);
 
-            // Act
+            
             var result = await controller.GetDiscount(1);
 
-            // Assert
+            
             var discountResult = Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
             var discount = Assert.IsType<Discount>(discountResult.Value);
         }
 
         [Fact]
         public async Task GetDiscounts_ReturnsListOfDiscounts() {
-            // Arrange
+            
             var mockDiscountRepo = new Mock<IDiscountRepository>();
             var mockAutoMapper = new Mock<IMapper>();
             var mockUserRepo = new Mock<IUserRepository>();
@@ -41,14 +42,16 @@ namespace BiografCSharpTest.UnitTests.Controllers
                 .ReturnsAsync(GetTestDiscountsList());
             var controller = new DiscountsController(mockDiscountRepo.Object, mockAutoMapper.Object, mockUserRepo.Object);
 
-            // Act
+            
             var result = await controller.GetDiscounts();
 
-            // Assert
+            
             var discountsResult = Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
             var discount = Assert.IsType<List<Discount>>(discountsResult.Value);
             Assert.Equal(2, discount.Count);
         }
+
+        
 
         private Discount GetTestDiscount()
         {

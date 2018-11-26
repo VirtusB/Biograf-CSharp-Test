@@ -10,6 +10,7 @@ import range from 'lodash/range';
 import { ReservationService } from '../../_services/reservation.service';
 import { DiscountService } from '../../_services/discount.service';
 import { Discount } from '../../_models/discount';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -45,7 +46,7 @@ export class ReservationCheckoutComponent implements OnInit  {
     this.reservationForm = this.fb.group({
       bookingState: ['2'],
       creditCardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      creditCardExpiry: ['', [Validators.required, Validators.pattern('([0-9]{2}[/]?){2}')]],
+      creditCardExpiry: ['', [Validators.required, Validators.pattern('([0-9]{2}[/]?){2}'), Validators.minLength(5), Validators.maxLength(5)]],
       creditCardCvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
@@ -104,7 +105,6 @@ export class ReservationCheckoutComponent implements OnInit  {
     });
 
     this.getDiscountStep();
-
   }
 
   calculateRow(fullSeat) {

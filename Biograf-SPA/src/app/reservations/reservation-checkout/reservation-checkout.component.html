@@ -76,7 +76,7 @@
                                   <div class="col-6">
                                       <div class="form-group ml-1">
                                           <label for="cc-number">Kredit kort nr.</label>
-                                            <input id="cc-number" formControlName="creditCardNumber" class="form-control" autocomplete="cc-number" placeholder="1234 5678 1234 5678">
+                                            <input id="cc-number" formControlName="creditCardNumber" minlength="15" maxlength="16" class="form-control" autocomplete="cc-number" placeholder="1000 0000 0000 0008">
                                           </div>
                                   </div>
                               </div>
@@ -84,13 +84,13 @@
                                 <div class="col-3">
                                     <div class="form-group ml-1">
                                         <label for="cc-expiry">Udløbsdato</label>
-                                          <input id="cc-expiry" formControlName="creditCardExpiry" class="form-control" autocomplete="cc-exp" placeholder="mm/yy">
+                                          <input id="cc-expiry" formControlName="creditCardExpiry" minlength="5" maxlength="5"  class="form-control" autocomplete="cc-exp" placeholder="mm/yy">
                                         </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-group ml-1">
                                         <label for="cc-cvv">CVC</label>
-                                        <input id="cc-cvv" formControlName="creditCardCvv" class="form-control" autocomplete="cc-csc" placeholder="xxx">    
+                                        <input id="cc-cvv" formControlName="creditCardCvv" class="form-control" minlength="3" maxlength="3" autocomplete="cc-csc" placeholder="xxx">    
                                             </div>
                                 </div>
                               </div>

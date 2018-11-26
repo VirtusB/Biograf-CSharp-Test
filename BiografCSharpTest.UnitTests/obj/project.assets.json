@@ -15145,11 +15145,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
       "projectName": "BiografCSharpTest.UnitTests",
-      "projectPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
+      "projectPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Focuz\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\obj\\",
+      "outputPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15168,8 +15168,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj": {
-              "projectPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj"
+            "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj": {
+              "projectPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj"
             }
           }
         }
