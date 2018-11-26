@@ -6,6 +6,7 @@ import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
 import { AddUserModalComponent } from '../add-user-modal/add-user-modal.component';
+import { ViewUserOrdersModalComponent } from '../view-user-orders-modal/view-user-orders-modal.component';
 
 @Component({
   selector: 'app-admin-users-list',
@@ -16,6 +17,7 @@ export class AdminUsersListComponent implements OnInit {
   @Input() users: User[];
   editUserModalRef: BsModalRef;
   addUserModalRef: BsModalRef;
+  viewUserOrdersModalRef: BsModalRef;
 
 
   constructor(
@@ -63,6 +65,18 @@ export class AdminUsersListComponent implements OnInit {
     this.addUserModalRef.content.onSave.subscribe(addedUser => {
       this.users.push(addedUser);
     });
+  }
+
+  viewUserOrdersModal(id: number) {
+    const userId = id;
+    const initialState = {
+      userId,
+      title: 'Se ordre for bruger'
+    };
+
+    const otherState = Object.assign({initialState}, { class: 'gray modal-lg' });
+    this.viewUserOrdersModalRef = this.modalService.show(ViewUserOrdersModalComponent, otherState);
+    this.viewUserOrdersModalRef.content.closeBtnName = 'Luk';
   }
 
 }

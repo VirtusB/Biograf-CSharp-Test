@@ -60,6 +60,7 @@ import { AdminMoviesListComponent } from './admin/admin-movies-list/admin-movies
 import { EditMovieModalComponent } from './admin/edit-movie-modal/edit-movie-modal.component';
 import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.component';
 import { MemberSettingsComponent } from './members/member-settings/member-settings.component';
+import { ViewUserOrdersModalComponent } from './admin/view-user-orders-modal/view-user-orders-modal.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -101,7 +102,8 @@ export function tokenGetter() {
       AdminMoviesListComponent,
       EditMovieModalComponent,
       AddMovieModalComponent,
-      MemberSettingsComponent
+      MemberSettingsComponent,
+      ViewUserOrdersModalComponent
    ],
    entryComponents: [
     EditUserModalComponent,
@@ -111,7 +113,8 @@ export function tokenGetter() {
     AddShowModalComponent,
     EditShowModalComponent,
     EditMovieModalComponent,
-    AddMovieModalComponent
+    AddMovieModalComponent,
+    ViewUserOrdersModalComponent
 ],
    imports: [
       BrowserModule,

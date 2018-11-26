@@ -24,9 +24,10 @@
                       <td>{{user.phoneNumber}}</td>
                       <td>{{user.email}}</td>
                       <td>{{user.role.name}}</td>
-                      <td style="width: 12%;">
+                      <td style="width: 16%;">
                         <button (click)="editUserModal(user.id)" class="btn btn-primary btn-sm mr-1" type="button"><i class="fa fa-pencil"></i></button>
                         <button (click)="deleteUser(user.id)" class="btn btn-danger btn-sm" type="button"><i class="fa fa-times"></i></button>
+                        <button (click)="viewUserOrdersModal(user.id)" class="btn btn-info btn-sm ml-1" type="button"><i class="fa fa-tags"></i></button>
                       </td>
                     </tr>
                     <tr>

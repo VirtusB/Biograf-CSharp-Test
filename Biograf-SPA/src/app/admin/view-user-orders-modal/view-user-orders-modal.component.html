@@ -1,0 +1,53 @@
+
+
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+    <h4>Brugeren har {{countOfRervations}} {{countOfRervations > 1 ? 'ordrer' : 'ordre'}}</h4>
+    <p>{{countOfPaidReservations}} {{countOfPaidReservations > 1 ? 'betalte ordrer' : 'betalt ordre'}}</p>
+    <p>{{countOfReservedReservations}} {{countOfReservedReservations > 1 ? 'reserveret ordrer' : 'reserveret ordre'}}</p>
+    <p>{{countOfCanceledReservations}} {{countOfCanceledReservations > 1 ? 'annulleret ordrer' : 'annulleret ordre'}}</p>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dato</th>
+            <th scope="col">Film</th>
+            <th scope="col">Sæde</th>
+            <th scope="col">Række</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reservation of reservations">
+            <th scope="row">{{reservation.id}}</th>
+            <td>{{reservation.created | date}}</td>
+            <td><a style="text-decoration: none" [routerLink]="['/movies/', reservation.show.movie.id]">{{reservation.show.movie.name}}</a></td>
+            <td>{{reservation.seat}}</td>
+            <td>{{reservation.row}}</td>
+            <td>{{reservation.bookingState === 2 ? 'Betalt' : reservation.bookingState === 1 ? 'Reserveret' : reservation.bookingState === 0 ? 'Annulleret' : 'Indløst'}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+  
+  </div>
+  <div class="modal-footer">
+    <button (click)="bsModalRef.hide()" class="btn btn-default">{{closeBtnName}}</button>
+  </div>
+
+
+
+
+
+
+
+
+

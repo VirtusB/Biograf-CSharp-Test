@@ -64,7 +64,7 @@ namespace BiografCSharpTest
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>(); // er det sådan man skal tilføje services? er dette overhovedet en service?? <-- er det domain logic? hvordan og hvor skal det laves??
 
             services.AddScoped<LogUserActivity>();
 
