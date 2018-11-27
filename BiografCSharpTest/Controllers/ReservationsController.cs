@@ -121,44 +121,6 @@ namespace BiografCSharpTest.Controllers
             return BadRequest("Kunne ikke sætte statussen");
         }
 
-        // før, opret en reservation af gangen
-        // [HttpPost("{id}")]
-        // public async Task<IActionResult> CreateReservation(int id, ReservationForCreationDto reservationForCreationDto) {
-        //     var user = await _userRepo.GetUser(id);
-            
-            
-        //     if (user.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
-        //         return Unauthorized();
-        //     }
-
-        
-
-        //     // TODO: skal laves helt om...
-        //     var movie = await _movieRepo.GetMovie(reservationForCreationDto.Show.Movie.Id);
-        //     reservationForCreationDto.Show.Movie = movie;
-        //     var show = await _showRepo.GetShow(reservationForCreationDto.Show.Id);
-        //     reservationForCreationDto.Show = show;
-
-
-        //     var reservation = _mapper.Map<Reservation>(reservationForCreationDto);
-
-         
-
-
-        //     _reservationRepo.Add(reservation); 
-
-
-        //     if (await _reservationRepo.SaveAll()) {
-                
-                
-
-        //         var reservationToReturn = _mapper.Map<ReservationForReturnDto>(reservation);
-        //         return CreatedAtRoute("GetReservation", new {id = reservation.Id}, reservationToReturn);
-        //     }
-
-        //     throw new Exception("Kunne ikke oprette reservationen");
-        // }
-
         [HttpPost("{id}")]
         public async Task<IActionResult> CreateReservations(int id, [FromBody] List<ReservationForCreationDto> reservationForCreationDto) {
             var user = await _userRepo.GetUser(id);

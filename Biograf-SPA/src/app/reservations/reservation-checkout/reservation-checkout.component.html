@@ -47,7 +47,7 @@
                   
                     <div *ngFor="let i of seatRange; let i = index">
                         <input [disabled]="selectedSeats.length === 10 && !seatInSelectedSeats(i)" (click)="toggleSeat(i)" id="seat-{{i}}" class="seat-select" type="checkbox" value="{{i}}" />
-                        <label for="seat-{{i}}" class="seat"></label>
+                        <label (mouseover)="dragToggle($event)" for="seat-{{i}}" class="seat"></label>
                         
                         <div *ngIf="i % 10 === 0">
                           <p class="line-breaker"></p>
@@ -58,14 +58,14 @@
 
                     
 
-                    <div class="form-group ml-1">
+                    <div data-toggle="buttons" class="form-group ml-1">
                         <label class="control-label" style="margin-right:10px">Køb eller reserver: </label>
                         <br>
                         <label class="radio-inline">
-                          <input class="mr-3" type="radio" value="2" formControlName="bookingState">Køb
+                          <input class="form-control" class="mr-3 special-radio" type="radio" value="2" formControlName="bookingState"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span class="radio-text"> Køb</span>
                         </label>
                         <label class="radio-inline ml-3">
-                          <input class="mr-3" type="radio" value="1" formControlName="bookingState">Reserver
+                          <input class="form-control" class="mr-3 special-radio" type="radio" value="1" formControlName="bookingState"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span class="radio-text"> Reserver</span>
                         </label>
                       </div>
 

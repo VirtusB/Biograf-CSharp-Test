@@ -45,14 +45,13 @@ export class ReservationService {
       );
   }
 
-  // før, send en reservation af gangen
-  // createReservation(id: number, reservation: Reservation) {
-  //   return this.http.post(this.baseUrl + 'reservations/' + id, reservation);
-  // }
+
 
   createReservations(id: number, reservations: Reservation[]) {
     return this.http.post(this.baseUrl + 'reservations/' + id, reservations);
   }
+
+
 
   getPaidReservationsCount(id: number) {
     let count: number;

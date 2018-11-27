@@ -11,6 +11,7 @@ import { ReservationService } from '../../_services/reservation.service';
 import { DiscountService } from '../../_services/discount.service';
 import { Discount } from '../../_models/discount';
 import { DatePipe } from '@angular/common';
+import {HostListener} from '@angular/core';
 
 
 
@@ -20,6 +21,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./reservation-checkout.component.css']
 })
 export class ReservationCheckoutComponent implements OnInit  {
+  @HostListener('document:mousedown', ['$event'])
+  @HostListener('document:mouseup', ['$event'])
   show: Show;
   finalOrderPrice = 0;
   reservationForm: FormGroup;
@@ -28,6 +31,7 @@ export class ReservationCheckoutComponent implements OnInit  {
   phoneNumber: number;
   discountInformation: any;
   amountSaved = 0;
+  mouseIsDown = false;
 
 
 
@@ -41,6 +45,14 @@ export class ReservationCheckoutComponent implements OnInit  {
     private fb: FormBuilder,
     private router: Router
   ) { }
+
+  onMouseDown(ev: KeyboardEvent) {
+    this.mouseIsDown = true;
+  }
+
+  onMouseUp(ev: KeyboardEvent) {
+    this.mouseIsDown = false;
+  }
 
   createReservationForm() {
     this.reservationForm = this.fb.group({
@@ -79,6 +91,14 @@ export class ReservationCheckoutComponent implements OnInit  {
       this.selectedSeats.push(seatNumber);
     }
     this.updateFinalOrderPrice();
+  }
+
+  dragToggle($event) {
+    const label = $event.srcElement;
+    const seatNumber = +label.htmlFor.split('-')[1];
+    const isSelected = this.seatInSelectedSeats(seatNumber);
+
+    console.log(this.mouseIsDown);
   }
 
 
@@ -143,42 +163,6 @@ export class ReservationCheckoutComponent implements OnInit  {
     }
   }
 
-  // før, send en reservation af gangen
-  // makeReservation() {
-  //   if (this.reservationForm.valid) {
-  //     this.selectedSeats.forEach(seat => {
-  //       let res = {
-  //         user: {
-  //           id: this.authService.currentUser.id
-  //         },
-  //         show: {
-  //           id: this.show.id,
-  //           movie: {
-  //             id: this.show.movie.id
-  //           }
-  //         },
-  //         bookingState: +this.reservationForm.get('bookingState').value,
-  //         row: this.calculateRow(seat),
-  //         seat: this.calculateSeatNumber(seat)
-  //       } as Reservation;
-
-  //       let reservation = {} as Reservation;
-  //       reservation = Object.assign({}, res);
-
-
-  //       this.reservationService.createReservation(this.authService.currentUser.id, reservation).subscribe(() => {
-  //         this.alertify.success('Billetten er nu bestilt');
-  //       }, error => {
-  //         this.alertify.error(error);
-  //       }, () => {
-  //         this.router.navigate(['/member/edit']);
-  //       });
-
-
-  //     });
-
-  //   }
-  // }
 
   makeReservation() {
     let allRes: Reservation[] = [];
