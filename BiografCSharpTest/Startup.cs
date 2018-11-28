@@ -122,6 +122,7 @@ namespace BiografCSharpTest
            seeder.SeedUsers();
            seeder.SeedDiscounts();
            seeder.SeedMovies();
+           seeder.SeedFavorites();
            seeder.SeedShows();
            seeder.SeedReservations();
             // seeder.CleanDatabase();

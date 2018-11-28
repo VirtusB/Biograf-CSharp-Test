@@ -16,6 +16,7 @@ import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-co
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { MemberMovieFavoritesComponent } from './members/member-movie-favorites/member-movie-favorites.component';
 import { MemberMovieFavoritesResolver } from './_resolvers/member-movie-favorites.resolver';
+import { PopularMoviesComponent } from './movies/popular-movies/popular-movies.component';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ export const appRoutes: Routes = [
         children: [
             {path: 'movies', component: MovieListComponent, resolve: {movies: MovieListResolver}},
             {path: 'movies/:id', component: MovieDetailComponent, resolve: {movie: MovieDetailResolver}},
-            {path: 'shows', component: ShowListComponent, resolve: {shows: ShowListResolver}}
+            {path: 'shows', component: ShowListComponent, resolve: {shows: ShowListResolver}},
+            {path: 'popular', component: PopularMoviesComponent}
         ]
     },
     {

@@ -16,6 +16,25 @@ namespace BiografCSharpTest.Data.Seeding
             this._context = context;
         }
 
+        public void SeedFavorites() {
+            if (!_context.Favorites.AsNoTracking().Any()) {
+                var users = _context.Users.ToList();
+                var movies = _context.Movies.ToArray();
+
+                users.ForEach(user => {
+                    for (int i = 0; i < 5; i++) {
+                        int movieIndex = RandomNumber(0, 50);
+                        var favorite = new Favorite {
+                            LikeeId = movies[movieIndex].Id,
+                            LikerId = user.Id
+                        };
+                        _context.Favorites.Add(favorite);
+                    }
+                });
+                _context.SaveChanges();
+            }
+        }
+
         public void SeedDiscounts() {
             if (!_context.Discounts.Any()) {
                 var discounts = new List<Discount>();
@@ -60,6 +79,7 @@ namespace BiografCSharpTest.Data.Seeding
         public void CleanDatabase() {
             var discounts = _context.Discounts.ToList();
             var reservations = _context.Reservations.ToList();
+            var favorites = _context.Favorites.ToList();
             var shows = _context.Shows.ToList();
             var movies = _context.Movies.ToList();
             var users = _context.Users.ToList();
@@ -70,6 +90,9 @@ namespace BiografCSharpTest.Data.Seeding
             });
             reservations.ForEach(reservation => {
                 _context.Reservations.Remove(reservation);
+            });
+            favorites.ForEach(favorite => {
+                _context.Favorites.Remove(favorite);
             });
             shows.ForEach(show => {
                 _context.Shows.Remove(show);
@@ -108,7 +131,7 @@ namespace BiografCSharpTest.Data.Seeding
                             Created = DateTime.Now,
                             Row = RandomNumber(1, 6),
                             Seat = RandomNumber(1, 21),
-                            BookingState = RandomNumber(0, 3),
+                            BookingState = RandomNumber(0, 4),
                             User = user,
                             Show = shows[showIndex]
                         };

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -9,6 +10,7 @@ using BiografCSharpTest.Helpers;
 using BiografCSharpTest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BiografCSharpTest.Controllers
 {
@@ -20,13 +22,44 @@ namespace BiografCSharpTest.Controllers
     {
         private readonly IUserRepository _userRepo;
         private readonly IMovieRepository _movieRepo;
+        private readonly IFavoriteRepository _favoriteRepo;
         private readonly IMapper _mapper;
+        private readonly BioContext _context;
 
-        public MoviesController(IUserRepository userRepo, IMapper mapper, IMovieRepository movieRepo)
+        public MoviesController(IUserRepository userRepo, IMapper mapper, IMovieRepository movieRepo, IFavoriteRepository favoriteRepo, BioContext context)
         {
             this._mapper = mapper;
             this._userRepo = userRepo;
             this._movieRepo = movieRepo;
+            this._favoriteRepo = favoriteRepo;
+            this._context = context;
+        }
+
+        [HttpGet("popular")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetFiveMostFavorited() {
+            List<MovieForPopularListDto> moviesForReturn = new List<MovieForPopularListDto>();
+
+            var mostFavorited = await _context.Favorites
+                .GroupBy(f => f.LikeeId)
+                .OrderByDescending(gp => gp.Count())
+                .Take(5)
+                .Select(f => f.Key)
+                .ToListAsync();
+
+
+            for (int i = 0; i < mostFavorited.Count; i++)
+            {
+                var movie = await _movieRepo.GetMovie(mostFavorited[i]);
+                var count = await _favoriteRepo.GetCountOfUsersWhoFavorited(mostFavorited[i]);
+
+                var movieForReturn = _mapper.Map<MovieForPopularListDto>(movie);
+                movieForReturn.CountLikedBy = count;
+
+                moviesForReturn.Add(movieForReturn);
+            }
+
+            return Ok(moviesForReturn);
         }
 
         [HttpGet("genres")]

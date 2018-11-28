@@ -10,6 +10,7 @@ export interface Movie {
     poster: string;
     description: string;
     stars: number;
+    countLikedBy?: number;
 }
 
 

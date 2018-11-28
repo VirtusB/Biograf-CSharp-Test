@@ -65,6 +65,7 @@ import { MemberMovieFavoritesComponent } from './members/member-movie-favorites/
 import { MemberMovieFavoritesResolver } from './_resolvers/member-movie-favorites.resolver';
 import { HubService } from './_services/hub.service';
 import { StaffChatRoomComponent } from './admin/staff-chat-room/staff-chat-room.component';
+import { PopularMoviesComponent } from './movies/popular-movies/popular-movies.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -109,7 +110,8 @@ export function tokenGetter() {
       MemberSettingsComponent,
       ViewUserOrdersModalComponent,
       MemberMovieFavoritesComponent,
-      StaffChatRoomComponent
+      StaffChatRoomComponent,
+      PopularMoviesComponent
    ],
    entryComponents: [
     EditUserModalComponent,
