@@ -22,6 +22,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using BiografCSharpTest.Services;
+using BiografCSharpTest.Hubs;
 
 namespace BiografCSharpTest
 {
@@ -39,7 +40,7 @@ namespace BiografCSharpTest
         {
             
 
-
+            services.AddSignalR();
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(opt => {
@@ -107,10 +108,15 @@ namespace BiografCSharpTest
                     });
                 });
             }
+
             
             app.UseCors(x => x.WithOrigins("http://localhost:4200", "http://127.0.0.1").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); // tillad at en side/service/api tilgår vores API fra port 4200. Angular bruger som default port 4200, så vi kunne f.eks. lave frontend i Angular og bruge API'en på denne måde
            // app.UseHttpsRedirection();
            app.UseAuthentication();
+
+           app.UseSignalR(routes => {
+                routes.MapHub<StaffChatHub>("/staffchat");
+            });
            
            seeder.SeedRoles();
            seeder.SeedUsers();

@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="messages?.length === 0">
+      <p>Ingen beskeder endnu</p>
+    </div>
+
+    <ul class="chat">
+      <li *ngFor="let message of messages">
+        <div *ngIf="message.name === authService.currentUser.username">
+          <span class="chat-img float-left">
+            <img class="rounded-circle mr-3" src="{{'../../assets/user.png'}}">
+          </span>
+          <div class="chat-body">
+            <div class="header">
+              <strong class="primary-font">{{message.name}}</strong>
+              <small class="text-muted float-right">
+                
+              </small>
+            </div>
+            <p>{{message.body}}</p>
+          </div>
+        </div>
+
+        <div *ngIf="message.name !== authService.currentUser.username">
+          <span class="chat-img float-right ml-3">
+            <img class="rounded-circle" src="{{'../../assets/user.png'}}">
+          </span>
+          <div class="chat-body">
+            <div class="header">
+                <small class="text-muted">
+                    
+                  </small>
+              <strong class="primary-font float-right">{{message.name}}</strong>
+            </div>
+            <p>{{message.body}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+  <div class="card-footer">
+    <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage()">
+      <div class="input-group">
+        <input [(ngModel)]="messageToSend.body"
+        name="body"
+        required
+        class="form-control input-sm" placeholder="send en besked" type="text">
+        <div class="input-group-append">
+          <button [disabled]="!messageForm.valid" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

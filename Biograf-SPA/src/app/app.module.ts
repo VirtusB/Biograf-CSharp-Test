@@ -63,6 +63,8 @@ import { MemberSettingsComponent } from './members/member-settings/member-settin
 import { ViewUserOrdersModalComponent } from './admin/view-user-orders-modal/view-user-orders-modal.component';
 import { MemberMovieFavoritesComponent } from './members/member-movie-favorites/member-movie-favorites.component';
 import { MemberMovieFavoritesResolver } from './_resolvers/member-movie-favorites.resolver';
+import { HubService } from './_services/hub.service';
+import { StaffChatRoomComponent } from './admin/staff-chat-room/staff-chat-room.component';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -106,7 +108,8 @@ export function tokenGetter() {
       AddMovieModalComponent,
       MemberSettingsComponent,
       ViewUserOrdersModalComponent,
-      MemberMovieFavoritesComponent
+      MemberMovieFavoritesComponent,
+      StaffChatRoomComponent
    ],
    entryComponents: [
     EditUserModalComponent,
@@ -157,6 +160,7 @@ export function tokenGetter() {
     DiscountService,
     ShowListResolver,
     MemberMovieFavoritesResolver,
+    HubService,
     UserListResolver,
     { provide: LOCALE_ID, useValue: 'da' }
     

@@ -5834,6 +5834,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "5.0.1",
+          "Microsoft.AspNetCore.SignalR": "1.0.4",
           "Microsoft.EntityFrameworkCore": "2.1.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.4",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.4",
@@ -15145,11 +15146,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
+      "projectUniqueName": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
       "projectName": "BiografCSharpTest.UnitTests",
-      "projectPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
+      "projectPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\BiografCSharpTest.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Focuz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\obj\\",
+      "outputPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15168,8 +15169,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj": {
-              "projectPath": "C:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj"
+            "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj": {
+              "projectPath": "c:\\Users\\Focuz\\Documents\\GitHub\\Biograf-CSharp-Test\\BiografCSharpTest\\BiografCSharpTest.csproj"
             }
           }
         }
