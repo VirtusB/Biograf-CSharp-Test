@@ -3,7 +3,8 @@
     <h1>Velkommen til Bio B biograf</h1>
     <p class="lead">Vi har masser af film. Kom og se dem alle.</p>
     <div class="text-center">
-      <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Opret konto</button>
+      <button *ngIf="!authService.loggedIn()" (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Opret konto</button>
+      <button [routerLink]="['/favorites']" *ngIf="authService.loggedIn()" class="btn btn-dark btn-lg mr-2">Min liste <i style="color: #ff3e3a;" class="fa fa-heart"></i></button>
       <button class="btn btn-info btn-lg">Læs mere</button>
     </div>
   </div>
