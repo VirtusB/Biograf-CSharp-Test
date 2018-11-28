@@ -33,7 +33,7 @@
                                   <div class="form-group">
                                       <label for="hallNumber">Sal </label>
                                       <select class="form-control" formControlName="hallNumber"  id="hallNumber">
-                                          <option value="hall" *ngFor="let hall of hallNumbers">{{hall}}</option>
+                                          <option value="{{hall}}" *ngFor="let hall of hallNumbers">{{hall}}</option>
                                         </select>
                                     </div>
 

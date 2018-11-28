@@ -187,12 +187,12 @@ namespace BiografCSharpTest.Migrations
                     b.HasOne("BiografCSharpTest.Models.Movie", "Likee")
                         .WithMany("Likers")
                         .HasForeignKey("LikeeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BiografCSharpTest.Models.User", "Liker")
                         .WithMany("Likees")
                         .HasForeignKey("LikerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BiografCSharpTest.Models.Reservation", b =>

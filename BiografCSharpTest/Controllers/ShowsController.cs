@@ -43,8 +43,6 @@ namespace BiografCSharpTest.Controllers
                 "Admin" 
             });
 
-            
-
             if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
                 return Unauthorized();
             }
@@ -72,7 +70,13 @@ namespace BiografCSharpTest.Controllers
 
             var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
-            if (userMakingRequest.Role.Name != "Admin") {
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
                 return Unauthorized();
             }
 
@@ -100,7 +104,13 @@ namespace BiografCSharpTest.Controllers
 
             var userMakingRequest = await _userRepo.GetUser(userMakingRequestId);
 
-            if (userMakingRequest.Role.Name != "Admin") {
+            List<string> allowedRoles = new List<string>(new string[] 
+            { 
+                "Personale",
+                "Admin" 
+            });
+
+            if (!allowedRoles.Contains(userMakingRequest.Role.Name)) {
                 return Unauthorized();
             }
 

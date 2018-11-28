@@ -44,13 +44,13 @@ namespace BiografCSharpTest.Data
                 .HasOne(u => u.Likee)
                 .WithMany(u => u.Likers)
                 .HasForeignKey(u => u.LikeeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Favorite>()
                 .HasOne(u => u.Liker)
                 .WithMany(u => u.Likees)
                 .HasForeignKey(u => u.LikerId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             #endregion
         }
     }
