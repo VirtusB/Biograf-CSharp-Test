@@ -28,5 +28,9 @@ namespace BiografCSharpTest.Data
             return await _context.Favorites
                 .FirstOrDefaultAsync(u => u.LikerId == userId && u.LikeeId == movieId);
         }
+
+        public async Task<int> GetCountOfUsersWhoFavorited(int movieId) {
+            return await _context.Favorites.CountAsync(f => f.LikeeId == movieId);
+        }
     }
 }

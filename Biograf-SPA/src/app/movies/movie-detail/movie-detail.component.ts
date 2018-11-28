@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   isFavorite = false;
+  countUsersWithFavorite: number;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +29,7 @@ export class MovieDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.movie = data['movie'].body;
       this.isFavoriteStatus(this.movie.id);
+      this.getCountOfUsersWhoFavorited(this.movie.id);
     });
   }
 
@@ -39,10 +41,17 @@ export class MovieDetailComponent implements OnInit {
     });
   }
 
+  getCountOfUsersWhoFavorited(movieId: number) {
+    this.movieService.getCountOfUsersWhoFavorited(movieId).subscribe(data => {
+      this.countUsersWithFavorite = data.body;
+    });
+  }
+
   addFavorite(id: number) {
     this.movieService.addFavorite(this.authService.decodedToken.nameid, id).subscribe(data => {
       this.alertify.success('Du har tilføjet ' + this.movie.name);
       this.isFavorite = true;
+      this.getCountOfUsersWhoFavorited(this.movie.id);
     }, error => {
       this.alertify.error(error);
     });
@@ -52,6 +61,7 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.removeFavorite(this.authService.decodedToken.nameid, id).subscribe(data => {
       this.alertify.error(this.movie.name + ' blev fjernet');
       this.isFavorite = false;
+      this.getCountOfUsersWhoFavorited(this.movie.id);
     }, error => {
       this.alertify.error(error);
     });

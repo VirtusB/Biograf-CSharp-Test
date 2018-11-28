@@ -30,6 +30,10 @@ export class MovieService {
       return this.http.delete<Favorite>(this.baseUrl + 'favorites/' + id + '/' + movieId, { observe: 'response'});
     }
 
+    getCountOfUsersWhoFavorited(movieId: number) {
+      return this.http.get<number>(this.baseUrl + 'favorites/usercount/' + movieId, { observe: 'response'});
+    }
+
     addFavorite(id: number, movieId: number) {
       return this.http.post(this.baseUrl + 'favorites/' + id + '/' + movieId, {});
     }

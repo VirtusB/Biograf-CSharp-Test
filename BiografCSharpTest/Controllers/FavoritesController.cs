@@ -25,6 +25,13 @@ namespace BiografCSharpTest.Controllers
             this._movieRepo = movieRepo;
         }
 
+        [HttpGet("usercount/{movieId}")]
+        public async Task<IActionResult> GetCountOfUsersWhoFavorited(int movieId) {
+            var count = await _favoriteRepo.GetCountOfUsersWhoFavorited(movieId);
+
+            return Ok(count);
+        }
+
         [HttpGet("{id}/{movieId}")]
         public async Task<IActionResult> GetFavoriteMovie(int id, int movieId) {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) {
