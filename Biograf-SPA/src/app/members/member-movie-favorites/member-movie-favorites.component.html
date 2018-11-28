@@ -15,7 +15,7 @@
       <div class="col-sm-3">
         <h4>{{movie.name}}</h4>
         <a style="text-decoration: none" [routerLink]="['/movies/', movie.id]" class="card-link">Detaljer</a>
-        <a href="javascript:void(0);" class="card-link">Vis program</a>
+        <a [routerLink]="['/shows']" [queryParams]="{movieId: movie.id}" class="card-link">Vis program</a>
       </div>
       <div class="col-sm-3">
           &nbsp;

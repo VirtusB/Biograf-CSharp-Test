@@ -34,6 +34,15 @@ export class ShowListComponent implements OnInit {
     this.showParams.stars = 0;
     this.showParams.hallNumber = 0;
 
+    this.route.queryParams.subscribe(params => {
+      const movieId = params['movieId'];
+      if (movieId) {
+        this.showParams.movieId = movieId;
+        this.loadShows();
+      } else {
+        this.showParams.movieId = 0;
+      }
+    });
   }
 
 
@@ -47,6 +56,7 @@ export class ShowListComponent implements OnInit {
     this.showParams.maxTicketPrice = 500;
     this.showParams.stars = 0;
     this.showParams.hallNumber = 0;
+    this.showParams.movieId = 0;
     this.loadShows();
   }
 

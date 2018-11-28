@@ -43,7 +43,8 @@
                   
                   <h4>{{show.movie.name}}</h4>
                   
-                  <div tooltip="Hold venstre-klik nede for at tilføje, hold højre-klik nede for at fjerne" placement="left" id="all-seats">
+                  
+                  <div id="all-seats">
                     <div style="user-select: none;" *ngFor="let i of seatRange; let i = index">
                         <input [disabled]="selectedSeats.length === 10 && !seatInSelectedSeats(i)" (click)="toggleSeat(i)" id="seat-{{i}}" class="seat-select" type="checkbox" value="{{i}}" />
                         <label (mousemove)="dragToggle($event)" for="seat-{{i}}" class="seat"></label>
