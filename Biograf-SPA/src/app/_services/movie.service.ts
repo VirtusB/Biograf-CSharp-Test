@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Movie } from '../_models/movie';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
+import { Favorite } from '../_models/favorite';
 
 @Injectable()
 export class MovieService {
@@ -19,6 +20,18 @@ export class MovieService {
 
     getMovie(id: number) {
       return this.http.get<Movie>(this.baseUrl + 'movies/' + id, { observe: 'response'});
+    }
+
+    getFavorite(id: number, movieId: number) {
+      return this.http.get<Favorite>(this.baseUrl + 'favorites/' + id + '/' + movieId, { observe: 'response'});
+    }
+
+    removeFavorite(id: number, movieId: number) {
+      return this.http.delete<Favorite>(this.baseUrl + 'favorites/' + id + '/' + movieId, { observe: 'response'});
+    }
+
+    addFavorite(id: number, movieId: number) {
+      return this.http.post(this.baseUrl + 'favorites/' + id + '/' + movieId, {});
     }
 
     createMovie(movie: Movie) {
@@ -42,8 +55,10 @@ export class MovieService {
         );
     }
 
+    
 
-    getMovies(page?, itemsPerPage?, movieParams?): Observable<PaginatedResult<Movie[]>> {
+
+    getMovies(page?, itemsPerPage?, movieParams?, likesParam?): Observable<PaginatedResult<Movie[]>> {
         const paginatedResult: PaginatedResult<Movie[]> = new PaginatedResult<Movie[]>();
 
         let params = new HttpParams();
@@ -62,6 +77,10 @@ export class MovieService {
           if (movieParams.pageSize) {
             params = params.set('pageSize', movieParams.pageSize);
           }
+        }
+
+        if (likesParam === 'Likees') {
+          params = params.append('likees', 'true');
         }
 
 

@@ -13,16 +13,12 @@ import { Discount } from '../../_models/discount';
 import { DatePipe } from '@angular/common';
 import {HostListener} from '@angular/core';
 
-
-
 @Component({
   selector: 'app-reservation-checkout',
-  templateUrl: './reservation-checkout.component.html',
+ templateUrl: './reservation-checkout.component.html',
   styleUrls: ['./reservation-checkout.component.css']
 })
 export class ReservationCheckoutComponent implements OnInit  {
-  @HostListener('document:mousedown', ['$event'])
-  @HostListener('document:mouseup', ['$event'])
   show: Show;
   finalOrderPrice = 0;
   reservationForm: FormGroup;
@@ -31,9 +27,48 @@ export class ReservationCheckoutComponent implements OnInit  {
   phoneNumber: number;
   discountInformation: any;
   amountSaved = 0;
-  mouseIsDown = false;
 
 
+  leftMouseDown: boolean;
+  rightMouseDown: boolean;
+
+  @HostListener('document:mousedown', ['$event'])
+  onMouseDown(ev: KeyboardEvent) {
+    this.setLeftButtonState(ev);
+    this.setRightButtonState(ev);
+  }
+
+  @HostListener('document:mouseclick', ['$event'])
+  onMouseClick(ev: KeyboardEvent) {
+    this.setLeftButtonState(ev);
+    this.setRightButtonState(ev);
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  onMouseUp(ev: KeyboardEvent) {
+    this.setLeftButtonState(ev);
+    this.setRightButtonState(ev);
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(ev: KeyboardEvent) {
+    this.setLeftButtonState(ev);
+    this.setRightButtonState(ev);
+  }
+
+
+  @HostListener('document:contextmenu', ['$event'])
+  onContextMenu(ev: KeyboardEvent) {
+    ev.preventDefault();
+  }
+
+  setLeftButtonState(e) {
+    this.leftMouseDown = (e.buttons & 1) === 1;
+  }
+
+  setRightButtonState(e) {
+    this.rightMouseDown = (e.buttons & 2) === 2;
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -44,15 +79,8 @@ export class ReservationCheckoutComponent implements OnInit  {
     private discountService: DiscountService,
     private fb: FormBuilder,
     private router: Router
-  ) { }
+  ) {  }
 
-  onMouseDown(ev: KeyboardEvent) {
-    this.mouseIsDown = true;
-  }
-
-  onMouseUp(ev: KeyboardEvent) {
-    this.mouseIsDown = false;
-  }
 
   createReservationForm() {
     this.reservationForm = this.fb.group({
@@ -62,7 +90,6 @@ export class ReservationCheckoutComponent implements OnInit  {
       creditCardCvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
   }
-
 
   updateFinalOrderPrice() {
     const discountAmount = this.discountInformation.discountStep.amount / 100;
@@ -83,22 +110,34 @@ export class ReservationCheckoutComponent implements OnInit  {
     });
   }
 
-  toggleSeat(seatNumber) {
-    if (this.seatInSelectedSeats(seatNumber)) {
+  toggleSeat(seatNumber, mode?) {
+    if (this.seatInSelectedSeats(seatNumber) && mode !== 'add_mode') {
       const index = this.selectedSeats.indexOf(seatNumber);
       this.selectedSeats.splice(index, 1);
-    } else {
+    } else if (mode !== 'delete_mode' && this.selectedSeats.length !== 10 && !this.seatInSelectedSeats(seatNumber)) {
       this.selectedSeats.push(seatNumber);
     }
     this.updateFinalOrderPrice();
   }
 
   dragToggle($event) {
+    if (!this.leftMouseDown && !this.rightMouseDown) {
+      return;
+    }
     const label = $event.srcElement;
     const seatNumber = +label.htmlFor.split('-')[1];
     const isSelected = this.seatInSelectedSeats(seatNumber);
+    const mode = this.rightMouseDown ? 'delete_mode' : 'add_mode';
 
-    console.log(this.mouseIsDown);
+    if (mode === 'add_mode') {
+      if (!isSelected) {
+        label.click();
+      }
+    } else if (mode === 'delete_mode') {
+      if (isSelected) {
+        label.click();
+      }
+    }
   }
 
 
@@ -163,7 +202,6 @@ export class ReservationCheckoutComponent implements OnInit  {
     }
   }
 
-
   makeReservation() {
     let allRes: Reservation[] = [];
 
@@ -190,7 +228,6 @@ export class ReservationCheckoutComponent implements OnInit  {
         allRes.push(reservation);
       });
 
-
       this.reservationService.createReservations(this.authService.currentUser.id, allRes).subscribe(() => {
         if (allRes.length > 1) {
           this.alertify.success('Billeterne er nu bestilt');
@@ -207,3 +244,4 @@ export class ReservationCheckoutComponent implements OnInit  {
   }
 
 }
+

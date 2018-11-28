@@ -14,8 +14,8 @@
             <li [innerHTML]="movie.stars | formatStars" class="list-group-item"></li>
           </ul>
           <div class="card-body">
-            <a href="" class="card-link">Vis program</a>
-            <a href="" class="card-link">Se trailer</a>
+              <a style="text-decoration: none" [routerLink]="['/movies/', movie.id]" class="card-link">Læs mere</a>
+              <a href="javascript:void(0);" class="card-link">Vis program</a>
           </div>
         </div>
   </div>

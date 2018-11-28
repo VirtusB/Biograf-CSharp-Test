@@ -34,6 +34,19 @@ namespace BiografCSharpTest.Migrations
                     b.ToTable("Discounts");
                 });
 
+            modelBuilder.Entity("BiografCSharpTest.Models.Favorite", b =>
+                {
+                    b.Property<int>("LikerId");
+
+                    b.Property<int>("LikeeId");
+
+                    b.HasKey("LikerId", "LikeeId");
+
+                    b.HasIndex("LikeeId");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("BiografCSharpTest.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
@@ -167,6 +180,19 @@ namespace BiografCSharpTest.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BiografCSharpTest.Models.Favorite", b =>
+                {
+                    b.HasOne("BiografCSharpTest.Models.Movie", "Likee")
+                        .WithMany("Likers")
+                        .HasForeignKey("LikeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("BiografCSharpTest.Models.User", "Liker")
+                        .WithMany("Likees")
+                        .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("BiografCSharpTest.Models.Reservation", b =>

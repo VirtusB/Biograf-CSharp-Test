@@ -23,6 +23,8 @@
       
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Vis profil</a>
+          <div class="dropdown-divider"></div>
+          <a style="margin-left: -3px;" class="dropdown-item" [routerLink]="['/favorites']"><i class="fa fa-heart"></i> Favoritter</a>
 
           <div *ngIf="authService.currentUser.role.name === 'Personale' || authService.currentUser.role.name === 'Admin'">
               <div class="dropdown-divider"></div>

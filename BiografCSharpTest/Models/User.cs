@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,5 +21,6 @@ namespace BiografCSharpTest.Models
         public string Email { get; set; }
         public float LifetimeSavedAmount { get; set; }
         public Role Role { get; set; }
+        public ICollection<Favorite> Likees { get; set; }
     }
 }

@@ -83,6 +83,8 @@ namespace BiografCSharpTest.Controllers
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetMovies ([FromQuery]MovieParams movieParams) {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            movieParams.UserId = currentUserId;
             
             var movies = await _movieRepo.GetMovies(movieParams);
             var moviesToReturn = _mapper.Map<IEnumerable<MovieForListDto>>(movies);

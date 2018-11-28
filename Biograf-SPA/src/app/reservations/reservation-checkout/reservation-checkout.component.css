@@ -104,3 +104,7 @@ label.btn span {
 .radio-text {
     vertical-align: inherit;
 }
+
+label.seat {
+    user-select: none;
+}

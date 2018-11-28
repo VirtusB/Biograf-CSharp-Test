@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace BiografCSharpTest.Models
 {
     public class Movie
@@ -12,5 +14,6 @@ namespace BiografCSharpTest.Models
         public string Poster { get; set; }
         public string Description { get; set; }
         public int Stars { get; set; }
+        public ICollection<Favorite> Likers { get; set; }
     }
 }

@@ -65,10 +65,14 @@ namespace BiografCSharpTest.Data
                 users = users.Where(u => u.Enabled == userParams.Enabled);
             }
 
+            
+
             users = users.Where(u => u.Id != userParams.UserId);
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
+
+        
 
         public async Task<User> GetUser(int id)
         {

@@ -66,8 +66,23 @@ namespace BiografCSharpTest.Data
                 movies = movies.Where(s => s.Stars >= movieParams.Stars);
             }
 
+            if (movieParams.Likees) {
+                var userLikees = await GetUserFavorites(movieParams.UserId); 
+                movies = movies.Where(u => userLikees.Contains(u.Id));
+            }
+
             
             return await PagedList<Movie>.CreateAsync(movies, movieParams.PageNumber, movieParams.PageSize);
+        }
+
+        private async Task<IEnumerable<int>> GetUserFavorites(int id) {
+            var user = await _context.Users
+                .Include(x => x.Likees)
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            return user.Likees
+                    .Where(u => u.LikerId == id)
+                    .Select(i => i.LikeeId);
         }
     }
 }

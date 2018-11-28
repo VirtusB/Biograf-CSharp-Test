@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiografCSharpTest.Migrations
 {
     [DbContext(typeof(BioContext))]
-    [Migration("20181127064843_InitialCreate")]
+    [Migration("20181127220107_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,19 @@ namespace BiografCSharpTest.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Discounts");
+                });
+
+            modelBuilder.Entity("BiografCSharpTest.Models.Favorite", b =>
+                {
+                    b.Property<int>("LikerId");
+
+                    b.Property<int>("LikeeId");
+
+                    b.HasKey("LikerId", "LikeeId");
+
+                    b.HasIndex("LikeeId");
+
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("BiografCSharpTest.Models.Movie", b =>
@@ -169,6 +182,19 @@ namespace BiografCSharpTest.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BiografCSharpTest.Models.Favorite", b =>
+                {
+                    b.HasOne("BiografCSharpTest.Models.Movie", "Likee")
+                        .WithMany("Likers")
+                        .HasForeignKey("LikeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("BiografCSharpTest.Models.User", "Liker")
+                        .WithMany("Likees")
+                        .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("BiografCSharpTest.Models.Reservation", b =>

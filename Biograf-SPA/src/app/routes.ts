@@ -14,6 +14,8 @@ import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
 import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
 import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-control-panel.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';
+import { MemberMovieFavoritesComponent } from './members/member-movie-favorites/member-movie-favorites.component';
+import { MemberMovieFavoritesResolver } from './_resolvers/member-movie-favorites.resolver';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -41,7 +43,8 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}},
-            {path: 'reservations/checkout/:id', component: ReservationCheckoutComponent}
+            {path: 'reservations/checkout/:id', component: ReservationCheckoutComponent},
+            {path: 'favorites', component: MemberMovieFavoritesComponent, resolve: {movies: MemberMovieFavoritesResolver}}
         ]
     },
     {path: '**', redirectTo: '', pathMatch: 'full'}

@@ -61,6 +61,8 @@ import { EditMovieModalComponent } from './admin/edit-movie-modal/edit-movie-mod
 import { AddMovieModalComponent } from './admin/add-movie-modal/add-movie-modal.component';
 import { MemberSettingsComponent } from './members/member-settings/member-settings.component';
 import { ViewUserOrdersModalComponent } from './admin/view-user-orders-modal/view-user-orders-modal.component';
+import { MemberMovieFavoritesComponent } from './members/member-movie-favorites/member-movie-favorites.component';
+import { MemberMovieFavoritesResolver } from './_resolvers/member-movie-favorites.resolver';
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -103,7 +105,8 @@ export function tokenGetter() {
       EditMovieModalComponent,
       AddMovieModalComponent,
       MemberSettingsComponent,
-      ViewUserOrdersModalComponent
+      ViewUserOrdersModalComponent,
+      MemberMovieFavoritesComponent
    ],
    entryComponents: [
     EditUserModalComponent,
@@ -153,6 +156,7 @@ export function tokenGetter() {
     ShowService,
     DiscountService,
     ShowListResolver,
+    MemberMovieFavoritesResolver,
     UserListResolver,
     { provide: LOCALE_ID, useValue: 'da' }
     

@@ -110,6 +110,30 @@ namespace BiografCSharpTest.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Favorites",
+                columns: table => new
+                {
+                    LikerId = table.Column<int>(nullable: false),
+                    LikeeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favorites", x => new { x.LikerId, x.LikeeId });
+                    table.ForeignKey(
+                        name: "FK_Favorites_Movies_LikeeId",
+                        column: x => x.LikeeId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Favorites_Users_LikerId",
+                        column: x => x.LikerId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reservations",
                 columns: table => new
                 {
@@ -140,6 +164,11 @@ namespace BiografCSharpTest.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favorites_LikeeId",
+                table: "Favorites",
+                column: "LikeeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_ShowId",
                 table: "Reservations",
                 column: "ShowId");
@@ -164,6 +193,9 @@ namespace BiografCSharpTest.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Discounts");
+
+            migrationBuilder.DropTable(
+                name: "Favorites");
 
             migrationBuilder.DropTable(
                 name: "Reservations");
