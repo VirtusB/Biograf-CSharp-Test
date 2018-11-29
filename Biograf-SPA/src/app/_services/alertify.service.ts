@@ -19,7 +19,7 @@ confirm(title: string, message: string, okCallback: () => any, errorCallback?: (
         errorCallback();
       }
     } else {}
-  }).set('labels', {ok: 'Ja', cancel: 'Annuller'});
+  }).set('labels', {ok: 'Ja', cancel: 'Annuller'}).set({transition: 'fade'});
 }
 
 success(message: string) {
