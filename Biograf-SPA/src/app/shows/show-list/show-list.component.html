@@ -40,6 +40,9 @@
         <app-show-grid [show]="show"></app-show-grid>
       </div>
     </div>
+    <h4 *ngIf="movieIdFromQueryParam !== undefined && movieIdFromQueryParam !== 0 && pagination.totalItems === 0">
+      Der er desværre ingen forestillinger med denne film, kom tilbage på et andet tidspunkt
+    </h4>
   </div>
   
   <div class="d-flex justify-content-center">

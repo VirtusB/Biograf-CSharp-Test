@@ -19,7 +19,7 @@ export class ShowListComponent implements OnInit {
   prices = [100, 200, 300, 400, 500];
   stars = [1, 2, 3, 4, 5];
   halls = [1, 2, 3, 4];
-
+  movieIdFromQueryParam: number;
 
   constructor(private showService: ShowService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -34,6 +34,7 @@ export class ShowListComponent implements OnInit {
       if (movieId) {
         this.showParams.movieId = movieId;
         this.loadShows();
+        this.movieIdFromQueryParam = movieId;
       } else {
         this.showParams.movieId = 0;
         this.loadShows();

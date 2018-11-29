@@ -19,6 +19,8 @@ export class MovieListComponent implements OnInit {
   genres: any;
   stars = [1, 2, 3, 4, 5];
 
+  
+
   constructor(private movieService: MovieService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
 
