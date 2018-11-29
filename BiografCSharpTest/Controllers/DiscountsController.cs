@@ -67,7 +67,8 @@ namespace BiografCSharpTest.Controllers
             }
 
             var discountFromRepo = await _discountRepo.GetDiscount(id);
-
+            
+          
             
 
             _mapper.Map(discountForUpdateByAdminDto, discountFromRepo);

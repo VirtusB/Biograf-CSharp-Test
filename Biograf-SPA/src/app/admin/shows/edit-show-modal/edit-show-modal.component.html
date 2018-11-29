@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <form #editForm="ngForm" id="editForm" (ngSubmit)="saveChangesToShow()">
+        <div class="container">
+
+
+              <div class="form-group">
+                  <div class="col-xs-3">
+                    <label class="mr-1" for="ticketPrice">Pris </label>
+                    <input name="ticketPrice" [(ngModel)]="show.ticketPrice" type="number" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="startDate">Start dato </label>
+                  <input name="startDate" [(ngModel)]="show.startDate" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control"  bsDatepicker type="text">
+                </div>
+
+                <div class="form-group">
+                  <label for="endDate">Slut dato </label>
+                  <input name="endDate" [(ngModel)]="show.endDate" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control"  bsDatepicker type="text">
+                </div>
+
+                <div class="form-group">
+                    <label for="hallNumber">Sal </label>
+                  <select class="form-control" [(ngModel)]="show.hallNumber" name="hallnumber">
+                    <option *ngFor="let hall of halls" value="{{hall}}">{{hall}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="mr-1" for="role">Film </label>
+                            <select class="form-control" [(ngModel)]="selectedMovie" name="movie" id="movie">
+                              <option  *ngFor="let movie of movies" [ngValue]="movie">{{movie.name}}</option>
+                            </select>
+                </div>
+                   
+        </div>
+
+        
+
+
+    </form>
+</div>
+<div class="modal-footer">
+  <button [disabled]="!hasChanges()" class="btn btn-default" form="editForm">{{closeBtnName}}</button>
+</div>
