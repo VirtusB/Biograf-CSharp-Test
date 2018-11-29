@@ -15,9 +15,9 @@
           </div>
         </div>
         <div class="card-footer">
-          <button *ngIf="!isFavorite" (click)="addFavorite(movie.id)" class="btn btn-success btn-block"><i style="font-size: 25px;" class="fa fa-heart-o"></i></button>
-          <button *ngIf="isFavorite" (click)="deleteFavorite(movie.id)" class="btn btn-dark btn-block"><i style="color: #ff3e3a; font-size: 25px;" class="fa fa-heart"></i></button>
-          <p style="margin: 0; text-align: center;" *ngIf="countUsersWithFavorite">{{countUsersWithFavorite}} {{countUsersWithFavorite > 1 ? 'brugere har denne film som favorit!' : 'bruger har denne film som favorit!'}}</p>
+          <button [disabled]="!loggedIn()" *ngIf="!isFavorite" (click)="addFavorite(movie.id)" class="btn btn-success btn-block"><i style="font-size: 25px;" class="fa fa-heart-o"></i></button>
+          <button [disabled]="!loggedIn()" *ngIf="isFavorite" (click)="deleteFavorite(movie.id)" class="btn btn-dark btn-block"><i style="color: #ff3e3a; font-size: 25px;" class="fa fa-heart"></i></button>
+          <p style="margin: 0; text-align: center;" *ngIf="countUsersWithFavorite">{{countUsersWithFavorite}} {{countUsersWithFavorite > 1 ? 'personer har denne film som favorit!' : 'person har denne film som favorit!'}}</p>
         </div>
       </div>
     </div>

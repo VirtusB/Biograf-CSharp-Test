@@ -28,9 +28,15 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.movie = data['movie'].body;
-      this.isFavoriteStatus(this.movie.id);
+      if (this.authService.loggedIn()) {
+        this.isFavoriteStatus(this.movie.id);
+      }
       this.getCountOfUsersWhoFavorited(this.movie.id);
     });
+  }
+
+  loggedIn() {
+    return this.authService.loggedIn();
   }
 
   isFavoriteStatus( movieId: number) {

@@ -16,7 +16,7 @@
       </div>
       <div class="col-sm-3">
         <h4>{{movie.name}}</h4>
-        <p>{{movie.countLikedBy}} {{movie.countLikedBy > 1 ? 'brugere har denne film som favorit!' : 'bruger har denne film som favorit!'}}</p>
+        <p>{{movie.countLikedBy}} {{movie.countLikedBy > 1 ? 'personer har denne film som favorit!' : 'person har denne film som favorit!'}}</p>
         
         <a style="text-decoration: none" [routerLink]="['/movies/', movie.id]" class="card-link">Detaljer</a>
         <a [routerLink]="['/shows']" [queryParams]="{movieId: movie.id}" class="card-link">Vis program</a>

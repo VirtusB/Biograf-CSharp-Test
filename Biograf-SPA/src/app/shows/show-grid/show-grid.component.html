@@ -23,7 +23,7 @@
                 </div>
           </div>
           <div class="card-footer">
-              <p *ngIf="!loggedIn()">Log ind for at bestille</p>
+              <p style="text-align: center;" *ngIf="!loggedIn()">Log ind for at bestille</p>
             <button [routerLink]="['/reservations/checkout/', show.id]" [disabled]="!loggedIn()" class="btn btn-success btn-block">Bestil</button>
           </div>
         </div>

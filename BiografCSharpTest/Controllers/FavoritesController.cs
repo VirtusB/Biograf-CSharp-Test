@@ -26,6 +26,7 @@ namespace BiografCSharpTest.Controllers
         }
 
         [HttpGet("usercount/{movieId}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetCountOfUsersWhoFavorited(int movieId) {
             var count = await _favoriteRepo.GetCountOfUsersWhoFavorited(movieId);
 
