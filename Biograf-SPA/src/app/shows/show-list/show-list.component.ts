@@ -15,7 +15,7 @@ import { Pagination, PaginatedResult } from '../../_models/Pagination';
 export class ShowListComponent implements OnInit {
   shows: Show[];
   showParams: any = {};
-  pagination: Pagination;
+  pagination: Pagination = {currentPage: 1, itemsPerPage: 6};
   prices = [100, 200, 300, 400, 500];
   stars = [1, 2, 3, 4, 5];
   halls = [1, 2, 3, 4];
@@ -25,11 +25,6 @@ export class ShowListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      this.shows = data['shows'].result;
-      this.pagination = data['shows'].pagination;
-    });
-
     this.showParams.maxTicketPrice = 500;
     this.showParams.stars = 0;
     this.showParams.hallNumber = 0;
@@ -41,6 +36,7 @@ export class ShowListComponent implements OnInit {
         this.loadShows();
       } else {
         this.showParams.movieId = 0;
+        this.loadShows();
       }
     });
   }

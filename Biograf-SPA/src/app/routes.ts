@@ -35,7 +35,7 @@ export const appRoutes: Routes = [
         children: [
             {path: 'movies', component: MovieListComponent, resolve: {movies: MovieListResolver}},
             {path: 'movies/:id', component: MovieDetailComponent, resolve: {movie: MovieDetailResolver}},
-            {path: 'shows', component: ShowListComponent, resolve: {shows: ShowListResolver}},
+            {path: 'shows', component: ShowListComponent},
             {path: 'popular', component: PopularMoviesComponent}
         ]
     },

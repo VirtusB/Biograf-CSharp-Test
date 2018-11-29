@@ -23,7 +23,7 @@
                         <td>{{movie.minutes | minuteSeconds}}</td>
                         <td>{{movie.year}}</td>
                         <td>{{movie.director}}</td>
-                        <td [innerHTML]="movie.stars | formatStars"></td>
+                        <td style="width: 13%;" [innerHTML]="movie.stars | formatStars"></td>
                         <td style="width: 17%;">
                           <button (click)="editMovieModal(movie.id)" class="btn btn-primary btn-sm mr-1" type="button"><i class="fa fa-pencil"></i></button>
                           <button (click)="deleteMovie(movie.id)" class="btn btn-danger btn-sm" type="button"><i class="fa fa-times"></i></button>

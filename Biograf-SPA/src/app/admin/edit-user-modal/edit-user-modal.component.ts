@@ -47,7 +47,7 @@ export class EditUserModalComponent implements OnInit {
   saveChangesToUser() {
     this.user.role = this.selectedRole;
 
-  
+
 
     this.userService.updateUserByAdmin(this.user.id, this.user).subscribe(next => {
       this.alertify.success('Bruger opdateret');
@@ -56,7 +56,7 @@ export class EditUserModalComponent implements OnInit {
       this.alertify.error(error);
     });
 
-  
+
     this.bsModalRef.hide();
   }
 
