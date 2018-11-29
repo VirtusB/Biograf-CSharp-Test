@@ -10,7 +10,7 @@ import { MovieDetailResolver } from './_resolvers/movie-detail.resolver';
 import { ShowListComponent } from './shows/show-list/show-list.component';
 import { ShowListResolver } from './_resolvers/show-list.resolver';
 import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
-import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
+import { PersonaleAdminGuard } from './_guards/personale.admin.guard';
 import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
 import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-control-panel.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';

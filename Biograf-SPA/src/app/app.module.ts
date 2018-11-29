@@ -39,7 +39,7 @@ import { ShowGridComponent } from './shows/show-grid/show-grid.component';
 import { ShowListComponent } from './shows/show-list/show-list.component';
 import { ReservationCheckoutComponent } from './reservations/reservation-checkout/reservation-checkout.component';
 import { MemberDiscountStepComponent } from './members/member-discount-step/member-discount-step.component';
-import { PersonaleAdminGuard } from './_guards/personale.admin.guards';
+import { PersonaleAdminGuard } from './_guards/personale.admin.guard';
 import { ReservationValidationComponent } from './reservations/reservation-validation/reservation-validation.component';
 import { AdminControlPanelComponent } from './admin/admin-control-panel/admin-control-panel.component';
 import { UserListResolver } from './_resolvers/user-list.resolver';

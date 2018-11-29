@@ -71,7 +71,7 @@ export class AdminUsersListComponent implements OnInit {
     const userId = id;
     const initialState = {
       userId,
-      title: 'Se ordre for bruger'
+      title: 'Se ordrer for bruger'
     };
 
     const otherState = Object.assign({initialState}, { class: 'gray modal-lg' });

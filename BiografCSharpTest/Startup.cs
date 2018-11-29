@@ -47,17 +47,17 @@ namespace BiografCSharpTest
                         opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                     });
 
-            // tilføj database
+            
             services.AddDbContext<BioContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
-            services.AddCors(); // tilføj CORS, så vi kan tilgå API'en fra andre websider eller andre APIer
-            services.AddAutoMapper(); // tilføj AutoMapper, så vi automatisk kan mappe objekter til DTO'er
+            services.AddCors(); 
+            services.AddAutoMapper();
 
             services.AddTransient<Seed>();
 
             services.AddCors();
 
-            Mapper.Reset(); // skal ikke bruges i produktion
+            Mapper.Reset(); // skal ikke bruges i produktion, nødvendig for at kunne droppe databasen, bug i dotnet cli eller automapper
             services.AddAutoMapper();
 
 
@@ -69,7 +69,7 @@ namespace BiografCSharpTest
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 
-            services.AddScoped<IUserService, UserService>(); // er det sådan man skal tilføje services? er dette overhovedet en service?? <-- er det domain logic? hvordan og hvor skal det laves??
+            services.AddScoped<IUserService, UserService>(); // er det sådan man skal tilføje services? er dette overhovedet en service?? <-- er det "domain logic"? hvordan og hvor skal det laves??
 
             services.AddScoped<LogUserActivity>();
 
@@ -110,7 +110,7 @@ namespace BiografCSharpTest
             }
 
             
-            app.UseCors(x => x.WithOrigins("http://localhost:4200", "http://127.0.0.1").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); // tillad at en side/service/api tilgår vores API fra port 4200. Angular bruger som default port 4200, så vi kunne f.eks. lave frontend i Angular og bruge API'en på denne måde
+            app.UseCors(x => x.WithOrigins("http://localhost:4200", "http://127.0.0.1").AllowAnyMethod().AllowAnyHeader().AllowCredentials()); 
            // app.UseHttpsRedirection();
            app.UseAuthentication();
 
