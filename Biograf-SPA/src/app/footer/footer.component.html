@@ -1,4 +1,4 @@
-<footer style="background: #4e5d6c;" class="footer">
+<footer id="slider-footer" style="background: #4e5d6c; position: fixed; bottom: 0;" class="footer">
     <marquee style="height: 30px;" behavior="scroll" direction="left">  
         <label class="mr-3 ml-3" *ngFor="let movie of movies"><p>{{movie.name}} - <span [innerHTML]="movie.stars | formatStars"></span></p></label>
     </marquee>  
