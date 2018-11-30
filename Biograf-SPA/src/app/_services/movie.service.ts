@@ -38,6 +38,10 @@ export class MovieService {
       return this.http.get<Movie[]>(this.baseUrl + 'movies/popular', { observe: 'response'});
     }
 
+    getFooterSliderMovies() {
+      return this.http.get<Movie[]>(this.baseUrl + 'movies/footerslider', { observe: 'response'});
+    }
+
     addFavorite(id: number, movieId: number) {
       return this.http.post(this.baseUrl + 'favorites/' + id + '/' + movieId, {});
     }

@@ -66,6 +66,8 @@ import { AdminShowsListComponent } from './admin/shows/admin-shows-list/admin-sh
 import { AdminMoviesListComponent } from './admin/movies/admin-movies-list/admin-movies-list.component';
 import { EditMovieModalComponent } from './admin/movies/edit-movie-modal/edit-movie-modal.component';
 import { AddMovieModalComponent } from './admin/movies/add-movie-modal/add-movie-modal.component';
+import { FooterComponent } from './footer/footer.component';
+
 registerLocaleData(localeDa);
 
 export function tokenGetter() {
@@ -111,19 +113,20 @@ export function tokenGetter() {
       ViewUserOrdersModalComponent,
       MemberMovieFavoritesComponent,
       StaffChatRoomComponent,
-      PopularMoviesComponent
+      PopularMoviesComponent,
+      FooterComponent
    ],
    entryComponents: [
-    EditUserModalComponent,
-    EditDiscountModalComponent,
-    AddDiscountModalComponent,
-    AddUserModalComponent,
-    AddShowModalComponent,
-    EditShowModalComponent,
-    EditMovieModalComponent,
-    AddMovieModalComponent,
-    ViewUserOrdersModalComponent
-],
+      EditUserModalComponent,
+      EditDiscountModalComponent,
+      AddDiscountModalComponent,
+      AddUserModalComponent,
+      AddShowModalComponent,
+      EditShowModalComponent,
+      EditMovieModalComponent,
+      AddMovieModalComponent,
+      ViewUserOrdersModalComponent
+   ],
    imports: [
       BrowserModule,
       HttpClientModule,
@@ -139,13 +142,13 @@ export function tokenGetter() {
       CarouselModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
-          config: {
-              tokenGetter: tokenGetter,
-              whitelistedDomains: ['localhost:5000'],
-              blacklistedRoutes: ['localhost:5000/api/auth']
-          }
-      })
-   ],
+        config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+        }
+    })
+ ],
    providers: [
     AuthService,
     ErrorInterceptorProvider,

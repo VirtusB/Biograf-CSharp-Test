@@ -35,6 +35,14 @@ namespace BiografCSharpTest.Controllers
             this._context = context;
         }
 
+        [HttpGet("footerslider")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetMoviesForFooterSlider() {
+            var movies = await _context.Movies.Take(50).Select(m => new {Name = m.Name, Stars = m.Stars}).OrderBy(x => Guid.NewGuid()).ToListAsync();
+
+            return Ok(movies);
+        }
+
         [HttpGet("popular")]
         [AllowAnonymous]
         public async Task<IActionResult> GetFiveMostFavorited() {

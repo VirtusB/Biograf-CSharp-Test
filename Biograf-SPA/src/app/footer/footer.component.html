@@ -1,0 +1,7 @@
+<footer style="background: #4e5d6c;" class="footer">
+    <marquee style="height: 30px;" behavior="scroll" direction="left">  
+        <label class="mr-3 ml-3" *ngFor="let movie of movies"><p>{{movie.name}} - <span [innerHTML]="movie.stars | formatStars"></span></p></label>
+    </marquee>  
+  </footer>
+
+
