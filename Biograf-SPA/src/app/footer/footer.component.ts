@@ -9,14 +9,15 @@ import { MovieService } from '../_services/movie.service';
 })
 export class FooterComponent implements OnInit {
   movies: Movie[];
-
+  el: any;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
     this.getFooterSliderMovies();
     setTimeout(() => {
-      document.querySelector('#slider-footer > marquee').start();
+      this.el = document.querySelector('#slider-footer > marquee');
+      this.el.start();
     }, 500);
     // let i = 0;
     // let interval = setInterval(() => {

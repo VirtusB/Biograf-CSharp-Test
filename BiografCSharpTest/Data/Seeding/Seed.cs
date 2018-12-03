@@ -17,7 +17,8 @@ namespace BiografCSharpTest.Data.Seeding
         }
 
         public void SeedFavorites() {
-            if (!_context.Favorites.AsNoTracking().Any()) {
+            var favorites = _context.Favorites.ToList();
+            if (favorites.Count == 0) {
                 var users = _context.Users.ToList();
                 var movies = _context.Movies.ToArray();
 
