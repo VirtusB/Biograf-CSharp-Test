@@ -7,7 +7,6 @@ C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.dll
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.pdb
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.dll
-C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.pdb
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csprojAssemblyReference.cache
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.AssemblyInfoInputs.cache
@@ -32,3 +31,4 @@ F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.
 F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.csproj.CopyComplete
 F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.dll
 F:\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\obj\Debug\netcoreapp2.1\BiografCSharpTest.UnitTests.pdb
+C:\Users\Focuz\Documents\GitHub\Biograf-CSharp-Test\BiografCSharpTest.UnitTests\bin\Debug\netcoreapp2.1\BiografCSharpTest.pdb

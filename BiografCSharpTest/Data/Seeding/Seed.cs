@@ -13,6 +13,7 @@ namespace BiografCSharpTest.Data.Seeding
         private readonly BioContext _context;
 
         public Seed(BioContext context) {
+            // Denne klasse seeder databasen
             this._context = context;
         }
 
